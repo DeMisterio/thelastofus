@@ -1,0 +1,17 @@
+{
+  "locations": [
+    {
+      "id": "Init_house",
+      "name": "House",
+      "sub_locations": [
+        { "name": "kitchen", "items_id": "kitchen_set" },
+        { "name": "living_room", "items_id": "living_room_set" },
+        { "name": "bathroom", "items_id": "bathroom_set" },
+        { "name": "hall", "items_id": "hall_set" },
+        { "name": "balcony", "items_id": "balcony_set" }
+      ],
+      "characters": ["Tom", "Zack", "Alex", "Me"],
+      "scenes": []
+    }
+  ]
+}

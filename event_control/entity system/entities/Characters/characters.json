@@ -1,0 +1,14 @@
+{
+    "characters": [{
+    "character_n": "Tom",
+    "character_type": "NPC",
+    "personality": "calm",
+    "init_parameters":[
+        {"health": 70},
+        {"action_speed": 8},
+        {"endurance": 40},
+        {"strength": 90},
+        {"init_items": ["phone", "bubblegum", "hummer", "Glock-19"]}
+    ]
+    }]
+}
