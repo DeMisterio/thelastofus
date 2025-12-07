@@ -17,10 +17,11 @@ export class scenes{
 }
 export class Character {
     #name;
-
-    constructor(preseted = null, name = null) {
+    #character_type
+    constructor(preseted = null, name = null, character_type = null) {
         this.preseted = preseted;
         this.#name = name;
+        this.#character_type = character_type
     }
     get name() {
         if (this.preseted === null) {
@@ -28,6 +29,14 @@ export class Character {
         } else {
             return this.preseted.name;
         }
+    }
+    get character_type() {
+    if (this.preseted === null) {
+        return this.#character_type;
+    } else {
+        CHARACTERdata.characters.find(ch_t => ch_t.character_n === this.name).character_type
+        
+    }
     }
 }
 
