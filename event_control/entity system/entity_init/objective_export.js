@@ -84,10 +84,8 @@ export class location {
 
         this.location_id = loc.location_id;
         this.location_n = loc.location_n;
-        this.sub_locations = loc.sub_locations;      // массив саб-локаций
+        this.sub_locations = loc.sub_locations;   
         this.scene_id = loc.scene_id ?? null;
-
-        // персонажи как объекты класса Character
         this.characters = (loc.characters || []).map(name => new Character(name));
 
         // пока просто список id предметов в этой локации (если тебе нужно детальнее - можно расширить)
