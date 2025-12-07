@@ -15,10 +15,26 @@ export class scenes{
     }
 
 }
+export class Character {
+    #name;
+
+    constructor(preseted = null, name = null) {
+        this.preseted = preseted;
+        this.#name = name;
+    }
+    get name() {
+        if (this.preseted === null) {
+            return this.#name;
+        } else {
+            return this.preseted.name;
+        }
+    }
+}
 
 export class location extends scenes{
-    constructor(scene_n, scene_id){
-        this.scene_id = scene_id
+    constructor(location_id){
+        super(scene_locations)
+        this.location_id = 
         this.scene_n = scene_n
         this.scene_title = SCENEdata.scenes.find(st => st.scene_n === scene_n).scene_title
         this.scene_locations = SCENEdata.scenes.find(l => l.scene_id == scene_id).locations
