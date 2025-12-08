@@ -10,7 +10,7 @@
         { "name": "hall", "items_id": "hall_set" },
         { "name": "balcony", "items_id": "balcony_set" }
       ],
-      "characters": ["Tom", "Zack", "Alex", "Me"],
+      "characters": ["Tom", "Derick", "Alex", "Dominic", "Me"],
       "scenes": []
     }
   ]

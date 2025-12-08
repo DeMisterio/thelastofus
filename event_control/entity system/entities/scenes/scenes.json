@@ -3,9 +3,9 @@
         "scene_n": 1,
         "scene_id": 1,
         "scene_title": "Peripetiea",
-        "locations": {
-            "location_id": "Init_house"
-        },
+        "locations": [{
+            "location_id": "Init_house", "sub_locations_id": "kitchen"
+        }],
         "on_complete": {
             "location": ["shop"]
         },
@@ -69,5 +69,105 @@
             { "text": "People were rushing, stumbling over chairs, over each other.", "weight": 1 },
             { "text": "A chaotic jumble of shouts, cries, sobs, gasps, arguments — even the dull thuds of bodies bumping into walls — all crashed into the room at once.", "weight": 1 }
         ]
-    }]
+    },
+    {
+    "scene_n": 2,
+    "scene_id": 2,
+    "scene_title": "Preparation",
+    "locations": [{
+        "location_id": "Init_house",
+        "sub_locations_id": "hall"
+    }],
+    "on_complete": {
+        "location": ["street_bullet"]
+    },
+    "intro_text": [
+        { "text": "The screams outside didn’t stop. They trembled in the walls like a living echo.", "weight": 2 },
+        { "text": "Alex grabbed my arm. 'Bro… we need to get ready. We can’t stay here.'", "weight": 2 },
+        { "text": "My hands were shaking. How do you prepare for the end of the world?", "weight": 1 },
+        { "text": "Tom: 'We need essentials. Passport. Food. Anything we can carry.'", "weight": 1 },
+        { "text": "Derick checked the hallway. 'We don’t have long. Grab what you can.'", "weight": 1 },
+        { "text": "I rushed to the kitchen — my mind blank, my body running on instinct.", "weight": 2 },
+        { "text": "Alex: 'Bro, hurry! We need to be out in minutes!'", "weight": 1 },
+        { "text": "Dom: 'Guys, I heard glass break upstairs… people are losing it!'", "weight": 1 },
+        { "text": "I had one mission: find my passport, knife, and enough food to survive one day.", "weight": 2 },
+        { "text": "Drawers slammed, shelves rattled — everything mattered now.", "weight": 1 }
+    ]
+    },
+    {
+    "scene_n": 3,
+    "scene_id": 3,
+    "scene_title": "Bullet Street",
+    "locations": [{
+        "location_id": "street_bullet",
+        "sub_locations_id": "crosswalk"
+    }],
+    "on_complete": {
+        "location": ["parking_zone"]
+    },
+    "intro_text": [
+        { "text": "The street looked like another world — smoke, running silhouettes, broken voices.", "weight": 2 },
+        { "text": "A man bumped into me so hard I almost fell. His eyes were swallowed by fear.", "weight": 1 },
+        { "text": "Dom: 'This is insane… I’ve never seen humans act like this.'", "weight": 1 },
+        { "text": "Tom: 'Keep moving! Parking lot is two blocks away!'", "weight": 1 },
+        { "text": "Then I saw her — a woman lying near the wall, barely conscious.", "weight": 2 },
+        { "text": "Her arm was twisted unnaturally. Bruises covered her face.", "weight": 1 },
+        { "text": "Sara: 'P-please… help me… my husband… he’s looking for me…'", "weight": 1 },
+        { "text": "Alex whispered: 'Bro, we don’t have time. She’s done.'", "weight": 1 },
+        { "text": "Derick: 'Shut up, Alex. He decides.'", "weight": 1 },
+        { "text": "The world froze. One path meant saving her. The other — saving us.", "weight": 2 }
+    ]
+    },
+    {
+    "scene_n": 4,
+    "scene_id": 4,
+    "scene_title": "Parking Lot",
+    "locations": [{
+        "location_id": "parking_zone",
+        "sub_locations_id": "lot_center"
+    }],
+    "on_complete": {
+        "location": ["shop_industrial"]
+    },
+    "intro_text": [
+        { "text": "The parking lot was a graveyard of abandoned cars and dropped belongings.", "weight": 2 },
+        { "text": "We reached our car. Dust covered the windows — I hadn’t touched it in months.", "weight": 1 },
+        { "text": "Tom: 'Try it. Just try to start it.'", "weight": 1 },
+        { "text": "I turned the key. Nothing. Not even a cough.", "weight": 2 },
+        { "text": "Alex: 'Bro… we’re screwed. Starter’s dead.'", "weight": 1 },
+        { "text": "Dom: 'Maybe if we push it? Try rolling?'", "weight": 1 },
+        { "text": "We pushed with all our strength. The car rolled, choked, and died again.", "weight": 2 },
+        { "text": "Alex: 'Okay. I know what's wrong. But we need a replacement part.'", "weight": 1 },
+        { "text": "Derick: 'Where do we find it?'", "weight": 1 },
+        { "text": "Alex: 'There’s a shop ten minutes away… if it’s still there.'", "weight": 2 }
+    ]
+    },
+    {
+    "scene_n": 5,
+    "scene_id": 5,
+    "scene_title": "The Shop of Last Hope",
+    "locations": [{
+        "location_id": "shop_industrial",
+        "sub_locations_id": "aisle_entrance"
+    }],
+    "on_complete": {
+        "branch": ["scene_6A", "scene_6B"]
+    },
+    "intro_text": [
+        { "text": "The shop was silent — unnervingly silent. Shelves still full, untouched by panic.", "weight": 2 },
+        { "text": "An older man stood at the counter — tired eyes, silver hair.", "weight": 1 },
+        { "text": "Old Man: 'You boys need something?'", "weight": 1 },
+        { "text": "Alex: 'Starter module. Please.'", "weight": 1 },
+        { "text": "Old Man sighed. 'Take it. Take anything… I’ve lived long enough.'", "weight": 2 },
+        { "text": "Then the door slammed open with violent force.", "weight": 1 },
+        { "text": "Armed men rushed inside — shouting, kicking shelves, grabbing whatever they wanted.", "weight": 2 },
+        { "text": "Bandit: 'Hands up! No hero shit!'", "weight": 1 },
+        { "text": "Tom: 'Bro— hide! NOW!'", "weight": 1 },
+        { "text": "The store turned into a maze — shelves, crates, shadows, panic.", "weight": 2 },
+        { "text": "My heart punched my ribs like it wanted out of my body.", "weight": 1 },
+        { "text": "If I hid — we had a chance. If I failed — everything was gone.", "weight": 2 }
+    ]
+    }
+
+]
 }

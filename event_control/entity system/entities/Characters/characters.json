@@ -10,5 +10,79 @@
         {"strength": 90},
         {"init_items": ["phone", "bubblegum", "hummer", "Glock-19"]}
     ]
-    }]
+    },
+    {
+        "character_n": "Dominic",
+        "character_type": "NPC",
+        "personality": "chaotic",
+        "init_parameters": [
+            {"health": 75},
+            {"action_speed": 9},
+            {"endurance": 55},
+            {"strength": 70},
+            {"init_items": ["notebook", "pen", "phone"]}
+        ]
+    },
+    {
+    "character_n": "Alex",
+    "character_type": "NPC",
+    "personality": "energetic",
+    "init_parameters":[
+        {"health": 80},
+        {"action_speed": 10},
+        {"endurance": 60},
+        {"strength": 75},
+        {"init_items": ["phone", "gloves", "mask"]}
+    ]
+},
+{
+    "character_n": "Derick",
+    "character_type": "NPC",
+    "personality": "thoughtful",
+    "init_parameters":[
+        {"health": 70},
+        {"action_speed": 7},
+        {"endurance": 55},
+        {"strength": 65},
+        {"init_items": ["notebook", "pen", "tea_box"]}
+    ]
+},
+{
+    "character_n": "Mark",
+    "character_type": "NPC",
+    "personality": "warmhearted",
+    "init_parameters":[
+        {"health": 85},
+        {"action_speed": 6},
+        {"endurance": 50},
+        {"strength": 95},
+        {"init_items": ["doritos_pack", "phone", "cup"]}
+    ]
+},
+{
+    "character_n": "Said",
+    "character_type": "NPC",
+    "personality": "realistic",
+    "init_parameters":[
+        {"health": 75},
+        {"action_speed": 8},
+        {"endurance": 65},
+        {"strength": 80},
+        {"init_items": ["salad", "fork", "phone"]}
+    ]
+},
+{
+    "character_n": "Me",
+    "character_type": "Player",
+    "personality": "neutral",
+    "init_parameters":[
+        {"health": 80},
+        {"action_speed": 9},
+        {"endurance": 70},
+        {"strength": 85},
+        {"init_items": ["phone", "keys", "notebook"]}
+    ]
+}
+
+]
 }

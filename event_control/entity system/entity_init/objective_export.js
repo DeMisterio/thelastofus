@@ -29,7 +29,9 @@ export class scenes {
         return new scenes(next.scene_n, next.scene_id);
     }
 }
-export class Character {
+
+
+export class character {
     #name;
     #character_type;
     #personality;
@@ -81,25 +83,17 @@ export class location {
         if (!loc) {
             throw new Error(`Location not found: ${location_id}`);
         }
-
+        
         this.location_id = loc.location_id;
         this.location_n = loc.location_n;
         this.sub_locations = loc.sub_locations;   
         this.scene_id = loc.scene_id ?? null;
-        this.characters = (loc.characters || []).map(name => new Character(name));
-
-        // пока просто список id предметов в этой локации (если тебе нужно детальнее - можно расширить)
-        this.items = this._loadItemsFromSubLocations();
+        this.characters = loc.characters || []
     }
 
-    _loadItemsFromSubLocations() {
-        // здесь заглушка, так как точной структуры sets/containers ты не дал в этом файле
-        // можно позже связать с отдельным модулем sets/containers
-        return [];
-    }
 }
 
-export class Item {
+export class item {
     constructor(item_id) {
         const data = ITEMSdata.items.find(it => it.id === item_id);
         if (!data) {
@@ -116,3 +110,36 @@ export class Item {
         this.movable = data.movable || { access: false, weight: 0 };
     }
 }
+
+//VISUAL example of Character class usage
+
+// const customChar = new Character(
+//     null,          
+//     "Bandit",       
+//     "NPC",               
+//     "aggressive",          
+//     [
+//         { health: 100 },
+//         { action_speed: 5 },
+//         { endurance: 40 },
+//         { strength: 60 },
+//         { init_items: ["knife", "water_bottle"] }
+//     ]
+// );
+
+//VISUAL example of Location class usage
+
+//const house = new location("Init_house");
+
+// house.characters.forEach(ch => {
+//     console.log(ch.name, ch.health);
+// });
+
+// We can link certain characters to locations easily
+
+// const me = new Character("Me");
+// me.location = house;
+
+// console.log(me.location.location_id); // "Init_house"
+
+
