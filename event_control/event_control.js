@@ -123,14 +123,10 @@ function get_content() {
 async function gameprocess() {
     while (Gameloop = true) {
         out_scene_text()
+        
         content = get_text()
-
-
+        
     }
-
-
-
-
 
 }
 
