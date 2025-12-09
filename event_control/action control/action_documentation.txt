@@ -1,0 +1,117 @@
+The actions are really important for the game processing. 
+
+ACTIONS THAT A PLAYER PERFORMS ON OBJECTS (Object‑Acting Verbs):
+1. attack
+2. cut
+3. ignite
+4. measure
+5. clean
+6. brew
+7. add_flavor
+8. cook
+9. noise
+11. hook
+12. shoot
+13. read
+14. write
+15. unlock
+16. wear
+17. sit
+18. clip
+19. drink
+21. store_items
+24. play
+26. gather
+27. move_object
+29. throw
+30. open
+31. close
+32. take_cover
+33. signal
+35. protect
+36. check_status
+
+ACTIONS WHERE THE ITEM OR STATE AFFECTS THE PLAYER (Item‑Affecting Verbs):
+10. cry
+22. warm
+23. verify_identity
+6.	seasoning
+7.	flammable
+8.	slippery
+9.	stale
+10.	hot_surface
+11.	poisonous
+12.	comfort
+13.	caffeinated
+14.	warm
+
+
+FUNCTIONALITIES (from items.json)
+
+ACTIONS THAT A PLAYER PERFORMS ON OBJECTS (Object‑Acting Verbs):
+attack // Use an item to harm or damage another object or entity
+cut // Divide or open something using a sharp tool
+ignite // Set something on fire or cause it to burn
+measure // Determine the size, length, or amount of something
+clean // Remove dirt or impurities from an object
+brew // Prepare a beverage (like tea) by mixing and heating
+add_flavor // Enhance the taste of food by adding an ingredient
+cook // Prepare food or heat objects using a heat source
+noise // Make a sound, usually to distract or alert
+hook // Catch or pull something using a hook
+shoot // Fire a projectile from a weapon
+read // Examine and interpret written information
+write // Record information using a writing tool
+unlock // Open something that is locked using a key or similar item
+wear // Put on clothing or protective gear
+sit // Take a seated position on an object
+clip // Attach objects together using a clip or similar device
+drink // Consume a liquid
+store_items // Place items into a container for storage
+play // Use for entertainment, e.g., playing cards
+trade // Exchange an item for something else
+trap // Set up an item to cause someone to slip or fall
+cry // Express emotion, typically sadness, by shedding tears
+verify_identity // Confirm the identity of a character using a document
+warm // Provide warmth, typically by using a blanket or similar item
+write // Record information (notebook, pen)
+wear // Equip clothing (gloves, mask, single_shoe)
+sit // Sit on an object (plastic_chair)
+clip // Attach with a clothespin
+
+ACTIONS WHERE THE ITEM OR STATE AFFECTS THE PLAYER (Item‑Affecting Verbs):
+cry // The item triggers an emotional response in the player
+warm // The item increases the player's warmth or comfort
+verify_identity // The item affects the player's ability to prove identity
+{not used} signal // {not used} Send a signal or alert
+{not used} move_object // {not used} Move an object to a different location
+{not used} throw // {not used} Throw an object
+{not used} open // {not used} Open an object or container
+{not used} close // {not used} Close an object or container
+{not used} take_cover // {not used} Use an object to shield oneself
+{not used} gather // {not used} Collect items or resources
+{not used} protect // {not used} Use an object to defend oneself
+{not used} check_status // {not used} Examine the state of an object or self
+
+
+EFFECTS (from items.json)
+
+Object‑Acting:
+fragile // Item can break easily when handled
+fire_source // Can be used to start a fire
+cleaning_item // Used to clean other objects
+flammable // Can catch fire easily
+slippery // Causes objects or people to slip
+hot_surface // Surface can burn or cause injury
+seasoning // Used to enhance the taste of food
+stale // Indicates food is old and not fresh
+taste_bad // Food tastes unpleasant
+
+Item‑Affecting:
+can_spoil // Item can go bad over time, affecting player health
+calming // Consuming or using the item soothes or calms the player
+unsanitary // Item can cause illness or negative effects
+poisonous // Item can poison the player if consumed
+caffeinated // Item increases player's alertness or energy
+comfort // Provides comfort to the player
+warm // Increases player's warmth

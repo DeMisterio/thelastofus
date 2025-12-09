@@ -887,8 +887,8 @@
       "type": "sentimental",
       "NV": null,
       "Eating_speed": null,
-      "effect": "comfort",
-      "functionality": "memory",
+      "effect": null,
+      "functionality": null,
       "HarmRate": 0,
       "movable": { "access": true, "weight": 1 }
     },
