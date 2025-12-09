@@ -82,7 +82,42 @@
         {"strength": 85},
         {"init_items": ["phone", "keys", "notebook"]}
     ]
+},
+{
+    "character_n": "Sara",
+    "character_type": "NPC",
+    "personality": "injured",
+    "init_parameters": [
+        {"health": 40},
+        {"action_speed": 4},
+        {"endurance": 20},
+        {"strength": 15},
+        {"init_items": ["phone", "blood_bandage"]}
+    ]
+},
+{
+    "character_n": "Sara_Husband",
+    "character_type": "NPC",
+    "personality": "determined",
+    "init_parameters": [
+        {"health": 65},
+        {"action_speed": 7},
+        {"endurance": 55},
+        {"strength": 70},
+        {"init_items": ["pilot_license", "water_bottle", "pocket_knife"]}
+    ]
+},
+{
+    "character_n": "Gang_Leader",
+    "character_type": "NPC",
+    "personality": "aggressive",
+    "init_parameters": [
+        {"health": 90},
+        {"action_speed": 9},
+        {"endurance": 80},
+        {"strength": 95},
+        {"init_items": ["pistol_9mm", "car_keys", "radio"]}
+    ]
 }
-
 ]
 }

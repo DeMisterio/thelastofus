@@ -13,7 +13,7 @@ export class GameState {
 
     constructor(scene, current_location, hint_list = []) {
         this.scene = scene
-        this.current_location = this.current_location
+        this.current_location = current_location
         this.hint_list = hint_list
     }
 
@@ -102,7 +102,7 @@ function get_content() {
         content = get_text()
         abuse_counter += 1
         if (abuse_counter > 5) {
-            if (GameState.hint_list.includes('abuse_hint')) {
+            if (GameControl.hint_list.includes('abuse_hint')) {
                 send_text("My head... something feels wrong. The words you force me to say dont make logical sence... I feel I am losing myself!!")
                 character.Me.health -= 5;
             } else {
@@ -121,7 +121,7 @@ function get_content() {
 }
 
 async function gameprocess() {
-    while (Gameloop = true) {
+    while (Gameloop === true) {
         out_scene_text()
         
         content = get_text()
@@ -130,8 +130,13 @@ async function gameprocess() {
 
 }
 
+
 let scene = new scenes(1, 1);
-let loc = new location(scene.scene_locations[0].sub_locations_id);
+
+let loc = new location(
+    scene.scene_locations[0].location_id,      // дом
+    scene.scene_locations[0].sub_locations_id  // kitchen
+);
 
 loc.characters = loc.characters.map(name => new Character(name));
 
@@ -142,4 +147,4 @@ GameControl = new GameState(scene, loc)
 
 
 
-//.map(name => new Character(name));
+//.map(name => new Character(name));? 

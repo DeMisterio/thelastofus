@@ -60,6 +60,38 @@
             { "id": "plant_shelf", "verbs": ["on the"] },
             { "id": "storage_box", "verbs": ["inside the"] }
         ]
+    },
+
+    {
+        "id": "taxi_items",
+        "containers": [
+          { "id": "armrest_compartment", "verbs": ["inside the"] },
+          { "id": "glovebox_taxi", "verbs": ["inside the"] },
+          { "id": "backseat_floor", "verbs": ["on the"] }
+        ]
+    },
+    {
+      "id": "car_items",
+      "containers": [
+        { "id": "car_glovebox", "verbs": ["inside the"] },
+        { "id": "car_seat", "verbs": ["on the"] },
+        { "id": "car_floor", "verbs": ["on the"] }
+      ]
+    },
+    {
+      "id": "parkedcars_items",
+      "containers": [
+        { "id": "trunk", "verbs": ["inside the"] },
+        { "id": "front_seat", "verbs": ["on the"] },
+        { "id": "under_seat", "verbs": ["under the"] }
+      ]
+    },
+    {
+      "id": "fence_items",
+      "containers": [
+        { "id": "fence_base", "verbs": ["under the"] },
+        { "id": "trash_pile", "verbs": ["inside the"] }
+      ]
     }
   ],
 
@@ -262,6 +294,80 @@
       "id": "storage_box",
       "items": [
         { "id": "clothespin" }
+      ]
+    },
+    {
+      "id": "armrest_compartment",
+      "items": [
+        { "id": "lighter" },
+        { "id": "cigarette_pack" },
+        { "id": "playing_cards" }
+      ]
+    },
+    {
+      "id": "glovebox_taxi",
+      "items": [
+        { "id": "nolan_father_photo", "name": "photo of Nolan’s father" }
+      ]
+    },
+    {
+      "id": "backseat_floor",
+      "items": [
+        { "id": "dead_dog", "name": "dead dog" },
+        { "id": "dead_woman", "name": "dead woman" }
+      ]
+    },
+    {
+      "id": "car_glovebox",
+      "items": [
+        { "id": "keys" },
+        { "id": "notebook" }
+      ]
+    },
+    {
+      "id": "car_seat",
+      "items": [
+        { "id": "plastic_wrap" },
+        { "id": "empty_can" }
+      ]
+    },
+    {
+      "id": "car_floor",
+      "items": [
+        { "id": "newspaper" }
+      ]
+    },
+    {
+      "id": "trunk",
+      "items": [
+        { "id": "large_empty_courier_bag" },
+        { "id": "clothespin" }
+      ]
+    },
+    {
+      "id": "front_seat",
+      "items": [
+        { "id": "cigarette_pack" },
+        { "id": "lighter" }
+      ]
+    },
+    {
+      "id": "under_seat",
+      "items": [
+        { "id": "playing_cards" }
+      ]
+    },
+    {
+      "id": "fence_base",
+      "items": [
+        { "id": "broken_chain_piece" }
+      ]
+    },
+    {
+      "id": "trash_pile",
+      "items": [
+        { "id": "plastic_wrap" },
+        { "id": "empty_can" }
       ]
     }
     ],
@@ -517,7 +623,7 @@
         "movable": {"access": true, "weight": 1}
     },
     {
-        "id": "nolan_mother_photo",
+        "id": "nolan_father_photo",
         "type": "sentimental",
         "NV": null,
         "Eating_speed": null,
@@ -755,6 +861,97 @@
         "functionality": "clip",
         "HarmRate": 0,
         "movable": {"access": true, "weight": 1}
+    },
+    {
+      "id": "cigarette_pack",
+      "type": "junk",
+      "NV": null,
+      "Eating_speed": null,
+      "effect": "poisonous",
+      "functionality": null,
+      "HarmRate": 10,
+      "movable": { "access": true, "weight": 1 }
+    },
+    {
+      "id": "energy_drink_can",
+      "type": "food",
+      "NV": 80,
+      "Eating_speed": 1,
+      "effect": "caffeinated",
+      "functionality": "drink",
+      "HarmRate": 0,
+      "movable": { "access": true, "weight": 1 }
+    },
+    {
+      "id": "teddy_bear",
+      "type": "sentimental",
+      "NV": null,
+      "Eating_speed": null,
+      "effect": "comfort",
+      "functionality": "memory",
+      "HarmRate": 0,
+      "movable": { "access": true, "weight": 1 }
+    },
+    {
+      "id": "large_empty_courier_bag",
+      "type": "container",
+      "NV": null,
+      "Eating_speed": null,
+      "effect": null,
+      "functionality": "store_items",
+      "HarmRate": 0,
+      "capacity": 20,
+      "movable": { "access": true, "weight": 3 }
+    },
+    {
+      "id": "child_glove",
+      "type": "clothing",
+      "NV": null,
+      "Eating_speed": null,
+      "effect": "warm",
+      "functionality": "wear",
+      "HarmRate": 0,
+      "movable": { "access": true, "weight": 1 }
+    },
+    {
+      "id": "broken_chain_piece",
+      "type": "weapon",
+      "NV": null,
+      "Eating_speed": null,
+      "effect": null,
+      "functionality": "attack",
+      "HarmRate": 10,
+      "movable": { "access": true, "weight": 2 }
+    },
+    {
+      "id": "playing_cards",
+      "type": "object",
+      "NV": null,
+      "Eating_speed": null,
+      "effect": null,
+      "functionality": "play",
+      "HarmRate": 0,
+      "movable": { "access": true, "weight": 1 }
+    },
+    {
+      "id": "dead_dog",
+      "type": "corpse",
+      "NV": null,
+      "Eating_speed": null,
+      "effect": "unsanitary",
+      "functionality": null,
+      "HarmRate": null,
+      "movable": { "access": false, "weight": 40 }
+    },
+    {
+      "id": "dead_woman",
+      "type": "corpse",
+      "NV": null,
+      "Eating_speed": null,
+      "effect": "unsanitary",
+      "functionality": null,
+      "HarmRate": null,
+      "movable": { "access": false, "weight": 55 }
     }
   ]
 }

@@ -12,6 +12,94 @@
       ],
       "characters": ["Tom", "Derick", "Alex", "Dominic", "Me"],
       "scenes": []
+    },
+    {
+      "id": "Bullets_street",
+      "name": "Bullets Street",
+      "sub_locations": [
+        { "name": "flipped_taxi", "items_id": "taxi_items" },
+        { "name": "bus_stop", "items_id": "busstop_items" },
+        { "name": "playground", "items_id": "playground_items" },
+        { "name": "baby_swing", "items_id": "swing_items" },
+        { "name": "sand_playground", "items_id": "sand_items" },
+        { "name": "corner_shop_entrance", "items_id": "shop_entrance_items" }
+      ],
+      "characters": ["Sara"],
+      "scenes": []
+    },
+    {
+      "id": "Parking_Lot_Bullets",
+      "name": "Bullets Street Parking Lot",
+      "sub_locations": [
+        { "name": "car", "items_id": "car_items" },
+        { "name": "parked_cars", "items_id": "parkedcars_items" },
+        { "name": "fence_area", "items_id": "fence_items" }
+      ],
+      "characters": ["Me", "Tom", "Alex", "Derick", "Dominic"],
+      "scenes": []
+    },
+    {
+      "id": "Industrial_Shop",
+      "name": "Industrial Shop",
+      "sub_locations": [
+        { "name": "main_floor", "items_id": "mainfloor_items" },
+        { "name": "shelf_rows", "items_id": "shelf_items" },
+        { "name": "back_storage", "items_id": "storage_items" },
+        { "name": "freezer_room", "items_id": "freezer_items" },
+        { "name": "back_exit", "items_id": "backexit_items" }
+      ],
+      "characters": ["Sara_Husband", "Gang_Leader"],
+      "scenes": []
+    },
+    {
+      "id": "Elderly_House",
+      "name": "Elderly Couple House",
+      "sub_locations": [
+        { "name": "living_room", "items_id": "elder_living_items" },
+        { "name": "kitchen", "items_id": "elder_kitchen_items" },
+        { "name": "bedroom", "items_id": "elder_bedroom_items" },
+        { "name": "bathroom", "items_id": "elder_bathroom_items" }
+      ],
+      "characters": ["Old_Man", "Old_Woman"],
+      "scenes": []
+    },
+    {
+      "id": "Car_Moving",
+      "name": "Moving Car",
+      "sub_locations": [
+        { "name": "driver_seat", "items_id": "driver_items" },
+        { "name": "passenger_seat", "items_id": "passenger_items" },
+        { "name": "back_seat", "items_id": "backseat_items" },
+        { "name": "dashboard", "items_id": "dashboard_items" },
+        { "name": "phone_interface", "items_id": "phone_items" }
+      ],
+      "characters": ["Me", "Tom", "Zack", "Alex"],
+      "scenes": []
+    },
+    {
+      "id": "Open_Field",
+      "name": "Open Field",
+      "sub_locations": [
+        { "name": "fire_area", "items_id": "fire_items" },
+        { "name": "water_zone", "items_id": "water_items" },
+        { "name": "car_side", "items_id": "car_side_items" },
+        { "name": "sleep_spot", "items_id": "sleep_items" }
+      ],
+      "characters": ["Me", "Tom", "Zack", "Alex", "Dominic"],
+      "scenes": []
+    },
+    {
+      "id": "Petrol_Station",
+      "name": "Petrol Station",
+      "sub_locations": [
+        { "name": "pump_area", "items_id": "pump_items" },
+        { "name": "station_shop", "items_id": "station_shop_items" },
+        { "name": "storage_corner", "items_id": "storage_corner_items" },
+        { "name": "parking_zone", "items_id": "petrol_parking_items" }
+      ],
+      "characters": ["Me", "Dominic", "Zack"],
+      "scenes": []
     }
   ]
 }
+  
