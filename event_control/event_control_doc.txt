@@ -18,7 +18,7 @@ While on_complete condition is not satisfied:
 
 if yes =>
 
-3) increment the scene by one
+3) Increment the scene by one
 4) Scene render
 
 if no => 
