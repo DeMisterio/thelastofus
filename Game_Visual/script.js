@@ -46,7 +46,7 @@ function initGame() {
     showRoom()
 }
 
-function outputText(txt) {
+export function outputText(txt) {
     // add txt to a new paragraph
     let newPara = document.createElement("p")
     newPara.innerHTML = txt
