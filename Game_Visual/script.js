@@ -2,12 +2,19 @@ let rooms = [],
     roomNum
 const MAPWIDTH = 2
 
-function checkInput(e) {
+class window {
+    constructor(text = null) {
+        this.text = text
+    }
+}
+
+export function checkInput(e) {
     if (e.key == "Enter") {
-        command = cli.textContent; // use the typed command
+        content = cli.textContent; // use the typed command
         cli.innerHTML = ""
-        parser(command)
         e.preventDefault()
+        Gwindow.text = content
+
     }
 }
 
@@ -15,18 +22,6 @@ function parser(cmd) {
     let cmdWords = cmd.trim().toUpperCase().split(" ")
     let verb = cmdWords[0] // first word is the verb
     let noun = cmdWords.slice(1).join(" ") // rest of it
-    switch (verb) {
-        case "NORTH":
-        case "N": // heading north
-            if (rooms[roomNum].exits.includes("N")) {
-                roomNum -= MAPWIDTH // move up a map row
-                showRoom()
-            } else {
-                outputText("You can't go that way")
-            }
-            break;
-            // deal with other commands here
-    }
 }
 
 function showRoom() {
@@ -53,3 +48,5 @@ export function outputText(txt) {
     output.appendChild(newPara)
     newPara.scrollIntoView()
 }
+
+export const Gwindow = new Window();
