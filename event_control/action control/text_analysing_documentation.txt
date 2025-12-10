@@ -24,3 +24,310 @@ the token here is "keys"
 and the word "key" outta the the text tokens has the closest Livenshtein distance => so the "keys" aare entity.
 
 
+Sure! Here's the translation of the steps and examples into English:
+
+---
+
+**STEP 1 — Tokenization**
+
+Break the input string into tokens:
+
+"fix the car with screwdrivers"
+
+→ ["fix", "the", "car", "with", "screwdrivers"]
+
+---
+
+**STEP 2 — Tokenization of all items**
+
+Each item is broken down into its own tokens:
+
+"car keys" → ["car", "keys"]
+"screwdriver" → ["screw", "driver", "screwdriver"]
+
+---
+
+**STEP 3 — Find ALL possible matches for EACH token in the sentence**
+
+Compare each token with all the tokens of all the items.
+You get a list of similarity candidates.
+
+For example, for the token **car**:
+
+car → 1.00
+can → 0.68
+bar → 0.56
+scar → 0.53
+
+---
+
+**STEP 4 — For each token in the sentence, choose ONLY the winner**
+
+That is, the highest similarity.
+
+car → winner: "car"
+screwdrivers → winner: "screwdriver"
+
+All other candidates are removed.
+
+---
+
+**STEP 5 — Apply a threshold**
+
+If the top similarity is < 0.72, the token is ignored — it is not considered an item.
+
+---
+
+**STEP 6 — Group tokens by items**
+
+For example:
+
+car → item "car"
+screwdrivers → item "screwdriver"
+
+---
+
+**STEP 7 — For each item, calculate the final score**
+
+Formula:
+
+FinalScore = MedianTokenSimilarity * (MatchedTokensCount / TotalTokensInItem)
+
+You can add weight if an item consists of multiple tokens.
+
+---
+
+**RESULT** → A list of items that actually appear in the user's sentence
+
+---
+
+✅ **EXAMPLE 1 — NORMAL CASE**
+
+Input:
+
+fix the car with screwdrivers
+
+Token → Matches → Winner:
+
+fix → (no items)
+car → car (1.00) ← winner
+screwdrivers → screwdriver (0.80) ← winner
+
+Final result:
+
+[
+{item:"car", score:1.00},
+{item:"screwdriver", score:0.80}
+]
+
+These are the actual items present in the phrase.
+
+---
+
+🤡 **EXAMPLE 2 — ABSURD CASE**
+
+Input:
+
+I saw a far big bear running with a jar
+
+The system should not mistakenly find items like "car" or "bar".
+
+Token → Matches → Winners:
+
+far → car (0.59), bar (0.54)…
+winner = "car" but score < 0.72 → ignored
+jar → matches with "car", but similarity < 0.50 → ignored
+bear → matches with "gear" maybe 0.41 → ignored
+
+Result:
+
+[]
+
+No game items are here — and the algorithm understands that.
+
+---
+
+🔥 **EXAMPLE 3 — COMPLEX ITEM WITH 2+ TOKENS**
+
+Item:
+
+"car keys" → ["car", "keys"]
+
+Input:
+
+I dropped my keys under the seat
+
+Token → Matches:
+
+keys → keys (1.00) ← winner
+car → no appearance
+
+→ matched = 1 of 2 tokens
+
+Score:
+
+1.00 * (1/2) = 0.50
+
+If there is an item “keys”, its score will be 1.00 → it wins.
+
+Thus, you avoid confusion between "keys" and "car keys."
+
+---
+
+Let me know if you need further clarification!
+
+
+ {
+        "id": "ac_remote",
+        "tokes":["ac", "remote"],
+        "type": "device",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": null,
+        "HarmRate": null,
+        "movable": {"access": true, "weight": 1}
+    },
+    {
+        "id": "passport",
+        "tokes":["passport"],
+        "type": "document",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "verify_identity",
+        "HarmRate": null,
+        "movable": {"access": true, "weight": 1}
+    },
+    {
+        "id": "cash",
+        "tokes":["cash"],
+        "type": "valuable",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "trade",
+        "HarmRate": null,
+        "movable": {"access": true, "weight": 1}
+    },
+    {
+        "id": "stale_bread",
+        "tokes":["stale", "bread"],
+        "type": "food",
+        "NV": 80,
+        "Eating_speed": 4,
+        "effect": "poisonous",
+        "functionality": null,
+        "HarmRate": 5,
+        "movable": {"access": true, "weight": 1}
+    },
+    {
+        "id": "nolan_father_photo",
+        "tokes":["nolan", "mother", "photo"],
+        "type": "sentimental",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "cry",
+        "HarmRate": null,
+        "movable": {"access": true, "weight": 1}
+    },
+    {
+        "id": "hunting_knife",
+        "tokes":["hunting", "knife"],
+        "type": "weapon",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "attack",
+        "HarmRate": 40,
+        "movable": {"access": true, "weight": 3}
+    },
+    {
+        "id": "fishing_rod",
+        "tokes":["fishing", "rod"],
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "hook",
+        "HarmRate": 4,
+        "movable": {"access": true, "weight": 4}
+    },
+    {
+        "id": "pistol",
+        "tokes":["pistol"],
+        "type": "weapon",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "shoot",
+        "HarmRate": 90,
+        "movable": {"access": true, "weight": 5}
+    },
+    {
+        "id": "letter",
+        "tokes":["letter"],
+        "type": "document",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "read",
+        "HarmRate": null,
+        "movable": {"access": true, "weight": 1}
+    },
+        {
+      "id": "sponge",
+      "tokes":["sponge"],
+      "type": "tool",
+      "NV": null,
+      "Eating_speed": null,
+      "effect": null,
+      "functionality": "clean",
+      "HarmRate": 0,
+      "movable": { "access": true, "weight": 1 }
+    },
+    {
+      "id": "toothbrush",
+      "tokes":["toothbrush"],
+      "type": "hygiene",
+      "NV": null,
+      "Eating_speed": null,
+      "effect": null,
+      "functionality": null,
+      "HarmRate": 0,
+      "movable": { "access": true, "weight": 1 }
+    },
+    {
+      "id": "razor_blades",
+      "tokes":["razor", "blades"],
+      "type": "tool",
+      "NV": null,
+      "Eating_speed": null,
+      "effect": null,
+      "functionality": "attack",
+      "HarmRate": 40,
+      "movable": { "access": true, "weight": 1 }
+    },
+    {
+      "id": "toothpaste",
+      "tokes":["toothpaste"],
+      "type": "hygiene",
+      "NV": null,
+      "Eating_speed": null,
+      "effect": null,
+      "functionality": null,
+      "HarmRate": 0,
+      "movable": { "access": true, "weight": 1 }
+    },
+    {
+        "id": "pillow",
+        "tokes":["pillow"],
+        "type": "comfort",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": null,
+        "HarmRate": 1,
+        "movable": {"access": true, "weight": 1}
+    }
