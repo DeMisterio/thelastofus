@@ -1,19 +1,7 @@
 //Action engine controls interraction between entities 
-async function main(string) {
-    const response = await fetch('myAPI', {
-      method: 'POST',
-      headers: {
-        'User-Agent': 'undici-stream-example',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-    const data = await response.json();
-    console.log(data);
-    
-}
 
-// returns something like:
+
+// Server returns something like:
 
 
 let inpsample = {
@@ -44,21 +32,35 @@ let inpsample = {
 
 
 class task_processor{
-    constructor(RawTXT, PurePMT, entities=[]){
+    constructor(RawTXT = null, PurePMT = null, entities={}, items){
         this.RawTXT = RawTXT;
         this.PurePMT = PurePMT;
         this.entities = entities
     }
+    async main(string) {
+        const response = await fetch('myAPI', {
+          method: 'POST',
+          headers: {
+            'User-Agent': 'undici-stream-example',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(body),
+        });
+        const data = await response.json();
+        console.log(data);
+        return data
+    }
 }
 
 function textprocess(text){
+    AP_operator.RawTXT = text.trim()
+    This.PurePMT = await AP_operator.main(AP_operator.RawTXT)
 
-
-
+    
 
 }
 
 
-main().catch(console.error);
+AP_operator = new task_processor()
 
 
