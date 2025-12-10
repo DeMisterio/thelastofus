@@ -111,6 +111,9 @@ Is it tool-based functionality?
 
 All possible action outcomes your engine may produce — including realistic, dumb, absurd, dangerous, and creative user commands.
 
+ChatGPT made UseCases
+
+
 ⸻
 
 1) ❌ User action does NOT exist
