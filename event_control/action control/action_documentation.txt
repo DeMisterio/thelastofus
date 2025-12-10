@@ -1,51 +1,5 @@
 The actions are really important for the game processing. 
 
-ACTIONS THAT A PLAYER PERFORMS ON OBJECTS (Object‑Acting Verbs):
-1. attack
-2. cut
-3. ignite
-4. measure
-5. clean
-6. brew
-7. add_flavor
-8. cook
-9. noise
-11. hook
-12. shoot
-13. read
-14. write
-15. unlock
-16. wear
-17. sit
-18. clip
-19. drink
-21. store_items
-24. play
-26. gather
-27. move_object
-29. throw
-30. open
-31. close
-32. take_cover
-33. signal
-35. protect
-36. check_status
-
-ACTIONS WHERE THE ITEM OR STATE AFFECTS THE PLAYER (Item‑Affecting Verbs):
-10. cry
-22. warm
-23. verify_identity
-6.	seasoning
-7.	flammable
-8.	slippery
-9.	stale
-10.	hot_surface
-11.	poisonous
-12.	comfort
-13.	caffeinated
-14.	warm
-
-
 FUNCTIONALITIES (from items.json)
 
 ACTIONS THAT A PLAYER PERFORMS ON OBJECTS (Object‑Acting Verbs):
@@ -115,3 +69,327 @@ poisonous // Item can poison the player if consumed
 caffeinated // Item increases player's alertness or energy
 comfort // Provides comfort to the player
 warm // Increases player's warmth
+
+the key algorithmetic logic: 
+
+if Action if performed over some object: 
+
+1)Check if item functionality allows it. 
+
+for example if the clothing functionality is wear => 
+and the user prompting is to wear the item, then the action is going to be performed
++ the effect is going to be applied. 
+
+so how it works is:
+
+
+
+User action 
+    ↓
+Does functionality exist?
+    ├─ No → Do nothing
+    └─ Yes
+         ↓
+Is it tool-based functionality?
+    ├─ Yes
+    │     ↓
+    │  Is there an on-active subject? (target object)
+    │         ├─ No → Do nothing
+    │         └─ Yes → Do action on OBJECT Y using TOOL X
+    │
+    └─ No
+         ↓
+     Is object required?
+           ├─ No → Do action (self-action)
+           └─ Yes
+                 ↓
+          Is object present?
+                 ├─ No → Do nothing
+                 └─ Yes → Do action on object
+
+🌲 ACTION LOGIC TREE — FULL EXAMPLES (ENGLISH VERSION)
+
+All possible action outcomes your engine may produce — including realistic, dumb, absurd, dangerous, and creative user commands.
+
+⸻
+
+1) ❌ User action does NOT exist
+
+Player command:
+	•	"skrrr bap bapadook"
+	•	"🤡🤡🤡"
+	•	"     "
+
+Engine result:
+
+Inner voice:
+“I… can’t understand any of that.”
+
+⸻
+
+2) ❌ Functionality exists in English, but NOT in your engine
+
+Player:
+	•	"teleport to kitchen"
+	•	"summon helicopter"
+	•	"clone pistol"
+
+Engine:
+
+“If only I could do that…”
+
+⸻
+
+3) ✔ Functionality exists → but requires a tool → player has no tool
+
+Player:
+
+"cut the rope"
+
+Rope exists, but NO knife/scissors.
+
+Engine:
+
+“I need something sharp.”
+
+⸻
+
+4) ✔ Requires tool → tool exists → but user didn’t specify a target
+
+Player:
+	•	"cut it"
+	•	"ignite this"
+
+Rasa returns NO entity.
+
+Engine:
+
+“Cut what exactly?”
+“There’s nothing here to burn.”
+
+⸻
+
+5) ✔ Tool exists + target exists → but target is incompatible with action
+
+Player:
+
+"ignite the yogurt"
+
+Yogurt cannot ignite.
+
+Engine:
+
+“…That won’t burn.”
+
+Absurd example:
+"cut the water"
+
+Engine:
+“…That makes no sense.”
+
+⸻
+
+6) ✔ Action exists, no tool required → but target is NOT in this location
+
+Player:
+
+"open the fridge"
+
+But they are at the playground.
+
+Engine:
+“There is no fridge here.”
+
+⸻
+
+7) ✔ Valid action → no tool needed → target exists
+
+Player:
+
+"open the drawer"
+
+Engine:
+Drawer opens; contents loaded.
+
+Inner voice:
+“Let’s see what’s inside…”
+
+⸻
+
+8) ✔ Self-actions (no object needed)
+
+Player:
+	•	"sit"
+	•	"cry"
+	•	"warm myself"
+
+Engine:
+“I lower myself for a moment…”
+“…I guess I can cry.”
+
+Absurd:
+"cry aggressively"
+
+Engine:
+“…I can try, I guess.”
+
+⸻
+
+9) ✔ Tool + target + compatible functionality → SUCCESS
+
+Player:
+
+"ignite the wood with lighter"
+
+Engine:
+	•	fire created
+	•	warmth effect applied
+
+Inner voice:
+“The flames catch. Good.”
+
+⸻
+
+10) ❌ Tool + target → EXTREMELY dangerous combo
+
+Player:
+
+"ignite the gasoline with lighter"
+
+Engine:
+🔥 Explosion event
+HP −20
+
+Inner voice:
+“…That was a mistake.”
+
+⸻
+
+11) ✔ Player eats harmful food
+
+Player:
+
+"eat stale bread"
+
+Item effect = poisonous
+
+Engine:
+HP −5
+Inner monologue:
+“Something’s wrong with it…”
+
+⸻
+
+12) ❌ Tool exists but functionality does NOT match
+
+Player:
+
+"unlock the door with scissors"
+
+Scissors = cut
+Door = unlock
+
+Engine:
+“That won’t unlock anything.”
+
+⸻
+
+13) ❌ User tries to move an unmovable object
+
+Player:
+
+"throw the dead woman"
+
+dead_woman.movable = false
+
+Engine:
+“…She’s too heavy. I can’t move her.”
+
+⸻
+
+14) ❌ User tries an impossible tool → target combination
+
+Player:
+
+"ignite the corpse using yogurt"
+
+Engine:
+“Yogurt doesn’t burn.”
+
+⸻
+
+15) ✔ Creative chaotic but valid solution
+
+Player:
+
+"throw the lighter at the fence and run"
+
+Interpretation:
+	•	Tool = lighter
+	•	Target = fence
+
+If fence contains trash (flammable):
+→ small fire event
+
+Engine:
+“I toss it and run.”
+
+⸻
+
+16) ❌ User tries to break world physics
+
+Player:
+
+"eat the pistol"
+
+Engine:
+“…No. Absolutely not.”
+
+⸻
+
+17) ✔ Good creative solution
+
+Player:
+
+"warm Zack with the blanket"
+
+Engine:
+	•	action warm
+	•	tool blanket
+	•	target Zack
+
+Inner voice:
+“I wrap the blanket around him. He looks better.”
+
+⸻
+
+18) ❌ Multi-action in a single command (unsupported)
+
+Player:
+
+"open the glovebox and take the keys"
+
+Engine:
+“One thing at a time…”
+
+⸻
+
+19) ✔ Multi-action (future upgrade)
+
+Engine could interpret:
+	•	open glovebox
+	•	gather keys
+
+Inner monologue:
+“Glovebox open. Keys in my pocket.”
+
+⸻
+
+20) ❌ Extremely vague generic action
+
+Player:
+
+"use the thing to do the thing"
+
+Engine:
+“I need more information.”

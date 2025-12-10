@@ -48,18 +48,6 @@
     ]
 },
 {
-    "character_n": "Mark",
-    "character_type": "NPC",
-    "personality": "warmhearted",
-    "init_parameters":[
-        {"health": 85},
-        {"action_speed": 6},
-        {"endurance": 50},
-        {"strength": 95},
-        {"init_items": ["doritos_pack", "phone", "cup"]}
-    ]
-},
-{
     "character_n": "Said",
     "character_type": "NPC",
     "personality": "realistic",
