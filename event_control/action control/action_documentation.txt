@@ -396,3 +396,15 @@ Player:
 
 Engine:
 “I need more information.”
+
+
+    {
+        "id": "keys",
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "unlock",
+        "HarmRate": 0,
+        "movable": {"access": true, "weight": 1}
+    }

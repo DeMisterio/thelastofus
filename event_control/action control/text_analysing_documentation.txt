@@ -1,0 +1,26 @@
+The text analysing breaks up in separate steps: 
+
+1) The RasaNLU extracts the intent out of the text
+2) We tokenize each word out of the sentence
+
+["take", "the", "key", "out", "of", "the", "car"]
+
+
+    {
+        "id": "keys",
+        "tokens": ["keys"]
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "unlock",
+        "HarmRate": 0,
+        "movable": {"access": true, "weight": 1}
+    }
+
+the token here is "keys"
+
+
+and the word "key" outta the the text tokens has the closest Livenshtein distance => so the "keys" aare entity.
+
+
