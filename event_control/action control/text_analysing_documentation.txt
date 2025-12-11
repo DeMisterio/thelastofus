@@ -23,9 +23,6 @@ the token here is "keys"
 
 and the word "key" outta the the text tokens has the closest Livenshtein distance => so the "keys" aare entity.
 
-
-Sure! Here's the translation of the steps and examples into English:
-
 ---
 
 **STEP 1 — Tokenization**
