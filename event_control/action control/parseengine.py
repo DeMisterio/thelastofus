@@ -37,7 +37,7 @@ def match_items(sentence, item_db):
     all_candidates = []
     sentence_token_winners = {} 
 
-    # --- ЭТАП 1 & 2: Сбор данных и Расчет Вероятности ---
+
     for item in item_db:
         item_tokens = item["tokens"]
         match_data = {
@@ -47,15 +47,12 @@ def match_items(sentence, item_db):
             "probability": 0.0,
             "max_single_token_score": 0.0 
         }
-        
         total_token_prob = 0
         matched_indices_in_sentence = []
-
         for i_tok in item_tokens:
             best_word_score = -1
             best_word_index = -1
-            best_word_match = ""
-            
+            best_word_match = ""   
             for u_tok in user_tokens:
                 score = levenshtein_similarity(i_tok, u_tok["word"])
                 if score > best_word_score:
@@ -97,7 +94,6 @@ def match_items(sentence, item_db):
 
         all_candidates.append(match_data)
         
-        # Обновляем победителей по словам
         for tm in match_data["token_matches"]:
             idx = tm["index_in_sentence"]
             score = tm["distance_score"]
@@ -111,12 +107,12 @@ def match_items(sentence, item_db):
     all_candidates.sort(key=lambda x: x["probability"], reverse=True)
     top_candidates = all_candidates[:3]
 
-    # --- ЭТАП 3: Выбор победителя (Selection Logic) ---
+    
     final_winner = None
     complex_candidates = [c for c in top_candidates if c["is_complex"]]
     potential_complex_winner = None
     
-    # Ищем комплексного с поддержкой
+    
     for cand in complex_candidates:
         has_support = False
         for tm in cand["token_matches"]:
@@ -129,7 +125,7 @@ def match_items(sentence, item_db):
             potential_complex_winner = cand
             break 
             
-    # Сравниваем
+    
     if potential_complex_winner:
         best_overall = top_candidates[0]
         if potential_complex_winner["probability"] >= best_overall["probability"]:
@@ -139,7 +135,7 @@ def match_items(sentence, item_db):
     else:
         final_winner = top_candidates[0]
 
-    # --- DEBUG INFO ---
+    -
     print("\n" + "="*40)
     print(f"DEBUG LOG FOR: '{sentence}'")
     print(f"Cleaned Tokens: {[t['word'] for t in user_tokens]}")
@@ -159,16 +155,16 @@ def match_items(sentence, item_db):
     print(f"Potential Complex Winner: {potential_complex_winner['id'] if potential_complex_winner else 'None'}")
     print(f"Selected Candidate (Pre-Filter): {final_winner['id']}")
 
-    # --- ЭТАП 4: Умная Фильтрация (Smart Filter) ---
+   
     result = []
     STRICT_THRESHOLD = 0.85
     SOFT_THRESHOLD = 0.65 
     
     def check_worthiness(cand):
-        # 1. Если вероятность высокая
+        
         if cand["probability"] > STRICT_THRESHOLD:
             return True, "High Probability"
-        # 2. Если вероятность средняя, но есть идеальный токен
+        
         if cand["probability"] > SOFT_THRESHOLD and cand["max_single_token_score"] >= 0.9:
             return True, "Soft Threshold + Strong Token Support"
         return False, "Low Probability"
@@ -179,7 +175,7 @@ def match_items(sentence, item_db):
         print(f"Decisison: ACCEPTED '{final_winner['id']}' ({reason})")
         result.append(final_winner)
         
-        # Проверяем второго (если похож)
+        
         for cand in top_candidates:
             if cand["id"] != final_winner["id"]:
                 cand_worthy, cand_reason = check_worthiness(cand)
@@ -192,7 +188,7 @@ def match_items(sentence, item_db):
     print("="*40 + "\n")
     return result
 
-# --- DATABASE ---
+
 mydict = [
     {"id": "ac_remote", "tokens":["ac", "remote"], "type": "device", "movable": {"access": True, "weight": 1}},
     {"id": "passport", "tokens":["passport"], "type": "document", "movable": {"access": True, "weight": 1}},
@@ -206,8 +202,8 @@ mydict = [
     {"id": "pillow", "tokens":["pillow"], "type": "comfort", "movable": {"access": True, "weight": 1}}
 ]
 
-# --- TEST ---
+
 print("### TEST 1: Complex Perfect Match ###")
-input_text = input("Enter input text: ")  # Example: "I need the ac remote"
+input_text = input("Enter input text: ")  
 outcome = match_items(input_text, mydict)
 print("\nFINAL RESULT:", [item['id'] for item in outcome])

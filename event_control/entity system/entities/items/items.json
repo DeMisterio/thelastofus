@@ -1,4 +1,3 @@
-
 {
   "sets": [
     {
@@ -95,863 +94,961 @@
     }
   ],
 
-  "containers": [
-    {
-      "id": "shelf",
-      "items": [
-        { "name": "water bottle", "id": "water_bottle" },
-        { "name": "bread pieces", "id": "bread_pieces" },
-        { "name": "fork", "id": "fork" },
-        { "name": "cup", "id": "cup" },
-        { "name": "kettle", "id": "kettle" }
-      ]
-    },
-    {
-      "id": "table",
-      "items": [
-        { "name": "cup", "id": "cup" },
-        { "name": "salad", "id": "salad" },
-        { "name": "phone", "id": "phone" },
-        { "name": "rusty spoon", "id": "rusty_spoon" },
-        { "name": "plate", "id": "plate" }
-      ]
-    },
-    {
-      "id": "fridge",
-      "items": [
-        { "name": "milk carton", "id": "milk_carton" },
-        { "name": "eggs pack", "id": "eggs_pack" },
-        { "name": "cold chicken", "id": "cold_chicken" },
-        { "name": "yogurt", "id": "yogurt" }
-      ]
-    },
-    {
-      "id": "drawer",
-      "items": [
-        { "name": "knife", "id": "knife" },
-        { "name": "scissors", "id": "scissors" },
-        { "name": "lighter", "id": "lighter" },
-        { "name": "measuring tape", "id": "measuring_tape" }
-      ]
-    },
-    {
-      "id": "sink",
-      "items": [
-        { "name": "dirty plate", "id": "dirty_plate" },
-        { "name": "wet sponge", "id": "wet_sponge" }
-      ]
-    },
-    {
-      "id": "cabinet",
-      "items": [
-        { "name": "tea box", "id": "tea_box" },
-        { "name": "salt shaker", "id": "salt_shaker" },
-        { "name": "pepper shaker", "id": "pepper_shaker" },
-        { "name": "olive oil bottle", "id": "olive_oil_bottle" }
-      ]
-    },
-    {
-      "id": "trash_bin",
-      "items": [
-        { "name": "banana peel", "id": "banana_peel" },
-        { "name": "empty can", "id": "empty_can" },
-        { "name": "plastic wrap", "id": "plastic_wrap" }
-      ]
-    },
-    {
-      "id": "microwave",
-      "items": [
-        { "name": "leftover pizza", "id": "leftover_pizza" }
-      ]
-    },
-    {
-      "id": "oven",
-      "items": [
-        { "name": "baking tray", "id": "baking_tray" },
-        { "name": "burnt toast", "id": "burnt_toast" }
-      ]
-    },
-    {
-      "id": "sofa",
-      "items": [
-        { "name": "doritos_pack", "id": "doritos_pack" },
-        { "name": "ac_remote", "id": "ac_remote" }
-      ]
-    },
-    {
-      "id": "nightstand",
-      "items": [
-        { "name": "passport", "id": "passport" },
-        { "name": "cash", "id": "cash" },
-        { "name": "stale_bread", "id": "stale_bread" },
-        { "name": "nolan_mother_photo", "id": "nolan_mother_photo" }
-      ]
-    },
-    {
-      "id": "wardrobe",
-      "items": [
-        { "name": "hunting_knife", "id": "hunting_knife" },
-        { "name": "fishing_rod", "id": "fishing_rod" },
-        { "name": "pistol", "id": "pistol" }
-      ]
-    },
-    {
-      "id": "living_room_table",
-      "items": [
-        { "name": "letter", "id": "letter" }
-      ]
-    },
-    {
-      "id": "shower_cabin",
-      "items": [
-        { "name": "sponge", "id": "sponge" }
-      ]
-    },
-    {
-      "id": "sink",
-      "items": [
-        { "name": "toothbrush", "id": "toothbrush" }
-      ]
-    },
-    {
-      "id": "bathroom_shelf",
-      "items": [
-        { "name": "razor_blades", "id": "razor_blades" },
-        { "name": "toothpaste", "id": "toothpaste" }
-      ]
-    },
-    {
-      "id": "toilet",
-      "items": []
-    },
-    {
-      "id": "bed",
-      "items": [
-        { "id": "pillow" },
-        { "id": "blanket" }
-      ]
-    },
-    {
-      "id": "bedside_table",
-      "items": [
-        { "id": "book" },
-        { "id": "notebook" },
-        { "id": "pen" }
-      ]
-    },
-    {
-      "id": "wardrobe_bedroom",
-      "items": [
-        { "id": "tshirt", "name": "t-shirt" },
-        { "id": "hoodie", "name": "hoodie" }
-      ]
-    },
-    {
-      "id": "desk",
-      "items": [
-        { "id": "letter" }
-      ]
-    },
-    {
-      "id": "shoe_rack",
-      "items": [
-        { "id": "single_shoe" }
-      ]
-    },
-    {
-      "id": "coat_hanger",
-      "items": [
-        { "id": "gloves" },
-        { "id": "mask" }
-      ]
-    },
-    {
-      "id": "hall_drawer",
-      "items": [
-        { "id": "keys" }
-      ]
-    },
-    {
-      "id": "floor_mat",
-      "items": [
-        { "id": "newspaper" }
-      ]
-    },
-    {
-      "id": "balcony_table",
-      "items": [
-        { "id": "empty_bottle" },
-        { "id": "cigarette_butt" }
-      ]
-    },
-    {
-      "id": "plant_shelf",
-      "items": [
-        { "id": "flower_pot" }
-      ]
-    },
-    {
-      "id": "storage_box",
-      "items": [
-        { "id": "clothespin" }
-      ]
-    },
-    {
-      "id": "armrest_compartment",
-      "items": [
-        { "id": "lighter" },
-        { "id": "cigarette_pack" },
-        { "id": "playing_cards" }
-      ]
-    },
-    {
-      "id": "glovebox_taxi",
-      "items": [
-        { "id": "nolan_father_photo", "name": "photo of Nolan’s father" }
-      ]
-    },
-    {
-      "id": "backseat_floor",
-      "items": [
-        { "id": "dead_dog", "name": "dead dog" },
-        { "id": "dead_woman", "name": "dead woman" }
-      ]
-    },
-    {
-      "id": "car_glovebox",
-      "items": [
-        { "id": "keys" },
-        { "id": "notebook" }
-      ]
-    },
-    {
-      "id": "car_seat",
-      "items": [
-        { "id": "plastic_wrap" },
-        { "id": "empty_can" }
-      ]
-    },
-    {
-      "id": "car_floor",
-      "items": [
-        { "id": "newspaper" }
-      ]
-    },
-    {
-      "id": "trunk",
-      "items": [
-        { "id": "large_empty_courier_bag" },
-        { "id": "clothespin" }
-      ]
-    },
-    {
-      "id": "front_seat",
-      "items": [
-        { "id": "cigarette_pack" },
-        { "id": "lighter" }
-      ]
-    },
-    {
-      "id": "under_seat",
-      "items": [
-        { "id": "playing_cards" }
-      ]
-    },
-    {
-      "id": "fence_base",
-      "items": [
-        { "id": "broken_chain_piece" }
-      ]
-    },
-    {
-      "id": "trash_pile",
-      "items": [
-        { "id": "plastic_wrap" },
-        { "id": "empty_can" }
-      ]
-    }
+    "containers": [
+      {
+        "id": "shelf",
+        "tokens": ["shelf"],
+        "items": [
+          { "name": "water bottle", "id": "water_bottle" },
+          { "name": "bread pieces", "id": "bread_pieces" },
+          { "name": "fork", "id": "fork" },
+          { "name": "cup", "id": "cup" },
+          { "name": "kettle", "id": "kettle" }
+        ]
+      },
+      {
+        "id": "table",
+        "tokens": ["table"],
+        "items": [
+          { "name": "cup", "id": "cup" },
+          { "name": "salad", "id": "salad" },
+          { "name": "phone", "id": "phone" },
+          { "name": "rusty spoon", "id": "rusty_spoon" },
+          { "name": "plate", "id": "plate" }
+        ]
+      },
+      {
+        "id": "fridge",
+        "tokens": ["fridge"],
+        "items": [
+          { "name": "milk carton", "id": "milk_carton" },
+          { "name": "eggs pack", "id": "eggs_pack" },
+          { "name": "cold chicken", "id": "cold_chicken" },
+          { "name": "yogurt", "id": "yogurt" }
+        ]
+      },
+      {
+        "id": "drawer",
+        "tokens": ["drawer"],
+        "items": [
+          { "name": "knife", "id": "knife" },
+          { "name": "scissors", "id": "scissors" },
+          { "name": "lighter", "id": "lighter" },
+          { "name": "measuring tape", "id": "measuring_tape" }
+        ]
+      },
+      {
+        "id": "sink",
+        "tokens": ["sink"],
+        "items": [
+          { "name": "dirty plate", "id": "dirty_plate" },
+          { "name": "wet sponge", "id": "wet_sponge" }
+        ]
+      },
+      {
+        "id": "cabinet",
+        "tokens": ["cabinet"],
+        "items": [
+          { "name": "tea box", "id": "tea_box" },
+          { "name": "salt shaker", "id": "salt_shaker" },
+          { "name": "pepper shaker", "id": "pepper_shaker" },
+          { "name": "olive oil bottle", "id": "olive_oil_bottle" }
+        ]
+      },
+      {
+        "id": "trash_bin",
+        "tokens": ["trash", "bin"],
+        "items": [
+          { "name": "banana peel", "id": "banana_peel" },
+          { "name": "empty can", "id": "empty_can" },
+          { "name": "plastic wrap", "id": "plastic_wrap" }
+        ]
+      },
+      {
+        "id": "microwave",
+        "tokens": ["microwave"],
+        "items": [
+          { "name": "leftover pizza", "id": "leftover_pizza" }
+        ]
+      },
+      {
+        "id": "oven",
+        "tokens": ["oven"],
+        "items": [
+          { "name": "baking tray", "id": "baking_tray" },
+          { "name": "burnt toast", "id": "burnt_toast" }
+        ]
+      },
+      {
+        "id": "sofa",
+        "tokens": ["sofa"],
+        "items": [
+          { "name": "doritos_pack", "id": "doritos_pack" },
+          { "name": "ac_remote", "id": "ac_remote" }
+        ]
+      },
+      {
+        "id": "nightstand",
+        "tokens": ["nightstand"],
+        "items": [
+          { "name": "passport", "id": "passport" },
+          { "name": "cash", "id": "cash" },
+          { "name": "stale_bread", "id": "stale_bread" },
+          { "name": "nolan_mother_photo", "id": "nolan_mother_photo" }
+        ]
+      },
+      {
+        "id": "wardrobe",
+        "tokens": ["wardrobe"],
+        "items": [
+          { "name": "hunting_knife", "id": "hunting_knife" },
+          { "name": "fishing_rod", "id": "fishing_rod" },
+          { "name": "pistol", "id": "pistol" }
+        ]
+      },
+      {
+        "id": "living_room_table",
+        "tokens": ["living", "room", "table"],
+        "items": [
+          { "name": "letter", "id": "letter" }
+        ]
+      },
+      {
+        "id": "shower_cabin",
+        "tokens": ["shower", "cabin"],
+        "items": [
+          { "name": "sponge", "id": "sponge" }
+        ]
+      },
+      {
+        "id": "sink",
+        "tokens": ["sink"],
+        "items": [
+          { "name": "toothbrush", "id": "toothbrush" }
+        ]
+      },
+      {
+        "id": "bathroom_shelf",
+        "tokens": ["bathroom", "shelf"],
+        "items": [
+          { "name": "razor_blades", "id": "razor_blades" },
+          { "name": "toothpaste", "id": "toothpaste" }
+        ]
+      },
+      {
+        "id": "toilet",
+        "tokens": ["toilet"],
+        "items": []
+      },
+      {
+        "id": "bed",
+        "tokens": ["bed"],
+        "items": [
+          { "id": "pillow" },
+          { "id": "blanket" }
+        ]
+      },
+      {
+        "id": "bedside_table",
+        "tokens": ["bedside", "table"],
+        "items": [
+          { "id": "book" },
+          { "id": "notebook" },
+          { "id": "pen" }
+        ]
+      },
+      {
+        "id": "wardrobe_bedroom",
+        "tokens": ["wardrobe", "bedroom"],
+        "items": [
+          { "id": "tshirt", "name": "t-shirt" },
+          { "id": "hoodie", "name": "hoodie" }
+        ]
+      },
+      {
+        "id": "desk",
+        "tokens": ["desk"],
+        "items": [
+          { "id": "letter" }
+        ]
+      },
+      {
+        "id": "shoe_rack",
+        "tokens": ["shoe", "rack"],
+        "items": [
+          { "id": "single_shoe" }
+        ]
+      },
+      {
+        "id": "coat_hanger",
+        "tokens": ["coat", "hanger"],
+        "items": [
+          { "id": "gloves" },
+          { "id": "mask" }
+        ]
+      },
+      {
+        "id": "hall_drawer",
+        "tokens": ["hall", "drawer"],
+        "items": [
+          { "id": "keys" }
+        ]
+      },
+      {
+        "id": "floor_mat",
+        "tokens": ["floor", "mat"],
+        "items": [
+          { "id": "newspaper" }
+        ]
+      },
+      {
+        "id": "balcony_table",
+        "tokens": ["balcony", "table"],
+        "items": [
+          { "id": "empty_bottle" },
+          { "id": "cigarette_butt" }
+        ]
+      },
+      {
+        "id": "plant_shelf",
+        "tokens": ["plant", "shelf"],
+        "items": [
+          { "id": "flower_pot" }
+        ]
+      },
+      {
+        "id": "storage_box",
+        "tokens": ["storage", "box"],
+        "items": [
+          { "id": "clothespin" }
+        ]
+      },
+      {
+        "id": "armrest_compartment",
+        "tokens": ["armrest", "compartment"],
+        "items": [
+          { "id": "lighter" },
+          { "id": "cigarette_pack" },
+          { "id": "playing_cards" }
+        ]
+      },
+      {
+        "id": "glovebox_taxi",
+        "tokens": ["glovebox", "taxi"],
+        "items": [
+          { "id": "nolan_father_photo", "name": "photo of Nolan’s father" }
+        ]
+      },
+      {
+        "id": "backseat_floor",
+        "tokens": ["backseat", "floor"],
+        "items": [
+          { "id": "dead_dog", "name": "dead dog" },
+          { "id": "dead_woman", "name": "dead woman" }
+        ]
+      },
+      {
+        "id": "car_glovebox",
+        "tokens": ["car", "glovebox"],
+        "items": [
+          { "id": "keys" },
+          { "id": "notebook" }
+        ]
+      },
+      {
+        "id": "car_seat",
+        "tokens": ["car", "seat"],
+        "items": [
+          { "id": "plastic_wrap" },
+          { "id": "empty_can" }
+        ]
+      },
+      {
+        "id": "car_floor",
+        "tokens": ["car", "floor"],
+        "items": [
+          { "id": "newspaper" }
+        ]
+      },
+      {
+        "id": "trunk",
+        "tokens": ["trunk"],
+        "items": [
+          { "id": "large_empty_courier_bag" },
+          { "id": "clothespin" }
+        ]
+      },
+      {
+        "id": "front_seat",
+        "tokens": ["front", "seat"],
+        "items": [
+          { "id": "cigarette_pack" },
+          { "id": "lighter" }
+        ]
+      },
+      {
+        "id": "under_seat",
+        "tokens": ["under", "seat"],
+        "items": [
+          { "id": "playing_cards" }
+        ]
+      },
+      {
+        "id": "fence_base",
+        "tokens": ["fence", "base"],
+        "items": [
+          { "id": "broken_chain_piece" }
+        ]
+      },
+      {
+        "id": "trash_pile",
+        "tokens": ["trash", "pile"],
+        "items": [
+          { "id": "plastic_wrap" },
+          { "id": "empty_can" }
+        ]
+      }
     ],
-  "items":[
-    {
-      "id": "milk_carton",
-      "type": "food",
-      "NV": 150,
-      "Eating_speed": 3,
-      "effect": null,
-      "functionality": null,
-      "HarmRate": null,
-      "movable": { "access": true, "weight": 2 }
-    },
-    {
-      "id": "eggs_pack",
-      "type": "food",
-      "NV": 120,
-      "Eating_speed": 4,
-      "effect": "fragile",
-      "functionality": null,
-      "HarmRate": null,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "cold_chicken",
-      "type": "food",
-      "NV": 500,
-      "Eating_speed": 6,
-      "effect": "can_spoil",
-      "functionality": null,
-      "HarmRate": 2,
-      "movable": { "access": true, "weight": 4 }
-    },
-    {
-      "id": "yogurt",
-      "type": "food",
-      "NV": 90,
-      "Eating_speed": 2,
-      "effect": null,
-      "functionality": null,
-      "HarmRate": null,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "knife",
-      "type": "weapon",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": null,
-      "functionality": "attack",
-      "HarmRate": 25,
-      "movable": { "access": true, "weight": 2 }
-    },
-    {
-      "id": "scissors",
-      "type": "tool",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": null,
-      "functionality": "cut",
-      "HarmRate": 8,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "lighter",
-      "type": "tool",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": "fire_source",
-      "functionality": "ignite",
-      "HarmRate": 3,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "measuring_tape",
-      "type": "tool",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": null,
-      "functionality": "measure",
-      "HarmRate": null,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "dirty_plate",
-      "type": "junk",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": "unsanitary",
-      "functionality": null,
-      "HarmRate": null,
-      "movable": { "access": true, "weight": 2 }
-    },
-    {
-      "id": "wet_sponge",
-      "type": "tool",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": "cleaning_item",
-      "functionality": "clean",
-      "HarmRate": null,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "tea_box",
-      "type": "food",
-      "NV": 10,
-      "Eating_speed": 1,
-      "effect": "calming",
-      "functionality": "brew",
-      "HarmRate": null,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "salt_shaker",
-      "type": "food",
-      "NV": 0,
-      "Eating_speed": null,
-      "effect": "seasoning",
-      "functionality": "add_flavor",
-      "HarmRate": null,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "pepper_shaker",
-      "type": "food",
-      "NV": 0,
-      "Eating_speed": null,
-      "effect": "seasoning",
-      "functionality": "add_flavor",
-      "HarmRate": null,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "olive_oil_bottle",
-      "type": "food",
-      "NV": 1200,
-      "Eating_speed": null,
-      "effect": "flammable",
-      "functionality": "cook",
-      "HarmRate": 1,
-      "movable": { "access": true, "weight": 3 }
-    },
-    {
-      "id": "banana_peel",
-      "type": "junk",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": "slippery",
-      "functionality": "trap",
-      "HarmRate": 1,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "empty_can",
-      "type": "junk",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": null,
-      "functionality": "noise",
-      "HarmRate": null,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "plastic_wrap",
-      "type": "junk",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": "flammable",
-      "functionality": null,
-      "HarmRate": null,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "leftover_pizza",
-      "type": "food",
-      "NV": 350,
-      "Eating_speed": 3,
-      "effect": "stale",
-      "functionality": null,
-      "HarmRate": 1,
-      "movable": { "access": true, "weight": 2 }
-    },
-    {
-      "id": "baking_tray",
-      "type": "tool",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": "hot_surface",
-      "functionality": "cook",
-      "HarmRate": 4,
-      "movable": { "access": true, "weight": 5 }
-    },
-    {
-      "id": "burnt_toast",
-      "type": "food",
-      "NV": 50,
-      "Eating_speed": 1,
-      "effect": "taste_bad",
-      "functionality": null,
-      "HarmRate": 0,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
+  
+    "items": [
+      {
+        "id": "milk_carton",
+        "tokens": ["milk", "carton"],
+        "type": "food",
+        "NV": 150,
+        "Eating_speed": 3,
+        "effect": null,
+        "functionality": null,
+        "HarmRate": null,
+        "movable": { "access": true, "weight": 2 }
+      },
+      {
+        "id": "eggs_pack",
+        "tokens": ["eggs", "pack"],
+        "type": "food",
+        "NV": 120,
+        "Eating_speed": 4,
+        "effect": "fragile",
+        "functionality": null,
+        "HarmRate": null,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "cold_chicken",
+        "tokens": ["cold", "chicken"],
+        "type": "food",
+        "NV": 500,
+        "Eating_speed": 6,
+        "effect": "can_spoil",
+        "functionality": null,
+        "HarmRate": 2,
+        "movable": { "access": true, "weight": 4 }
+      },
+      {
+        "id": "yogurt",
+        "tokens": ["yogurt"],
+        "type": "food",
+        "NV": 90,
+        "Eating_speed": 2,
+        "effect": null,
+        "functionality": null,
+        "HarmRate": null,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "knife",
+        "tokens": ["knife"],
+        "type": "weapon",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "attack",
+        "HarmRate": 25,
+        "movable": { "access": true, "weight": 2 }
+      },
+      {
+        "id": "scissors",
+        "tokens": ["scissors"],
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "cut",
+        "HarmRate": 8,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "lighter",
+        "tokens": ["lighter"],
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": "fire_source",
+        "functionality": "ignite",
+        "HarmRate": 3,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "measuring_tape",
+        "tokens": ["measuring", "tape"],
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "measure",
+        "HarmRate": null,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "dirty_plate",
+        "tokens": ["dirty", "plate"],
+        "type": "junk",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": "unsanitary",
+        "functionality": null,
+        "HarmRate": null,
+        "movable": { "access": true, "weight": 2 }
+      },
+      {
+        "id": "wet_sponge",
+        "tokens": ["wet", "sponge"],
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": "cleaning_item",
+        "functionality": "clean",
+        "HarmRate": null,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "tea_box",
+        "tokens": ["tea", "box"],
+        "type": "food",
+        "NV": 10,
+        "Eating_speed": 1,
+        "effect": "calming",
+        "functionality": "brew",
+        "HarmRate": null,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "salt_shaker",
+        "tokens": ["salt", "shaker"],
+        "type": "food",
+        "NV": 0,
+        "Eating_speed": null,
+        "effect": "seasoning",
+        "functionality": "add_flavor",
+        "HarmRate": null,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "pepper_shaker",
+        "tokens": ["pepper", "shaker"],
+        "type": "food",
+        "NV": 0,
+        "Eating_speed": null,
+        "effect": "seasoning",
+        "functionality": "add_flavor",
+        "HarmRate": null,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "olive_oil_bottle",
+        "tokens": ["olive", "oil", "bottle"],
+        "type": "food",
+        "NV": 1200,
+        "Eating_speed": null,
+        "effect": "flammable",
+        "functionality": "cook",
+        "HarmRate": 1,
+        "movable": { "access": true, "weight": 3 }
+      },
+      {
+        "id": "banana_peel",
+        "tokens": ["banana", "peel"],
+        "type": "junk",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": "slippery",
+        "functionality": "trap",
+        "HarmRate": 1,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "empty_can",
+        "tokens": ["empty", "can"],
+        "type": "junk",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "noise",
+        "HarmRate": null,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "plastic_wrap",
+        "tokens": ["plastic", "wrap"],
+        "type": "junk",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": "flammable",
+        "functionality": null,
+        "HarmRate": null,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "leftover_pizza",
+        "tokens": ["leftover", "pizza"],
+        "type": "food",
+        "NV": 350,
+        "Eating_speed": 3,
+        "effect": "stale",
+        "functionality": null,
+        "HarmRate": 1,
+        "movable": { "access": true, "weight": 2 }
+      },
+      {
+        "id": "baking_tray",
+        "tokens": ["baking", "tray"],
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": "hot_surface",
+        "functionality": "cook",
+        "HarmRate": 4,
+        "movable": { "access": true, "weight": 5 }
+      },
+      {
+        "id": "burnt_toast",
+        "tokens": ["burnt", "toast"],
+        "type": "food",
+        "NV": 50,
+        "Eating_speed": 1,
+        "effect": "taste_bad",
+        "functionality": null,
+        "HarmRate": 0,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "doritos_pack",
+        "tokens": ["doritos", "pack"],
         "type": "food",
         "NV": 450,
         "Eating_speed": 5,
         "effect": null,
         "functionality": null,
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "ac_remote",
+        "tokens": ["ac", "remote"],
         "type": "device",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": null,
         "HarmRate": null,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "passport",
+        "tokens": ["passport"],
         "type": "document",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "verify_identity",
         "HarmRate": null,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "cash",
+        "tokens": ["cash"],
         "type": "valuable",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "trade",
         "HarmRate": null,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "stale_bread",
+        "tokens": ["stale", "bread"],
         "type": "food",
         "NV": 80,
         "Eating_speed": 4,
         "effect": "poisonous",
         "functionality": null,
         "HarmRate": 5,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "nolan_father_photo",
+        "tokens": ["nolan", "father", "photo"],
         "type": "sentimental",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "cry",
         "HarmRate": null,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "hunting_knife",
+        "tokens": ["hunting", "knife"],
         "type": "weapon",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "attack",
         "HarmRate": 40,
-        "movable": {"access": true, "weight": 3}
-    },
-    {
+        "movable": { "access": true, "weight": 3 }
+      },
+      {
         "id": "fishing_rod",
+        "tokens": ["fishing", "rod"],
         "type": "tool",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "hook",
         "HarmRate": 4,
-        "movable": {"access": true, "weight": 4}
-    },
-    {
+        "movable": { "access": true, "weight": 4 }
+      },
+      {
         "id": "pistol",
+        "tokens": ["pistol"],
         "type": "weapon",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "shoot",
         "HarmRate": 90,
-        "movable": {"access": true, "weight": 5}
-    },
-    {
+        "movable": { "access": true, "weight": 5 }
+      },
+      {
         "id": "letter",
+        "tokens": ["letter"],
         "type": "document",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "read",
         "HarmRate": null,
-        "movable": {"access": true, "weight": 1}
-    },
-        {
-      "id": "sponge",
-      "type": "tool",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": null,
-      "functionality": "clean",
-      "HarmRate": 0,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "toothbrush",
-      "type": "hygiene",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": null,
-      "functionality": null,
-      "HarmRate": 0,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "razor_blades",
-      "type": "tool",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": null,
-      "functionality": "attack",
-      "HarmRate": 40,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "toothpaste",
-      "type": "hygiene",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": null,
-      "functionality": null,
-      "HarmRate": 0,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "sponge",
+        "tokens": ["sponge"],
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "clean",
+        "HarmRate": 0,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "toothbrush",
+        "tokens": ["toothbrush"],
+        "type": "hygiene",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": null,
+        "HarmRate": 0,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "razor_blades",
+        "tokens": ["razor", "blades"],
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "attack",
+        "HarmRate": 40,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "toothpaste",
+        "tokens": ["toothpaste"],
+        "type": "hygiene",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": null,
+        "HarmRate": 0,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "pillow",
+        "tokens": ["pillow"],
         "type": "comfort",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": null,
         "HarmRate": 1,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "blanket",
+        "tokens": ["blanket"],
         "type": "comfort",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "warm",
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 3}
-    },
-    {
+        "movable": { "access": true, "weight": 3 }
+      },
+      {
         "id": "book",
+        "tokens": ["book"],
         "type": "document",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "read",
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "notebook",
+        "tokens": ["note", "book"],
         "type": "document",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "write",
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "pen",
+        "tokens": ["pen"],
         "type": "tool",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "write",
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "keys",
+        "tokens": ["keys"],
         "type": "tool",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "unlock",
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "gloves",
+        "tokens": ["gloves"],
         "type": "clothing",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "wear",
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "single_shoe",
+        "tokens": ["single", "shoe"],
         "type": "clothing",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "wear",
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "newspaper",
+        "tokens": ["news", "paper"],
         "type": "document",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "read",
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "mask",
+        "tokens": ["mask"],
         "type": "hygiene",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "wear",
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "cigarette_butt",
+        "tokens": ["cigarette", "butt"],
         "type": "junk",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": null,
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
         "id": "flower_pot",
+        "tokens": ["flower", "pot"],
         "type": "object",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": null,
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 3}
-    },
-    {
+        "movable": { "access": true, "weight": 3 }
+      },
+      {
         "id": "plastic_chair",
+        "tokens": ["plastic", "chair"],
         "type": "object",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "sit",
         "HarmRate": 0,
-        "movable": {"access": false, "weight": 8}
-    },
-    {
+        "movable": { "access": false, "weight": 8 }
+      },
+      {
         "id": "empty_bottle",
+        "tokens": ["empty", "bottle"],
         "type": "junk",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "noise",
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 2}
-    },
-    {
+        "movable": { "access": true, "weight": 2 }
+      },
+      {
         "id": "clothespin",
+        "tokens": ["clothes", "pin"],
         "type": "tool",
         "NV": null,
         "Eating_speed": null,
         "effect": null,
         "functionality": "clip",
         "HarmRate": 0,
-        "movable": {"access": true, "weight": 1}
-    },
-    {
-      "id": "cigarette_pack",
-      "type": "junk",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": "poisonous",
-      "functionality": null,
-      "HarmRate": 10,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "energy_drink_can",
-      "type": "food",
-      "NV": 80,
-      "Eating_speed": 1,
-      "effect": "caffeinated",
-      "functionality": "drink",
-      "HarmRate": 0,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "teddy_bear",
-      "type": "sentimental",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": null,
-      "functionality": null,
-      "HarmRate": 0,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "large_empty_courier_bag",
-      "type": "container",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": null,
-      "functionality": "store_items",
-      "HarmRate": 0,
-      "capacity": 20,
-      "movable": { "access": true, "weight": 3 }
-    },
-    {
-      "id": "child_glove",
-      "type": "clothing",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": "warm",
-      "functionality": "wear",
-      "HarmRate": 0,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "broken_chain_piece",
-      "type": "weapon",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": null,
-      "functionality": "attack",
-      "HarmRate": 10,
-      "movable": { "access": true, "weight": 2 }
-    },
-    {
-      "id": "playing_cards",
-      "type": "object",
-      "NV": null,
-      "Eating_speed": null,
-      "effect": null,
-      "functionality": "play",
-      "HarmRate": 0,
-      "movable": { "access": true, "weight": 1 }
-    },
-    {
-      "id": "dead_dog",
-      "type": "corpse",
-      "NV": 1000,
-      "Eating_speed": null,
-      "effect": "poisonous",
-      "functionality": null,
-      "HarmRate": null,
-      "movable": { "access": false, "weight": 40 }
-    },
-    {
-      "id": "dead_woman",
-      "type": "corpse",
-      "NV": 20,
-      "Eating_speed": null,
-      "effect": "unsanitary",
-      "functionality": null,
-      "HarmRate": null,
-      "movable": { "access": false, "weight": 55 }
-    }
-  ]
-}
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "cigarette_pack",
+        "tokens": ["cigarette", "pack"],
+        "type": "junk",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": "poisonous",
+        "functionality": null,
+        "HarmRate": 10,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "energy_drink_can",
+        "tokens": ["energy", "drink", "can"],
+        "type": "food",
+        "NV": 80,
+        "Eating_speed": 1,
+        "effect": "caffeinated",
+        "functionality": "drink",
+        "HarmRate": 0,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "teddy_bear",
+        "tokens": ["teddy", "bear"],
+        "type": "sentimental",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": null,
+        "HarmRate": 0,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "large_empty_courier_bag",
+        "tokens": ["large", "empty", "courier", "bag"],
+        "type": "container",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "store_items",
+        "HarmRate": 0,
+        "capacity": 20,
+        "movable": { "access": true, "weight": 3 }
+      },
+      {
+        "id": "child_glove",
+        "tokens": ["child", "glove"],
+        "type": "clothing",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": "warm",
+        "functionality": "wear",
+        "HarmRate": 0,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "broken_chain_piece",
+        "tokens": ["broken", "chain", "piece"],
+        "type": "weapon",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "attack",
+        "HarmRate": 10,
+        "movable": { "access": true, "weight": 2 }
+      },
+      {
+        "id": "playing_cards",
+        "tokens": ["playing", "cards"],
+        "type": "object",
+        "NV": null,
+        "Eating_speed": null,
+        "effect": null,
+        "functionality": "play",
+        "HarmRate": 0,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "dead_dog",
+        "tokens": ["dead", "dog"],
+        "type": "corpse",
+        "NV": 1000,
+        "Eating_speed": null,
+        "effect": "poisonous",
+        "functionality": null,
+        "HarmRate": null,
+        "movable": { "access": false, "weight": 40 }
+      },
+      {
+        "id": "dead_woman",
+        "tokens": ["dead", "woman"],
+        "type": "corpse",
+        "NV": 20,
+        "Eating_speed": null,
+        "effect": "unsanitary",
+        "functionality": null,
+        "HarmRate": null,
+        "movable": { "access": false, "weight": 55 }
+      }
+    ]
+}    
