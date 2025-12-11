@@ -1,5 +1,6 @@
 export const tokenized = (sentence) => {
-    rubbish_set = [
+    let cleaned = []
+    let rubbish_set = [
         "a", "the", "on", "in", "for", "out", "of", "to", "and", "is", "it", 
         "at", "with", "as", "by", "from", "up", "about", "into", "over", 
         "after", "under", "again", "further", "then", "once", "here", 
@@ -12,6 +13,11 @@ export const tokenized = (sentence) => {
     for(let i = 0; i< rubbish_set.length(); i++){
         if(rubbish_set.includes(tokens[i])){
             delete tokens[i]
+        }else{
+            cleaned.append({
+                "word": tokens[i],      
+                "orig_index": i    
+            })
         }
     }
     return tokens

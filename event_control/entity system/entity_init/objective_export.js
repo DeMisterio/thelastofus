@@ -1,9 +1,11 @@
 import fs from "fs";
+import { typisation_init } from "event_control/action control/parse_engine.js/semantic_parser.js"
+
 export const SCENEdata = JSON.parse("event_control/entity system/entities/scenes/scenes.json", "utf-8")
 export const LOCATIONdata = JSON.parse("event_control/entity system/entities/locations/location.json", "utf-8")
 export const CHARACTERdata = JSON.parse("event_control/entity system/entities/Characters/characters.json", "utf-8")
 export const ITEMSdata = JSON.parse("event_control/entity system/entities/items/items.json", "utf-8")
-
+export const entity_data_base = typisation_init()
 
 export class scenes {
     constructor(scene_n, scene_id = null) {
