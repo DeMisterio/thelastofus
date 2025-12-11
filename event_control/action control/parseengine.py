@@ -1,36 +1,6 @@
 import math
 
-def levenshtein_similarity(s1, s2):
-    if s1 == s2: return 1.0
-    if len(s1) < len(s2): return levenshtein_similarity(s2, s1)
-    if len(s2) == 0: return 0.0
-    previous_row = range(len(s2) + 1)
-    for i, c1 in enumerate(s1):
-        current_row = [i + 1]
-        for j, c2 in enumerate(s2):
-            insertions = previous_row[j + 1] + 1
-            deletions = current_row[j] + 1
-            substitutions = previous_row[j] + (c1 != c2)
-            current_row.append(min(insertions, deletions, substitutions))
-        previous_row = current_row
-    return 1.0 - (previous_row[-1] / max(len(s1), len(s2)))
 
-def clean_and_tokenize(sentence):
-    rubbish_set = {
-        "a", "the", "on", "in", "for", "out", "of", "to", "and", "is", "it", 
-        "at", "with", "as", "by", "from", "up", "about", "into", "over", 
-        "after", "under", "again", "further", "then", "once", "here", 
-        "there", "when", "where", "why", "how", "all", "any", "both", 
-        "each", "few", "more", "most", "other", "some", "such", "no", 
-        "nor", "not", "only", "own", "same", "so", "too", "very", "can", 
-        "will", "just", "please", "could", "give", "me"
-    }
-    tokens = sentence.lower().split()
-    cleaned = []
-    for i, word in enumerate(tokens):
-        if word not in rubbish_set:
-            cleaned.append({"word": word, "orig_index": i})
-    return cleaned
 
 def match_items(sentence, item_db):
     user_tokens = clean_and_tokenize(sentence)
