@@ -2,19 +2,18 @@ let rooms = [],
     roomNum
 const MAPWIDTH = 2
 
-class window {
+export class window {
     constructor(text = null) {
         this.text = text
     }
 }
 
-export function checkInput(e) {
+function checkInput(e) {
     if (e.key == "Enter") {
         content = cli.textContent; // use the typed command
         cli.innerHTML = ""
         e.preventDefault()
         Gwindow.text = content
-
     }
 }
 
