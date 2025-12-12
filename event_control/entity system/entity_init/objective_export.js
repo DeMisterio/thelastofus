@@ -139,7 +139,7 @@ export class item {
         if (!data) {
             throw new Error(`Item not found: ${item_id}`);
         }
-
+        this.ignitable = this.ignitable
         this.id = data.id;
         this.type = data.type;
         this.NV = data.NV ?? null;

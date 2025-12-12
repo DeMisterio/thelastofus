@@ -9,7 +9,6 @@ ignite // Set something on fire or cause it to burn
 measure // Determine the size, length, or amount of something
 clean // Remove dirt or impurities from an object
 brew // Prepare a beverage (like tea) by mixing and heating
-add_flavor // Enhance the taste of food by adding an ingredient
 cook // Prepare food or heat objects using a heat source
 noise // Make a sound, usually to distract or alert
 hook // Catch or pull something using a hook

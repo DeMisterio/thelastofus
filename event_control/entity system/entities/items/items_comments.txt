@@ -1,3 +1,4 @@
 Effects: fragile, can_spoil, fire_source, unsanitary, cleaning_item, calming, seasoning, flammable, slippery, stale, hot_surface, taste_bad.
 
-Functionality: attack, cut, ignite, measure, clean, brew, add_flavor, cook, trap, noise
+Functionality: 
+attack, cut, ignite, measure, clean, brew, add_flavor, cook, trap, noise

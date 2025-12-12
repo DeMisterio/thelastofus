@@ -1,5 +1,6 @@
 //Action engine controls interraction between entities 
 import { match_items } from 'event_control/action control/parse_engine.js/semantic_parser.js'
+import { character } from 'event_control/entity system/entity_init/objective_export.js'
 
 // Server returns something like:
 
@@ -32,12 +33,23 @@ let inpsample = {
 
 
 
+function ignite_item(entities){
+    for(let i = 0; i<entities.length(), i++){  
+      if(!(intented_character.init_items).includes(entities.characters[i])){
+        return
+      }
+    }
+ 
+
+}
+
+
 function action_identifier(intent_object=this.Aintent, entities = this.entities){
   switch(Aintent){
-    case ""
-
-
-
+    case "ignite":
+        const intented_character = new character("Me")
+        ignite_item(this.entities, intented_character)
+    
   }
 
 
