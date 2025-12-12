@@ -5,9 +5,7 @@ import { levenshteinDistance } from 'event_control/action control/parse_engine.j
 import { tokenized } from 'event_control/action control/parse_engine.js/tokenizer.js'
 
 export function typisation_init(LOCATIONdata=LOCATIONdata, CHARACTERdata = CharacterData, ITEMSdata = ITEMSdata){
-    // Will basically conver the database
     let entity_db = {}
-    //Converting locations
     let location_db = {}
     for (let i = 0; i < LOCATIONdata.length; i++) {
         let sub_loc_data = {}
@@ -19,29 +17,21 @@ export function typisation_init(LOCATIONdata=LOCATIONdata, CHARACTERdata = Chara
 
         location_db[LOCATIONdata[i].id] = sub_loc_data
     }
-    //converting characters
     let characters_db = {}
     for (let i = 0; i < CHARACTERdata.length; i++) {
         characters_db[CHARACTERdata[i].name] = CHARACTERdata[i].tokens
     }
-    //converting items containters
     let items_db = {}
-
-    // convert containers
     let containers_obj = {}
     for (let i = 0; i < ITEMSdata.containers.length; i++) {
         const c = ITEMSdata.containers[i]
         containers_obj[c.id] = c.tokens
     }
-
-    // convert items
     let items_obj = {}
     for (let i = 0; i < ITEMSdata.items.length; i++) {
         const it = ITEMSdata.items[i]
         items_obj[it.id] = it.tokens
     }
-
-    // assemble
     items_db["containers"] = containers_obj
     items_db["items"] = items_obj
     items_db["containers"] = contairer_list
@@ -54,22 +44,18 @@ export function typisation_init(LOCATIONdata=LOCATIONdata, CHARACTERdata = Chara
 }
 
 export function match_items(sentence_obj, entity_db) {
-    // sentence_obj is expected to be array of objects: [{word: "...", orig_index: 0}, ...]
     let response = {
         'location': [],
         'sublocation': [],
         'item': [],
         'characters': []
     };
-
-    // We define your algorithm as a reusable function to apply to each category
     function process_category(category_dict) {
         let all_candidates = [];
         let sentence_token_winners = {};
         
         const entity_ids = Object.keys(category_dict);
 
-        // --- STEP 1: Scoring Candidates ---
         for (let i = 0; i < entity_ids.length; i++) {
             let entity_id = entity_ids[i];
             let entity_tokens = category_dict[entity_id];
@@ -85,12 +71,11 @@ export function match_items(sentence_obj, entity_db) {
             let total_token_prob = 0;
             let matched_indices_in_sentence = [];
 
-            // Compare every token of the entity vs every token of the sentence
             for (let e_tok = 0; e_tok < entity_tokens.length; e_tok++) {
                 let best_word_score = -1;
                 let best_word_index = -1;
                 
-                // Assuming sentence_obj is the list of token objects
+
                 for (let s_tok = 0; s_tok < sentence_obj.length; s_tok++) {
                     let score = levenshteinDistance(entity_tokens[e_tok], sentence_obj[s_tok].word);
                     
@@ -114,14 +99,11 @@ export function match_items(sentence_obj, entity_db) {
                 matched_indices_in_sentence.push(best_word_index);
             }
 
-            // --- Probability Calculation ---
             let avg_token_prob = total_token_prob / entity_tokens.length;
 
             if (!match_data.is_complex) {
-                // Lonely Token Logic
                 match_data.probability = avg_token_prob;
             } else {
-                // Complex Token Logic (Index Distance)
                 let sorted_indices = matched_indices_in_sentence.sort((a, b) => a - b);
                 let dist_sum = 0;
                 let comparisons = 0;
@@ -141,7 +123,6 @@ export function match_items(sentence_obj, entity_db) {
 
             all_candidates.push(match_data);
 
-            // --- Update Sentence Winners ---
             for (let tm = 0; tm < match_data.token_matches.length; tm++) {
                 let idx = match_data.token_matches[tm].index_in_sentence;
                 let score = match_data.token_matches[tm].distance_score;
@@ -156,7 +137,6 @@ export function match_items(sentence_obj, entity_db) {
             }
         }
 
-        // --- STEP 2: Sorting and Selection ---
         all_candidates.sort((a, b) => b.probability - a.probability);
         let top_candidates = all_candidates.slice(0, 3);
 
@@ -164,7 +144,6 @@ export function match_items(sentence_obj, entity_db) {
         let complex_candidates = top_candidates.filter(c => c.is_complex);
         let potential_complex_winner = null;
 
-        // Check Support for Complex Items
         for (let cand = 0; cand < complex_candidates.length; cand++) {
             let has_support = false;
             let current_cand = complex_candidates[cand];
@@ -185,7 +164,6 @@ export function match_items(sentence_obj, entity_db) {
             }
         }
 
-        // Determine Winner
         if (potential_complex_winner) {
             let best_overall = top_candidates[0];
             if (potential_complex_winner.probability >= best_overall.probability) {
@@ -199,7 +177,6 @@ export function match_items(sentence_obj, entity_db) {
 
         if (!final_winner) return [];
 
-        // --- STEP 3: Filtering (Thresholds) ---
         let result = [];
         const STRICT_THRESHOLD = 0.85;
         const SOFT_THRESHOLD = 0.65;
@@ -219,24 +196,20 @@ export function match_items(sentence_obj, entity_db) {
         if (outcome.valid) {
             result.push(final_winner);
             
-            // Check for a second candidate
             for (let cand = 0; cand < top_candidates.length; cand++) {
                 if (top_candidates[cand].id !== final_winner.id) {
                     let cand_outcome = check_worthiness(top_candidates[cand]);
                     if (cand_outcome.valid) {
                         result.push(top_candidates[cand]);
-                        break; // Only take one extra
+                        break;
                     }
                 }
             }
         }
         
-        // Return only the IDs or the full object as needed (returning ID here for cleanliness)
         return result.map(r => r.id); 
     }
 
-    // --- EXECUTE FOR EACH TYPE ---
-    // The keys match the structure created in typisation_init
     response['location'] = process_category(entity_db['location']);
     response['sublocation'] = process_category(entity_db['sublocation']);
     response['item'] = process_category(entity_db['item']);
