@@ -20,5 +20,6 @@ export const tokenized = (sentence) => {
             })
         }
     }
-    return tokens
+    return cleaned
 }
+
