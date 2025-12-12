@@ -74,4 +74,104 @@ Decisison: ACCEPTED 'razor_blades', and 'passport'(High Probability)
 FINAL RESULT: ['razor_blades', 'passport']
 
 
+Amazing. Now the algorithm can find the best matches for each token of the sentence.
+But thats not enough for the complex data to be analysed.
+We have locations, characters, items and so on. And to find the best match for all cathegories in our sentence, 
+We need to temporarely store all existing data's tokens. Thats what we do.
+
+
+{
+  "location": {
+    "Init_house": ["house"], 
+    "Bullets_street": ["bullets", "street"],
+    "Parking_Lot_Bullets": ["bullets", "street", "parking", "lot"],
+    "Industrial_Shop": ["industrial", "shop"],
+    "Elderly_House": ["elderly", "couple", "house"],
+    "Car_Moving": ["moving", "car"],
+    "Open_Field": ["open", "field"],
+    "Petrol_Station": ["petrol", "station"]
+  },
+
+  "sublocation": {
+    "kitchen": ["kitchen"],
+    "living_room": ["living", "room"],
+    "hall": ["hall"],
+    "flipped_taxi": ["flipped", "taxi"],
+    "bus_stop": ["bus", "stop"],
+    "car": ["car"],
+    "main_floor": ["main", "floor"],
+    "driver_seat": ["driver", "seat"],
+    "pump_area": ["pump", "area"]
+  },
+
+  "characters": {
+    "Tom": ["tom"],
+    "Dominic": ["dominic"],
+    "Alex": ["alex"],
+    "Derick": ["derick"],
+    "Me": ["me"],
+    "Sara": ["sara"],
+    "Sara_Husband": ["sara", "husband"],
+    "Gang_Leader": ["gang", "leader"]
+  },
+
+  "item": {
+    // Containers (from containers array)
+    "shelf": ["shelf"],
+    "table": ["table"],
+    "trash_bin": ["trash", "bin"],
+    "fridge": ["fridge"],
+    "armrest_compartment": ["armrest", "compartment"],
+    "glovebox_taxi": ["glovebox", "taxi"],
+
+    // Items (from items array)
+    "milk_carton": ["milk", "carton"],
+    "hunting_knife": ["hunting", "knife"],
+    "razor_blades": ["razor", "blades"],
+    "nolan_father_photo": ["nolan", "father", "photo"],
+    "dead_dog": ["dead", "dog"],
+    "plastic_wrap": ["plastic", "wrap"],
+    "passport": ["passport"]
+  }
+}
+
+We store each data from locations, sub locations, items and so on in this format. 
+Then using the algorithm provided upstairs we find find whether the sentece token has the best match
+from all the cathegories.
+
+And as u guessed, we can easily make the parser to find the results for each of the cathegory in out sentence!
+
+
+
+
+
+Thats what will the algorithm eventually return:
+
+{
+  // Found "house" or specific location names? (None in this sentence)
+  "location": [],
+
+  // Found sublocations? -> "kitchen" matched "kitchen"
+  "sublocation": [
+    "kitchen"
+  ],
+
+  // Found items? -> "hunting knife" matched "hunting_knife"
+  // Note: Simple "knife" might also appear if it passed the threshold
+  "item": [
+    "hunting_knife"
+  ],
+
+  // Found characters? -> "Tom" matched "Tom"
+  "characters": [
+    "Tom"
+  ]
+}
+
+
+
+
+
+
+
 
