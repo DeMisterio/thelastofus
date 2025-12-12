@@ -1,49 +1,13 @@
-export const LOCATIONdata = JSON.parse("event_control/entity system/entities/locations/location.json", "utf-8")
-export const CHARACTERdata = JSON.parse("event_control/entity system/entities/Characters/characters.json", "utf-8")
-export const ITEMSdata = JSON.parse("event_control/entity system/entities/items/items.json", "utf-8")
+const LOCATIONdata = JSON.parse("event_control/entity system/entities/locations/location.json", "utf-8")
+const CHARACTERdata = JSON.parse("event_control/entity system/entities/Characters/characters.json", "utf-8")
+const ITEMSdata = JSON.parse("event_control/entity system/entities/items/items.json", "utf-8")
 import { levenshteinDistance } from 'event_control/action control/parse_engine.js/livenstein.js'
 import { tokenized } from 'event_control/action control/parse_engine.js/tokenizer.js'
+import { entity_data_base } from 'event_control/entity system/entity_init/objective_export.js'
 
-export function typisation_init(LOCATIONdata=LOCATIONdata, CHARACTERdata = CharacterData, ITEMSdata = ITEMSdata){
-    let entity_db = {}
-    let location_db = {}
-    for (let i = 0; i < LOCATIONdata.length; i++) {
-        let sub_loc_data = {}
 
-        for (let z = 0; z < LOCATIONdata[i].sub_locations.length; z++) {
-            const sub = LOCATIONdata[i].sub_locations[z]
-            sub_loc_data[sub.name] = sub.tokens
-        }
 
-        location_db[LOCATIONdata[i].id] = sub_loc_data
-    }
-    let characters_db = {}
-    for (let i = 0; i < CHARACTERdata.length; i++) {
-        characters_db[CHARACTERdata[i].name] = CHARACTERdata[i].tokens
-    }
-    let items_db = {}
-    let containers_obj = {}
-    for (let i = 0; i < ITEMSdata.containers.length; i++) {
-        const c = ITEMSdata.containers[i]
-        containers_obj[c.id] = c.tokens
-    }
-    let items_obj = {}
-    for (let i = 0; i < ITEMSdata.items.length; i++) {
-        const it = ITEMSdata.items[i]
-        items_obj[it.id] = it.tokens
-    }
-    items_db["containers"] = containers_obj
-    items_db["items"] = items_obj
-    items_db["containers"] = contairer_list
-    item_db["items"] = items_list
-    
-    entity_db["locations"] = location_db
-    entity_db["characters"] = characters_db
-    entity_db['items']= items_db
-    return entity_db
-}
-
-export function match_items(sentence_obj, entity_db) {
+export function match_items(sentence_obj, entity_db = entity_data_base) {
     let response = {
         'location': [],
         'sublocation': [],
@@ -214,7 +178,7 @@ export function match_items(sentence_obj, entity_db) {
     response['sublocation'] = process_category(entity_db['sublocation']);
     response['item'] = process_category(entity_db['item']);
     response['characters'] = process_category(entity_db['characters']);
-
+       
     return response;
 }
 

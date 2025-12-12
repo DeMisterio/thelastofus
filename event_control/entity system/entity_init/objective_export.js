@@ -1,5 +1,4 @@
 import fs from "fs";
-import { typisation_init } from "event_control/action control/parse_engine.js/semantic_parser.js"
 
 export const SCENEdata = JSON.parse("event_control/entity system/entities/scenes/scenes.json", "utf-8")
 export const LOCATIONdata = JSON.parse("event_control/entity system/entities/locations/location.json", "utf-8")
@@ -31,6 +30,45 @@ export class scenes {
         return new scenes(next.scene_n, next.scene_id);
     }
 }
+export function typisation_init(LOCATIONdata=LOCATIONdata, CHARACTERdata = CharacterData, ITEMSdata = ITEMSdata){
+    let entity_db = {}
+    let location_db = {}
+    for (let i = 0; i < LOCATIONdata.length; i++) {
+        let sub_loc_data = {}
+
+        for (let z = 0; z < LOCATIONdata[i].sub_locations.length; z++) {
+            const sub = LOCATIONdata[i].sub_locations[z]
+            sub_loc_data[sub.name] = sub.tokens
+        }
+
+        location_db[LOCATIONdata[i].id] = sub_loc_data
+    }
+    let characters_db = {}
+    for (let i = 0; i < CHARACTERdata.length; i++) {
+        characters_db[CHARACTERdata[i].name] = CHARACTERdata[i].tokens
+    }
+    let items_db = {}
+    let containers_obj = {}
+    for (let i = 0; i < ITEMSdata.containers.length; i++) {
+        const c = ITEMSdata.containers[i]
+        containers_obj[c.id] = c.tokens
+    }
+    let items_obj = {}
+    for (let i = 0; i < ITEMSdata.items.length; i++) {
+        const it = ITEMSdata.items[i]
+        items_obj[it.id] = it.tokens
+    }
+    items_db["containers"] = containers_obj
+    items_db["items"] = items_obj
+    items_db["containers"] = contairer_list
+    item_db["items"] = items_list
+    
+    entity_db["locations"] = location_db
+    entity_db["characters"] = characters_db
+    entity_db['items']= items_db
+    return entity_db
+}
+
 
 
 export class character {

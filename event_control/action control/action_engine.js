@@ -1,5 +1,5 @@
 //Action engine controls interraction between entities 
-
+import { match_items } from 'event_control/action control/parse_engine.js/semantic_parser.js'
 
 // Server returns something like:
 
@@ -31,10 +31,25 @@ let inpsample = {
   }
 
 
+
+function action_identifier(intent_object=this.Aintent, entities = this.entities){
+  switch(Aintent){
+    case ""
+
+
+
+  }
+
+
+
+}
+
+
 class task_processor{
-    constructor(RawTXT = null, PurePMT = null, entities={}, items){
+    constructor(RawTXT = null, PurePMT = null, entities={}, intent=null){
         this.RawTXT = RawTXT;
         this.PurePMT = PurePMT;
+        this.Aintent = Aintent;
         this.entities = entities
     }
     async main(string) {
@@ -48,13 +63,19 @@ class task_processor{
         });
         const data = await response.json();
         console.log(data);
+        this.Aintent = data.intent.name
         return data
+    }
+    get_entities(text){
+      this.entities = match_items(text);
+
     }
 }
 
 function textprocess(text){
-    AP_operator.RawTXT = text.trim()
-    This.PurePMT = await AP_operator.main(AP_operator.RawTXT)
+  AP_operator.RawTXT = text.trim()
+  this.PurePMT = await AP_operator.main(AP_operator.RawTXT)
+  task_processor.get_entities(this.RawTXT)
 
     
 
