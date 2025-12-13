@@ -1,7 +1,9 @@
 //event control controls the flow of scenes
 
-import { character, location, item, scenes } from 'event_control/entity system/entity_init/objective_export.js'
+import { character, location, item, scenes, CHARACTERdata, GameControl } from 'event_control/entity system/entity_init/objective_export.js'
 import { send_text, get_text } from 'Game_Visual/CLI_effects/effect_control.js'
+import { textprocess, action_identifier } from 'event_control/action control/action_engine.js'
+
 // The game initialisation flow: 
 
 // 0. Check the logs for savings if no - start location => scene[0]
@@ -9,17 +11,7 @@ import { send_text, get_text } from 'Game_Visual/CLI_effects/effect_control.js'
 //2. Assign the location of characters upstairs as the locations[0][sub_location].id 
 //3. start the flow of scenario
 
-export class GameState {
 
-    constructor(scene, current_location, hint_list = []) {
-        this.scene = scene
-        this.current_location = current_location
-        this.hint_list = hint_list
-    }
-    getChar(name) {
-        return this.current_location.characters.find(c => c.name === name);
-    }
-}
 //IF no savings
 
 // Преобразуем список имён в список персонажей
@@ -106,14 +98,20 @@ function get_content() {
         if (abuse_counter > 5) {
             if (GameControl.hint_list.includes('abuse_hint')) {
                 send_text("My head... something feels wrong. The words you force me to say dont make logical sence... I feel I am losing myself!!")
-                character.Me.health -= 5;
+                const player = GameControl.player ?? GameControl.getChar("Me");
+                if (player && typeof player.health === "number") {
+                    player.health = Math.max(player.health - 5, 0);
+                }
             } else {
-                GameState.hint_list.push('abuse_hint')
+                GameControl.addHint('abuse_hint')
                 send_text('[ HINT - SAYING NONCES MAKES THE KEY CHARACTER TO GO NUTS AND LOOSE HIS HEALTH. ]')
             }
         } else if (abuse_counter > 15) {
             send_text("ITS TERRIBLE! SOMEONE HELP ME!!")
-            character.Me.health -= 10;
+            const player = GameControl.player ?? GameControl.getChar("Me");
+            if (player && typeof player.health === "number") {
+                player.health = Math.max(player.health - 10, 0);
+            }
         } else {
         }
     }
@@ -121,51 +119,78 @@ function get_content() {
     return content
 
 }
-Game_cond_satisfied = () => {
-    if(GameState.scene.on_complete == null){
-        return true
-    }
-    else if (Object.keys(GameState.scene.on_complete) == "location"){
-        if(GameState.current_location != Object.values(GameState.scene.on_complete)){
-            return false
-        }else{
-            return true
-        }
+const Game_cond_satisfied = () => {
+    const currentScene = GameControl.scene;
+    if (!currentScene || currentScene.on_complete == null) {
+        return true;
     }
 
+    if (currentScene.on_complete.location) {
+        const requiredLocations = Array.isArray(currentScene.on_complete.location)
+            ? currentScene.on_complete.location
+            : [currentScene.on_complete.location];
+        return requiredLocations.includes(GameControl.current_location);
+    }
 
+    return true;
 }
 async function gameprocess() {
     while (Gameloop === true) {
         out_scene_text()
         
-        while(!Game_cond_satisfied) 
-        content = get_text()
+        while(!Game_cond_satisfied()){
+            content = get_text()
+            textprocess(content)
+            action_identifier()
+        }
+        
         
     }
 
 }
 
+const scene = new scenes(1, 1);
+GameControl.setScene(scene);
 
-let scene = new scenes(1, 1);
-
-let loc = new location(
-    scene.scene_locations[0].location_id,      // house
-    scene.scene_locations[0].sub_locations_id  // kitchen
+const initialLocation = scene.scene_locations[0];
+const loc = new location(
+    initialLocation.location_id      // house
 );
+GameControl.setLocation(loc.location_id, initialLocation.sub_locations_id);
 
+//Initialisation of characters 
 
+GameControl.characters = {};
 
-console.log(loc.characters);
-
-GameControl = new GameState(scene, loc)
-
-GameState.characters = {}
-
-for (const ch of CHARACTERdata.characters) {
-  GameState.characters[ch.character_n] = new character(ch.character_n)
+for (const ch of CHARACTERdata.characters ?? []) {
+    const charInstance = new character(ch.character_n);
+    GameControl.setChar(ch.character_n, charInstance);
 }
-GameState.player = GameState.characters["Me"]
+GameControl.player = GameControl.getChar("Me")
 
+/*
+=========================================================
+СПРАВОЧНИК ПО ПЕРСОНАЖАМ, ИНВЕНТАРЮ И ПРЕДМЕТАМ
+---------------------------------------------------------
+1) Конкретный персонаж:
+   const me = GameControl.getChar("Me");
+   const tom = GameControl.getChar("Tom");
+   GameControl.player всегда указывает на активного игрока.
 
-//.map(name => new Character(name));? 
+2) Работа с инвентарём персонажа:
+   me.getInventory();        // копия массива предметов
+   me.hasItem("knife");      // проверка наличия
+   me.addItem("lighter");    // добавить предмет по id
+   me.removeItem("lighter"); // убрать предмет
+
+3) Классы предметов:
+   const knife = new item("knife");
+   knife.functionality;   // назначение
+   knife.ignitable;       // [флаг, вероятность]
+   knife.movable.weight;  // вес и доступность переноса
+
+4) Смена сцены/локации:
+   GameControl.setLocation("Init_house", "kitchen");
+   GameControl.setScene(new scenes(2)); // или любой другой id
+=========================================================
+*/

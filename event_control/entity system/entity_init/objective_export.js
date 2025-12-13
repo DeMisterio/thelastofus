@@ -32,43 +32,46 @@ export class scenes {
         return new scenes(next.scene_n, next.scene_id);
     }
 }
-export function typisation_init(LOCATIONdata=LOCATIONdata, CHARACTERdata = CharacterData, ITEMSdata = ITEMSdata){
-    let entity_db = {}
-    let location_db = {}
-    for (let i = 0; i < LOCATIONdata.length; i++) {
-        let sub_loc_data = {}
+export function typisation_init(
+    locationData = LOCATIONdata,
+    characterData = CHARACTERdata,
+    itemsData = ITEMSdata
+) {
+    const entity_db = {
+        locations: {},
+        characters: {},
+        items: {
+            containers: {},
+            items: {}
+        }
+    };
 
-        for (let z = 0; z < LOCATIONdata[i].sub_locations.length; z++) {
-            const sub = LOCATIONdata[i].sub_locations[z]
-            sub_loc_data[sub.name] = sub.tokens
+    for (const loc of locationData?.locations ?? []) {
+        const sub_loc_data = {};
+
+        for (const sub of loc?.sub_locations ?? []) {
+            sub_loc_data[sub.name] = sub.tokens ?? [];
         }
 
-        location_db[LOCATIONdata[i].id] = sub_loc_data
+        entity_db.locations[loc.id ?? loc.location_id] = {
+            tokens: loc.tokens ?? [],
+            sub_locations: sub_loc_data
+        };
     }
-    let characters_db = {}
-    for (let i = 0; i < CHARACTERdata.length; i++) {
-        characters_db[CHARACTERdata[i].name] = CHARACTERdata[i].tokens
+
+    for (const ch of characterData?.characters ?? []) {
+        entity_db.characters[ch.character_n] = ch.tokens ?? [];
     }
-    let items_db = {}
-    let containers_obj = {}
-    for (let i = 0; i < ITEMSdata.containers.length; i++) {
-        const c = ITEMSdata.containers[i]
-        containers_obj[c.id] = c.tokens
+
+    for (const container of itemsData?.containers ?? []) {
+        entity_db.items.containers[container.id] = container.tokens ?? [];
     }
-    let items_obj = {}
-    for (let i = 0; i < ITEMSdata.items.length; i++) {
-        const it = ITEMSdata.items[i]
-        items_obj[it.id] = it.tokens
+
+    for (const itemEntry of itemsData?.items ?? []) {
+        entity_db.items.items[itemEntry.id] = itemEntry.tokens ?? [];
     }
-    items_db["containers"] = containers_obj
-    items_db["items"] = items_obj
-    items_db["containers"] = contairer_list
-    item_db["items"] = items_list
-    
-    entity_db["locations"] = location_db
-    entity_db["characters"] = characters_db
-    entity_db['items']= items_db
-    return entity_db
+
+    return entity_db;
 }
 
 
@@ -78,31 +81,69 @@ export class character {
     #character_type;
     #personality;
     #init_parameters;
+    #stats;
 
-    constructor(preseted = null, name = null, character_type = null, personality = null, init_parameters = null) {
+    constructor(
+        preseted = null,
+        name = null,
+        character_type = null,
+        personality = null,
+        init_parameters = null,
+        verbal_reactions = {},
+        tokens = []
+    ) {
         this.preseted = preseted;
+        let presetData = null;
 
         if (this.preseted !== null) {
-            const presetData = CHARACTERdata.characters.find(ch => ch.character_n === this.preseted);
+            presetData = CHARACTERdata.characters.find(
+                (ch) => ch.character_n === this.preseted
+            );
             if (!presetData) {
                 throw new Error(`Character preset not found: ${this.preseted}`);
             }
-            this.#name = presetData.character_n;
-            this.#character_type = presetData.character_type;
-            this.#personality = presetData.personality;
-            this.#init_parameters = presetData.init_parameters;
-        } else {
-            this.#name = name;
-            this.#character_type = character_type;
-            this.#personality = personality;
-            this.#init_parameters = init_parameters || [];
         }
-        this.location = null
-        this.health = this.#init_parameters[0]?.health ?? null;
-        this.action_speed = this.#init_parameters[1]?.action_speed ?? null;
-        this.endurance = this.#init_parameters[2]?.endurance ?? null;
-        this.strength = this.#init_parameters[3]?.strength ?? null;
-        this.init_items = this.#init_parameters[4]?.init_items ?? [];
+
+        const source = presetData ?? {
+            character_n: name,
+            character_type,
+            personality,
+            init_parameters: init_parameters ?? [],
+            verbal_reactions: verbal_reactions ?? {},
+            tokens: tokens ?? []
+        };
+
+        if (!source.character_n) {
+            throw new Error("Custom characters must define a name.");
+        }
+
+        this.#name = source.character_n;
+        this.#character_type = source.character_type ?? null;
+        this.#personality = source.personality ?? null;
+        this.#init_parameters = Array.isArray(source.init_parameters)
+            ? source.init_parameters
+            : [];
+
+        const paramMap = {};
+        for (const param of this.#init_parameters) {
+            Object.assign(paramMap, param);
+        }
+        this.#stats = { ...paramMap };
+
+        this.tokens = source.tokens ?? [];
+        this.verbal_reactions = source.verbal_reactions ?? {};
+        this.location = null;
+        this.sub_location = null;
+        this.health = this.#stats.health ?? null;
+        this.action_speed = this.#stats.action_speed ?? null;
+        this.endurance = this.#stats.endurance ?? null;
+        this.strength = this.#stats.strength ?? null;
+
+        const startingItems = Array.isArray(this.#stats.init_items)
+            ? [...this.#stats.init_items]
+            : [];
+        this.init_items = [...startingItems];
+        this.inventory = [...startingItems];
     }
     get name() {
         return this.#name;
@@ -116,27 +157,52 @@ export class character {
     }
 
     get init_parameters() {
-        return this.#init_parameters;
+        return this.#init_parameters.map((param) => ({ ...param }));
     }
-    getCharacter(name) {
-        return this.characters.find(c => c.name === name)
+
+    get stats() {
+        return { ...this.#stats };
+    }
+
+    getInventory() {
+        return [...this.inventory];
+    }
+
+    hasItem(itemId) {
+        return this.inventory.includes(itemId);
+    }
+
+    addItem(itemId) {
+        if (!itemId || this.inventory.includes(itemId)) {
+            return;
+        }
+        this.inventory.push(itemId);
+    }
+
+    removeItem(itemId) {
+        if (!itemId) {
+            return;
+        }
+        this.inventory = this.inventory.filter((id) => id !== itemId);
     }
 }
 
 export class location {
     constructor(location_id) {
-        const loc = LOCATIONdata.locations.find(l => l.location_id === location_id);
+        const loc = LOCATIONdata.locations.find(
+            (l) => l.id === location_id || l.location_id === location_id
+        );
         if (!loc) {
             throw new Error(`Location not found: ${location_id}`);
         }
-        
-        this.location_id = loc.location_id;
-        this.location_n = loc.location_n;
-        this.sub_locations = loc.sub_locations;   
-        this.scene_id = loc.scene_id ?? null;
-        this.characters = loc.characters || []
-    }
 
+        this.location_id = loc.id ?? loc.location_id;
+        this.name = loc.name ?? loc.location_n ?? null;
+        this.tokens = loc.tokens ?? [];
+        this.sub_locations = loc.sub_locations ?? [];
+        this.scenes = loc.scenes ?? [];
+        this.characters = loc.characters ?? [];
+    }
 }
 
 export class item {
@@ -145,17 +211,57 @@ export class item {
         if (!data) {
             throw new Error(`Item not found: ${item_id}`);
         }
-        this.ignitable = this.ignitable
         this.id = data.id;
-        this.type = data.type;
+        this.tokens = data.tokens ?? [];
+        this.type = data.type ?? null;
         this.NV = data.NV ?? null;
         this.Eating_speed = data.Eating_speed ?? null;
+        this.ignitable = data.ignitable ?? [false, 0];
         this.effect = data.effect ?? null;
         this.functionality = data.functionality ?? null;
         this.HarmRate = data.HarmRate ?? null;
+        this.capacity = data.capacity ?? null;
         this.movable = data.movable || { access: false, weight: 0 };
     }
 }
+
+class GameState {
+
+    constructor(scen=null, current_location=null, hint_list = []) {
+        this.scene = scen
+        this.current_location = current_location
+        this.current_sub_location = null
+        this.hint_list = [...hint_list]
+        this.characters = {}
+        this.player = null
+    }
+    getChar(name) {
+        return this.characters[name] ?? null;
+    }
+    setChar(name, characterInstance) {
+        if (!name || !characterInstance) {
+            return;
+        }
+        this.characters[name] = characterInstance;
+    }
+    setScene(sceneInstance) {
+        this.scene = sceneInstance;
+    }
+    setLocation(locationId, subLocationId = null) {
+        this.current_location = locationId;
+        this.current_sub_location = subLocationId;
+    }
+    addHint(hint) {
+        if (!hint || this.hint_list.includes(hint)) {
+            return;
+        }
+        this.hint_list.push(hint);
+    }
+  
+}
+
+export var GameControl = new GameState()
+
 
 //VISUAL example of Character class usage
 
@@ -187,5 +293,3 @@ export class item {
 // me.location = house;
 
 // console.log(me.location.location_id); // "Init_house"
-
-
