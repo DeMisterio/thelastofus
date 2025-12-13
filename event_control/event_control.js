@@ -146,8 +146,7 @@ const Game_cond_satisfied = () => {
 let Gameloop = true
 async function gameprocess() {
     while (Gameloop === true) {
-        await out_scene_text()
-        
+        out_scene_text()
         while(!Game_cond_satisfied()){
             const content = await get_content()
             textprocess(content)
