@@ -158,7 +158,7 @@ async function gameprocess() {
 
 }
 
-async function  inilialiseGame(){
+async function  initialiыeGame(){
     await initData
     const scene = new scenes(1, 1);
     GameControl.setScene(scene);
@@ -179,7 +179,7 @@ async function  inilialiseGame(){
     gameprocess()
 }
 
-initializeGame();
+initialiыeGame();
 
 /*
 =========================================================
