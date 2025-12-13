@@ -1,18 +1,26 @@
+const cli = document.getElementById("cli");
+const output = document.getElementById("output");
+
 let rooms = [],
     roomNum
 const MAPWIDTH = 2
 
-export class window {
+export class GameWindow {
     constructor(text = null) {
         this.text = text
     }
+    get_text(){
+        this.text = parser()
+    }
 }
+
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 
-function checkInput(e) {
+export function checkInput(e) {
     if (e.key == "Enter") {
         content = cli.textContent; // use the typed command
         cli.innerHTML = ""
@@ -52,7 +60,7 @@ export function outputText(txt) {
     newPara.scrollIntoView()
 }
 
-export const Gwindow = new Window();
+
 
 const INTRO_TEXT = [
   "Welcome.",
@@ -99,4 +107,7 @@ async function  HelloWorld() {
         await sleep(676);
     }
 }
+
+export const Gwindow = new GameWindow();
 HelloWorld()
+
