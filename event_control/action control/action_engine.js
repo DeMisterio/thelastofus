@@ -1,6 +1,6 @@
 //Action engine controls interraction between entities 
-import { match_items } from 'event_control/action control/parse_engine.js/semantic_parser.js'
-import { item, GameControl } from 'event_control/entity system/entity_init/objective_export.js'
+import { match_items } from './event_control/action control/parse_engine.js/semantic_parser.js'
+import { item, GameControl } from './event_control/entity system/entity_init/objective_export.js'
 
 // Server returns something like:
 

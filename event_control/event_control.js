@@ -1,8 +1,8 @@
 //event control controls the flow of scenes
 
-import { character, location, item, scenes, CHARACTERdata, GameControl } from 'event_control/entity system/entity_init/objective_export.js'
-import { send_text, get_text } from 'Game_Visual/CLI_effects/effect_control.js'
-import { textprocess, action_identifier } from 'event_control/action control/action_engine.js'
+import { character, location, item, scenes, CHARACTERdata, GameControl } from './event_control/entity system/entity_init/objective_export.js'
+import { send_text, get_text } from '../Game_Visual/CLI_effects/effect_control.js'
+import { textprocess, action_identifier } from './event_control/action control/action_engine.js'
 
 // The game initialisation flow: 
 

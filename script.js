@@ -6,17 +6,7 @@ let rooms = [];
 let roomNum = 0;
 const MAPWIDTH = 2;
 
-function ensureDOMRefs() {
-    if (!hasDOM) {
-        return;
-    }
-    if (!cli) {
-        cli = document.getElementById("cli");
-    }
-    if (!outputPane) {
-        outputPane = document.getElementById("output");
-    }
-}
+
 
 export class GameWindow {
     constructor(text = "") {
@@ -35,7 +25,6 @@ export function checkInput(e) {
     if (!hasDOM) return;
     if (e.key === "Enter") {
         e.preventDefault();
-        ensureDOMRefs();
         const content = (cli?.textContent ?? "").trim();
         if (cli) {
             cli.innerHTML = "";
@@ -59,26 +48,23 @@ function showRoom() {
     outputText("You can go " + rooms[roomNum].exits);
 }
 
+
+function initDOM() {
+    const cli = document.getElementById("cli");
+
+    cli.addEventListener("keyup", (event) => {
+        console.log("HELLO WORLD", event.key);
+    });
+    outputPane = document.getElementById("output");
+}
+
+
 function initGame() {
-    ensureDOMRefs();
-    rooms = [
-        { name: "NW room", exits: "E" },
-        { name: "NE room", exits: "SW" },
-        { name: "SW room", exits: "SE" },
-        { name: "SE room", exits: "NW" },
-        { name: "Garden", exits: "NE" },
-        { name: "Pond", exits: "W" }
-    ];
-    roomNum = 4;
-    if (cli) {
-        cli.focus();
-    }
-    showRoom();
+
 }
 
 export function outputText(txt = "") {
     if (!hasDOM) return;
-    ensureDOMRefs();
     if (!outputPane) return;
     const newPara = document.createElement("p");
     newPara.textContent = txt;
@@ -116,33 +102,34 @@ const INTRO_TEXT = [
     "Be yourself.",
     "Be human.",
     "Be the last of us.",
-    "Let’s begin."
+    "Let’s begin.",
+    "",
+    "",
+    " "
 ];
 
 async function HelloWorld() {
     if (!hasDOM) return;
-    ensureDOMRefs();
     for (const line of INTRO_TEXT) {
         outputText(line);
-        await sleep(676);
+        await sleep(1676);
     }
 }
 
 export const Gwindow = new GameWindow();
 
-if (hasDOM) {
-    window.checkInput = checkInput;
-    window.initGame = initGame;
-    const boot = () => {
-        ensureDOMRefs();
-        initGame();
-        HelloWorld();
-    };
+window.checkInput = checkInput;
+window.initGame = initGame;
+const boot = () => {
+    initDOM();
+    HelloWorld();
+    initGame();
+};
 
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", boot);
-    } else {
-        boot();
-    }
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+} else {
+    boot();
 }
+
 
