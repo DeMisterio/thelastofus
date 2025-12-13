@@ -139,7 +139,7 @@ async function gameprocess() {
         out_scene_text()
         
         while(!Game_cond_satisfied()){
-            content = get_text()
+            content = get_content()
             textprocess(content)
             action_identifier()
         }
@@ -148,6 +148,7 @@ async function gameprocess() {
     }
 
 }
+
 
 const scene = new scenes(1, 1);
 GameControl.setScene(scene);
@@ -167,6 +168,8 @@ for (const ch of CHARACTERdata.characters ?? []) {
     GameControl.setChar(ch.character_n, charInstance);
 }
 GameControl.player = GameControl.getChar("Me")
+
+
 
 /*
 =========================================================
