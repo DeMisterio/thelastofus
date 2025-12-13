@@ -1,8 +1,8 @@
 //event control controls the flow of scenes
 
-import { character, location, item, scenes, CHARACTERdata, GameControl } from './event_control/entity system/entity_init/objective_export.js'
-import { send_text, get_text } from '../Game_Visual/CLI_effects/effect_control.js'
-import { textprocess, action_identifier } from './event_control/action control/action_engine.js'
+import { character, location, item, scenes, CHARACTERdata, GameControl } from './entity system/entity_init/objective_export.js'
+import { send_text, get_text } from '../effect_control.js'
+import { textprocess, action_identifier } from './action control/action_engine.js'
 
 // The game initialisation flow: 
 
@@ -87,13 +87,20 @@ function isGarbage(input) {
 
 const isWhitespaceString = str => !str.replace(/\s/g, '').length
 
+function waitForInput() {
+    return new Promise((resolve) => {
+        const handler = (event) => {
+            window.removeEventListener("cli-input", handler);
+            resolve((event.detail ?? "").trim());
+        };
+        window.addEventListener("cli-input", handler);
+    });
+}
 
-function get_content() {
-    content = get_text()
+async function get_content() {
+    let content = await waitForInput();
     let abuse_counter = 0;
-    while (isWhitespaceString(content) && isGarbage(content)) {
-        //Character has to say that 'i dont even know what to do'
-        content = get_text()
+    while (isWhitespaceString(content) || isGarbage(content)) {
         abuse_counter += 1
         if (abuse_counter > 5) {
             if (GameControl.hint_list.includes('abuse_hint')) {
@@ -112,16 +119,16 @@ function get_content() {
             if (player && typeof player.health === "number") {
                 player.health = Math.max(player.health - 10, 0);
             }
-        } else {
         }
+        content = await waitForInput();
     }
-    abuse_counter = 0
     return content
 
 }
 const Game_cond_satisfied = () => {
     const currentScene = GameControl.scene;
     if (!currentScene || currentScene.on_complete == null) {
+        console.log("* SCENE CONDITION SATISFIED")
         return true;
     }
 
@@ -134,12 +141,15 @@ const Game_cond_satisfied = () => {
 
     return true;
 }
+
+
+let Gameloop = true
 async function gameprocess() {
     while (Gameloop === true) {
-        out_scene_text()
+        await out_scene_text()
         
         while(!Game_cond_satisfied()){
-            content = get_content()
+            const content = await get_content()
             textprocess(content)
             action_identifier()
         }
@@ -168,7 +178,9 @@ for (const ch of CHARACTERdata.characters ?? []) {
     GameControl.setChar(ch.character_n, charInstance);
 }
 GameControl.player = GameControl.getChar("Me")
-
+console.log(GameControl.player.health)
+console.log("* GAME INITIALISED")
+gameprocess()
 
 
 /*

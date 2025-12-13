@@ -30,6 +30,7 @@ export function checkInput(e) {
             cli.innerHTML = "";
         }
         Gwindow.text = content;
+        window.dispatchEvent(new CustomEvent("cli-input", { detail: content }));
     }
 }
 
@@ -50,12 +51,10 @@ function showRoom() {
 
 
 function initDOM() {
-    const cli = document.getElementById("cli");
-
-    cli.addEventListener("keyup", (event) => {
-        console.log("HELLO WORLD", event.key);
-    });
+    cli = document.getElementById("cli");
     outputPane = document.getElementById("output");
+
+    cli.addEventListener("keydown", checkInput);
 }
 
 
@@ -131,5 +130,3 @@ if (document.readyState === "loading") {
 } else {
     boot();
 }
-
-

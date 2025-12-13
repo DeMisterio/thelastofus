@@ -1,4 +1,4 @@
-import { Gwindow, outputText } from 'Game_Visual/script.js'
+import { Gwindow, outputText } from './script.js'
 
 
 export function get_text(){

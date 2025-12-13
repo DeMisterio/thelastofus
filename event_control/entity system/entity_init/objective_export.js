@@ -1,10 +1,16 @@
-import fs from "fs";
-const readJSON = (path) => JSON.parse(fs.readFileSync(path, "utf-8"));
+const readJSON = async (relativePath) => {
+    const url = new URL(relativePath, import.meta.url);
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Failed to load JSON from ${url}`);
+    }
+    return response.json();
+};
 
-export const SCENEdata = readJSON("./event_control/entity system/entities/scenes/scenes.json", "utf-8")
-export const LOCATIONdata = readJSON("./event_control/entity system/entities/locations/location.json", "utf-8")
-export const CHARACTERdata = readJSON("./event_control/entity system/entities/Characters/characters.json", "utf-8")
-export const ITEMSdata = readJSON("./event_control/entity system/entities/items/items.json", "utf-8")
+export const SCENEdata = await readJSON("../entities/scenes/scenes.json");
+export const LOCATIONdata = await readJSON("../entities/locations/location.json");
+export const CHARACTERdata = await readJSON("../entities/Characters/characters.json");
+export const ITEMSdata = await readJSON("../entities/items/items.json");
 export const entity_data_base = typisation_init()
 
 export class scenes {

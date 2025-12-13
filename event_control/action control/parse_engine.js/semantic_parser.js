@@ -1,9 +1,6 @@
-const LOCATIONdata = JSON.parse("event_control/entity system/entities/locations/location.json", "utf-8")
-const CHARACTERdata = JSON.parse("event_control/entity system/entities/Characters/characters.json", "utf-8")
-const ITEMSdata = JSON.parse("event_control/entity system/entities/items/items.json", "utf-8")
-import { levenshteinDistance } from 'event_control/action control/parse_engine.js/livenstein.js'
-import { tokenized } from 'event_control/action control/parse_engine.js/tokenizer.js'
-import { entity_data_base } from 'event_control/entity system/entity_init/objective_export.js'
+import { levenshteinDistance } from './livenstein.js'
+import { tokenized } from './tokenizer.js'
+import { entity_data_base } from '../../entity system/entity_init/objective_export.js'
 
 
 
