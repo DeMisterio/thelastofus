@@ -28,8 +28,10 @@ body {
     display: grid;
     grid-template-rows: 1fr auto;
     gap: 18px;
-    width: min(900px, 90vw);
-    height: min(820px, 90vh);
+    width: min(920px, 95vw);
+    min-height: 520px;
+    max-height: 90vh;
+    height: 100%;
     padding: 20px;
 }
 

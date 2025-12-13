@@ -133,9 +133,16 @@ export const Gwindow = new GameWindow();
 if (hasDOM) {
     window.checkInput = checkInput;
     window.initGame = initGame;
-    document.addEventListener("DOMContentLoaded", () => {
+    const boot = () => {
         ensureDOMRefs();
         initGame();
         HelloWorld();
-    });
+    };
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", boot);
+    } else {
+        boot();
+    }
 }
+
