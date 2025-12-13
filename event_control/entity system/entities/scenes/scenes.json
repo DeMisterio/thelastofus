@@ -6,9 +6,7 @@
         "locations": [{
             "location_id": "Init_house", "sub_locations_id": "kitchen"
         }],
-        "on_complete": {
-            "location": ["shop"]
-        },
+        "on_complete": null,
         "intro_text": [
             { "text": "The day was disrupted by the noise that rules the world.", "weight": 2 },
             { "text": "I was sitting with my friends, celebrating our university’s third anniversary. It was the happiest moment I can remember.", "weight": 2 },

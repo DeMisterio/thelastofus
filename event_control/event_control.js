@@ -16,7 +16,9 @@ export class GameState {
         this.current_location = current_location
         this.hint_list = hint_list
     }
-
+    getChar(name) {
+        return this.current_location.characters.find(c => c.name === name);
+    }
 }
 //IF no savings
 
@@ -119,11 +121,25 @@ function get_content() {
     return content
 
 }
+Game_cond_satisfied = () => {
+    if(GameState.scene.on_complete == null){
+        return true
+    }
+    else if (Object.keys(GameState.scene.on_complete) == "location"){
+        if(GameState.current_location != Object.values(GameState.scene.on_complete)){
+            return false
+        }else{
+            return true
+        }
+    }
 
+
+}
 async function gameprocess() {
     while (Gameloop === true) {
         out_scene_text()
         
+        while(!Game_cond_satisfied) 
         content = get_text()
         
     }

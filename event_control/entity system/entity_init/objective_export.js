@@ -1,9 +1,10 @@
 import fs from "fs";
+const readJSON = (path) => JSON.parse(fs.readFileSync(path, "utf-8"));
 
-export const SCENEdata = JSON.parse("event_control/entity system/entities/scenes/scenes.json", "utf-8")
-export const LOCATIONdata = JSON.parse("event_control/entity system/entities/locations/location.json", "utf-8")
-export const CHARACTERdata = JSON.parse("event_control/entity system/entities/Characters/characters.json", "utf-8")
-export const ITEMSdata = JSON.parse("event_control/entity system/entities/items/items.json", "utf-8")
+export const SCENEdata = readJSON("event_control/entity system/entities/scenes/scenes.json", "utf-8")
+export const LOCATIONdata = readJSON("event_control/entity system/entities/locations/location.json", "utf-8")
+export const CHARACTERdata = readJSON("event_control/entity system/entities/Characters/characters.json", "utf-8")
+export const ITEMSdata = readJSON("event_control/entity system/entities/items/items.json", "utf-8")
 export const entity_data_base = typisation_init()
 
 export class scenes {
