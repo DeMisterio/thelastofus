@@ -93,10 +93,10 @@ const INTRO_TEXT = [
   "Let’s begin."
 ];
 
-async function  HelloWorld(params) {
+async function  HelloWorld() {
     for(let i=0; i< INTRO_TEXT.length(); i++){
         outputText(INTRO_TEXT[i])
         await sleep(676);
     }
 }
-outputText("")
+HelloWorld()
