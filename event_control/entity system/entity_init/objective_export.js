@@ -24,6 +24,7 @@ export class scenes {
         this.scene_texts = scene.intro_text;
     }
 
+
     getNextScene() {
         const next = SCENEdata.scenes.find(st => st.scene_n === this.scene_n + 1);
         if (!next) return null;
@@ -95,6 +96,7 @@ export class character {
             this.#personality = personality;
             this.#init_parameters = init_parameters || [];
         }
+        this.location = null
         this.health = this.#init_parameters[0]?.health ?? null;
         this.action_speed = this.#init_parameters[1]?.action_speed ?? null;
         this.endurance = this.#init_parameters[2]?.endurance ?? null;
@@ -114,6 +116,9 @@ export class character {
 
     get init_parameters() {
         return this.#init_parameters;
+    }
+    getCharacter(name) {
+        return this.characters.find(c => c.name === name)
     }
 }
 

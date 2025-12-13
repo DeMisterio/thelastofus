@@ -47,7 +47,7 @@ function ignite_item(entities){
 function action_identifier(intent_object=this.Aintent, entities = this.entities){
   switch(Aintent){
     case "ignite":
-        const intented_character = new character("Me")
+        const intented_character = character("Me")
         ignite_item(this.entities, intented_character)
     
   }

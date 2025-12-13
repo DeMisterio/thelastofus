@@ -5,6 +5,12 @@
         "tokens": ["tom"],
         "character_type": "NPC",
         "personality": "calm",
+        "verbal_reactions":{
+        "attack":["AAYY! WHAT ARE U DOING!","SOMEONE HELP ME!", "MY GOD!"],
+        "shoot":["Nooo... why... i thought you are f... 'Falls on the groud motionless'"],
+        "warm": ["Thank you"],
+        "throw":["Ohh sshit! What the hell is wrong with you?"]
+        },
         "init_parameters": [
           {"health": 70},
           {"action_speed": 8},
@@ -18,6 +24,12 @@
         "tokens": ["dominic"],
         "character_type": "NPC",
         "personality": "chaotic",
+        "verbal_reactions": {
+          "attack": ["HAHA! YOU THINK THAT HURTS?", "COME ON, HIT ME AGAIN!"],
+          "shoot": ["NO WAY... THIS IS HOW IT ENDS...?"],
+          "warm": ["Heh, didn’t expect that."],
+          "throw": ["WHAT THE HELL WAS THAT FOR?!"]
+        },
         "init_parameters": [
           {"health": 75},
           {"action_speed": 9},
@@ -31,6 +43,12 @@
         "tokens": ["alex"],
         "character_type": "NPC",
         "personality": "energetic",
+        "verbal_reactions": {
+          "attack": ["HEY! WATCH IT!", "YO! THAT WAS UNCALLED FOR!"],
+          "shoot": ["I’m hit! I’m hit!"],
+          "warm": ["Nice! Thanks!"],
+          "throw": ["BRO, CHILL!"]
+        },
         "init_parameters": [
           {"health": 80},
           {"action_speed": 10},
@@ -44,6 +62,12 @@
         "tokens": ["derick"],
         "character_type": "NPC",
         "personality": "thoughtful",
+        "verbal_reactions": {
+          "attack": ["Why would you do that?", "That was unnecessary."],
+          "shoot": ["So this is it..."],
+          "warm": ["I appreciate that."],
+          "throw": ["Please, stop."]
+        },
         "init_parameters": [
           {"health": 70},
           {"action_speed": 7},
@@ -57,6 +81,12 @@
         "tokens": ["said"],
         "character_type": "NPC",
         "personality": "realistic",
+        "verbal_reactions": {
+          "attack": ["Bad move.", "You really want trouble?"],
+          "shoot": ["I should’ve seen this coming."],
+          "warm": ["Thanks. Means something."],
+          "throw": ["Careful. Next time won’t end well."]
+        },
         "init_parameters": [
           {"health": 75},
           {"action_speed": 8},
@@ -70,6 +100,12 @@
         "tokens": ["me"],
         "character_type": "Player",
         "personality": "neutral",
+        "verbal_reactions": {
+          "attack": ["Hey! What are you doing?!"],
+          "shoot": ["I’m down..."],
+          "warm": ["Thanks."],
+          "throw": ["What the hell?"]
+        },
         "init_parameters": [
           {"health": 80},
           {"action_speed": 9},
@@ -83,6 +119,12 @@
         "tokens": ["sara"],
         "character_type": "NPC",
         "personality": "injured",
+        "verbal_reactions": {
+          "attack": ["Please... stop...", "I can’t take this..."],
+          "shoot": ["No... please..."],
+          "warm": ["Thank you... really..."],
+          "throw": ["Ah! That hurts!"]
+        },
         "init_parameters": [
           {"health": 40},
           {"action_speed": 4},
@@ -96,6 +138,12 @@
         "tokens": ["sara", "husband"],
         "character_type": "NPC",
         "personality": "determined",
+        "verbal_reactions": {
+          "attack": ["You won’t break me.", "Is that all?"],
+          "shoot": ["Not... yet..."],
+          "warm": ["I won’t forget this."],
+          "throw": ["Focus. Stay focused."]
+        },
         "init_parameters": [
           {"health": 65},
           {"action_speed": 7},
@@ -109,6 +157,12 @@
         "tokens": ["gang", "leader"],
         "character_type": "NPC",
         "personality": "aggressive",
+        "verbal_reactions": {
+          "attack": ["YOU’RE DEAD!", "BIG MISTAKE!"],
+          "shoot": ["NO— THIS ISN’T OVER!"],
+          "warm": ["Hmph, are you serious?"],
+          "throw": ["YOU WANNA DIE?!"]
+        },
         "init_parameters": [
           {"health": 90},
           {"action_speed": 9},
@@ -116,7 +170,84 @@
           {"strength": 95},
           {"init_items": ["pistol_9mm", "car_keys", "radio"]}
         ]
-      }
+      },
+      {
+        "character_n": "Zack",
+        "tokens": ["zack"],
+        "character_type": "NPC",
+        "personality": "nervous",
+        "init_parameters": [
+          {"health": 60},
+          {"action_speed": 6},
+          {"endurance": 45},
+          {"strength": 50},
+          {"init_items": ["ancient_map", "lighter", "backpack"]}
+        ]
+      },
+      {
+        "character_n": "Old_Man",
+        "tokens": ["old", "man"],
+        "character_type": "NPC",
+        "personality": "helpless",
+        "init_parameters": [
+          {"health": 30},
+          {"action_speed": 3},
+          {"endurance": 20},
+          {"strength": 30},
+          {"init_items": ["house_keys", "old_watch"]}
+        ]
+      },
+      {
+        "character_n": "Old_Woman",
+        "tokens": ["old", "woman"],
+        "character_type": "NPC",
+        "personality": "scared",
+        "init_parameters": [
+          {"health": 30},
+          {"action_speed": 3},
+          {"endurance": 20},
+          {"strength": 20},
+          {"init_items": ["knitting_needles"]}
+        ]
+      },
+      {
+        "character_n": "Father_Motorcycle",
+        "tokens": ["father"],
+        "character_type": "NPC",
+        "personality": "protective",
+        "init_parameters": [
+          {"health": 80},
+          {"action_speed": 8},
+          {"endurance": 70},
+          {"strength": 85},
+          {"init_items": ["motorcycle_helmet", "wrench", "map"]}
+        ]
+      },
+      {
+        "character_n": "Child_Motorcycle",
+        "tokens": ["child"],
+        "character_type": "NPC",
+        "personality": "innocent",
+        "init_parameters": [
+          {"health": 20},
+          {"action_speed": 5},
+          {"endurance": 30},
+          {"strength": 10},
+          {"init_items": ["toy_car", "small_helmet"]}
+        ]
+      },
+      {
+        "character_n": "Ship_Crew",
+        "tokens": ["ship", "crew"],
+        "character_type": "NPC",
+        "personality": "authoritative",
+        "init_parameters": [
+          {"health": 100},
+          {"action_speed": 9},
+          {"endurance": 90},
+          {"strength": 90},
+          {"init_items": ["assault_rifle", "radio", "life_vest"]}
+        ]
+}
     ]
   }
-  

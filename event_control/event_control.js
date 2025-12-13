@@ -134,17 +134,22 @@ async function gameprocess() {
 let scene = new scenes(1, 1);
 
 let loc = new location(
-    scene.scene_locations[0].location_id,      // дом
+    scene.scene_locations[0].location_id,      // house
     scene.scene_locations[0].sub_locations_id  // kitchen
 );
 
-loc.characters = loc.characters.map(name => new Character(name));
+
 
 console.log(loc.characters);
 
 GameControl = new GameState(scene, loc)
 
+GameState.characters = {}
 
+for (const ch of CHARACTERdata.characters) {
+  GameState.characters[ch.character_n] = new character(ch.character_n)
+}
+GameState.player = GameState.characters["Me"]
 
 
 //.map(name => new Character(name));? 

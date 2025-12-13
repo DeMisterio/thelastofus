@@ -107,7 +107,65 @@
       ],
       "characters": ["Me", "Dominic", "Zack"],
       "scenes": []
-    }
+    },
+    {
+      "id": "Coastal_Ghost_Town",
+      "name": "Abandoned Coastal Town",
+      "tokens": ["coast", "ghost", "town", "shore"],
+      "sub_locations": [
+        { "name": "foggy_street", "items_id": "fog_street_items", "tokens": ["fog", "street"] },
+        { "name": "abandoned_houses", "items_id": "abandoned_house_items", "tokens": ["abandoned", "house"] },
+        { "name": "shoreline", "items_id": "shore_items", "tokens": ["shore", "beach"] }
+      ],
+      "characters": [],
+      "scenes": []
+    },
+    {
+      "id": "Shore_Signal_Point",
+      "name": "Foggy Shoreline",
+      "tokens": ["shore", "signal"],
+      "sub_locations": [
+        { "name": "wrecked_car", "items_id": "wrecked_car_items", "tokens": ["car", "wreck"] },
+        { "name": "open_water", "items_id": "water_items", "tokens": ["water"] }
+      ],
+      "characters": [],
+      "scenes": []
+    },
+    {
+      "id": "Rescue_Ship",
+      "name": "Nuclear Ark Ship",
+      "tokens": ["ship", "ark"],
+      "sub_locations": [
+        { "name": "deck", "items_id": "ship_deck_items", "tokens": ["deck"] },
+        { "name": "rescue_boat", "items_id": "boat_items", "tokens": ["boat"] }
+      ],
+      "characters": ["Ship_Crew", "Ship_Officer"],
+      "scenes": []
+    },
+    {
+    "id": "Ghost_Town_Beach",
+    "name": "Ghost Town Beach",
+    "tokens": ["ghost", "town", "beach"],
+    "sub_locations": [
+      { "name": "foggy_road", "items_id": "road_items", "tokens": ["foggy", "road"] },
+      { "name": "beach_shore", "items_id": "beach_items", "tokens": ["beach", "shore"] },
+      { "name": "abandoned_house", "items_id": "ghost_house_items", "tokens": ["abandoned", "house"] },
+      { "name": "water_edge", "items_id": "water_edge_items", "tokens": ["water", "edge"] }
+    ],
+    "characters": ["Me", "Dom", "Said", "Derick", "Zack", "Tom"],
+    "scenes": []
+  },
+  {
+      "id": "Rescue_Ship",
+      "name": "Rescue Ship",
+      "tokens": ["rescue", "ship"],
+      "sub_locations": [
+        { "name": "deck", "items_id": "deck_items", "tokens": ["deck"] },
+        { "name": "crew_quarters", "items_id": "crew_items", "tokens": ["crew", "quarters"] }
+      ],
+      "characters": ["Ship_Crew", "Me", "Dom"],
+      "scenes": []
+  }
   ]
 }
 
