@@ -123,6 +123,7 @@ const boot = () => {
     initDOM();
     HelloWorld();
     initGame();
+    cli.focus();
 };
 
 if (document.readyState === "loading") {

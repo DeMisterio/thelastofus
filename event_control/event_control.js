@@ -1,6 +1,6 @@
 //event control controls the flow of scenes
 
-import { character, location, item, scenes, CHARACTERdata, GameControl } from './entity system/entity_init/objective_export.js'
+import { character, location, item, scenes, CHARACTERdata, GameControl, initData } from './entity system/entity_init/objective_export.js'
 import { send_text, get_text } from '../effect_control.js'
 import { textprocess, action_identifier } from './action control/action_engine.js'
 
@@ -146,7 +146,7 @@ const Game_cond_satisfied = () => {
 let Gameloop = true
 async function gameprocess() {
     while (Gameloop === true) {
-        out_scene_text()
+        await out_scene_text()
         while(!Game_cond_satisfied()){
             const content = await get_content()
             textprocess(content)
@@ -158,29 +158,28 @@ async function gameprocess() {
 
 }
 
-
-const scene = new scenes(1, 1);
-GameControl.setScene(scene);
-
-const initialLocation = scene.scene_locations[0];
-const loc = new location(
-    initialLocation.location_id      // house
-);
-GameControl.setLocation(loc.location_id, initialLocation.sub_locations_id);
-
-//Initialisation of characters 
-
-GameControl.characters = {};
-
-for (const ch of CHARACTERdata.characters ?? []) {
-    const charInstance = new character(ch.character_n);
-    GameControl.setChar(ch.character_n, charInstance);
+async function  inilialiseGame(){
+    await initData
+    const scene = new scenes(1, 1);
+    GameControl.setScene(scene);
+    const initialLocation = scene.scene_locations[0];
+    const loc = new location(
+        initialLocation.location_id      // house
+    );
+    GameControl.setLocation(loc.location_id, initialLocation.sub_locations_id);
+    //Initialisation of characters 
+    GameControl.characters = {};
+    for (const ch of CHARACTERdata.characters ?? []) {
+        const charInstance = new character(ch.character_n);
+        GameControl.setChar(ch.character_n, charInstance);
+    }
+    GameControl.player = GameControl.getChar("Me")
+    console.log(GameControl.player.health)
+    console.log("* GAME INITIALISED")
+    gameprocess()
 }
-GameControl.player = GameControl.getChar("Me")
-console.log(GameControl.player.health)
-console.log("* GAME INITIALISED")
-gameprocess()
 
+initializeGame();
 
 /*
 =========================================================

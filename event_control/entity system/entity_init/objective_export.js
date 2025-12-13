@@ -7,11 +7,23 @@ const readJSON = async (relativePath) => {
     return response.json();
 };
 
-export const SCENEdata = await readJSON("../entities/scenes/scenes.json");
-export const LOCATIONdata = await readJSON("../entities/locations/location.json");
-export const CHARACTERdata = await readJSON("../entities/Characters/characters.json");
-export const ITEMSdata = await readJSON("../entities/items/items.json");
-export const entity_data_base = typisation_init()
+export let SCENEdata = null; // ИЗМЕНЕНО: const на let, присвоено null
+export let LOCATIONdata = null; // ИЗМЕНЕНО
+export let CHARACTERdata = null; // ИЗМЕНЕНО
+export let ITEMSdata = null; // ИЗМЕНЕНО
+export let entity_data_base = null; // ИЗМЕНЕНО
+
+
+export async function initData() {
+    console.log("Starting async data load..."); // DEBUG
+    SCENEdata = await readJSON("../entities/scenes/scenes.json");
+    LOCATIONdata = await readJSON("../entities/locations/location.json");
+    CHARACTERdata = await readJSON("../entities/Characters/characters.json");
+    ITEMSdata = await readJSON("../entities/items/items.json");
+    entity_data_base = typisation_init();
+    console.log("Data load complete."); // DEBUG
+}
+
 
 export class scenes {
     constructor(scene_n, scene_id = null) {
