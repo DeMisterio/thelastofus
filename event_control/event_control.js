@@ -22,47 +22,31 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// GitHub/thelastofus/event_control/event_control.js
+
 async function out_scene_text(scene) {
     let BP = false
-    let skip_text_cond = []
-    let skip_text_amo = []
-    document.addEventListener("keydown", function (event) {
+    const handleKeydown = (event) => {
         if (event.code === "Space") {
-            console.log("Space key pressed!");
-            BP = true; // optional: stops page from scrolling
+            BP = true; 
         }
-    });
-    console.log("Scene outputting is started!")
-    textloop:
-    for (let text = 0; text < scene.scene_texts.length; text++) {
-        if (skip_text_amo.length > 0) {
-            for (let i = 0; i < skip_text_amo.length; i++) {
-                send_text(scene.scene_texts[text].text);
-                text++;
-                continue textloop;
-            }
+    };
+    document.addEventListener("keydown", handleKeydown);
+    try {
+        console.log("Scene outputting is started!")
+        for (let text = 0; text < scene.scene_texts.length; text++) {
             send_text(scene.scene_texts[text].text);
-            if (BP === true) {
-                skip_text_cond.push("1");
-                if (skip_text_cond.length === 5) {
-                    for (let z = 0; z < 4; z++) {
-                        skip_text_cond.pop();
-                    }
-                    skip_text_amo.push(1, 1);
-                }
-            } else {
-                if (skip_text_cond.length < 1) {
-                    skip_text_amo.pop();
-                }
-                await sleep(1000);
-                BP = false;
-            }
+            if (BP === false) {
+                // Ждем 1 секунду
+                await sleep(1000); 
+            } 
         }
-        skip_text_amo = []
-        skip_text_cond = []
+    } finally {
+        document.removeEventListener("keydown", handleKeydown);
     }
     return
 }
+
 function isGarbage(input) {
     if (!input) return true;
     const text = input.trim().toLowerCase();
