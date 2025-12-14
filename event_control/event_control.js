@@ -24,28 +24,48 @@ function sleep(ms) {
 
 // GitHub/thelastofus/event_control/event_control.js
 
+// async function out_scene_text(scene) {
+//     let BP = false
+//     const handleKeydown = (event) => {
+//         if (event.code === "Space") {
+//             BP = true; 
+//         }
+//     };
+//     document.addEventListener("keydown", handleKeydown);
+//     try {
+//         console.log("Scene outputting is started!")
+//         for (let text = 0; text < scene.scene_texts.length; text++) {
+//             send_text(scene.scene_texts[text].text);
+//             if (BP === false) {
+//                 // Ждем 1 секунду
+//                 await sleep(1000); 
+//             } 
+//         }
+//     } finally {
+//         document.removeEventListener("keydown", handleKeydown);
+//     }
+//     return
+// }
+
+
+// thelastofus/event_control/event_control.js
+
 async function out_scene_text(scene) {
-    let BP = false
-    const handleKeydown = (event) => {
-        if (event.code === "Space") {
-            BP = true; 
-        }
-    };
-    document.addEventListener("keydown", handleKeydown);
-    try {
-        console.log("Scene outputting is started!")
-        for (let text = 0; text < scene.scene_texts.length; text++) {
-            send_text(scene.scene_texts[text].text);
-            if (BP === false) {
-                // Ждем 1 секунду
-                await sleep(1000); 
-            } 
-        }
-    } finally {
-        document.removeEventListener("keydown", handleKeydown);
+    // Эта функция временно выводит весь текст мгновенно для отладки
+    if (!scene || !scene.scene_texts) {
+        send_text("ERROR: Scene data is missing!");
+        return;
     }
-    return
+    
+    // ВЫВОДИМ ВЕСЬ ТЕКСТ СРАЗУ, БЕЗ ПАУЗ
+    for (const textData of scene.scene_texts) {
+        send_text(textData.text);
+    }
+    
+    // ЭТО ДОКАЖЕТ, ЧТО ИГРОВОЙ ЦИКЛ РАБОТАЕТ И ПЕРЕМЕННЫЕ ПЕРЕДАЮТСЯ
+    return;
 }
+
 
 function isGarbage(input) {
     if (!input) return true;
