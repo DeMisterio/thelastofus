@@ -32,7 +32,7 @@ async function out_scene_text() {
             BP = true; // optional: stops page from scrolling
         }
     });
-
+    console.log("Scene outputting is started!")
     textloop:
     for (let text = 0; text < scene.scene_texts.length; text++) {
         if (skip_text_amo.length > 0) {
@@ -159,7 +159,17 @@ async function gameprocess() {
 }
 
 async function  initialiыeGame(){
-    await initData
+    console.log("[INIT] Waiting for the data from the objective export to be initialised")
+    try {
+        await initData();
+    } catch (error) {
+        send_text("Game failed to load the data");
+        console.error(error);
+        return; // I stop the game if error occures 
+    }
+    
+    console.log("[INIT] Data loaded. Starting scene initialization.");
+
     const scene = new scenes(1, 1);
     GameControl.setScene(scene);
     const initialLocation = scene.scene_locations[0];
