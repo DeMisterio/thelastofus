@@ -158,7 +158,7 @@ async function gameprocess() {
 
 }
 
-async function  initialiыeGame(){
+async function  initialiseGame(){
     console.log("[INIT] Waiting for the data from the objective export to be initialised")
     try {
         await initData();
@@ -189,7 +189,7 @@ async function  initialiыeGame(){
     gameprocess()
 }
 
-initialiыeGame();
+initialiseGame();
 
 /*
 =========================================================

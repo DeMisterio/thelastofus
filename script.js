@@ -121,7 +121,7 @@ window.checkInput = checkInput;
 window.initGame = initGame;
 const boot = () => {
     initDOM();
-    HelloWorld();
+    // HelloWorld();
     initGame();
     cli.focus();
 };
