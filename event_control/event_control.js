@@ -22,7 +22,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function out_scene_text() {
+async function out_scene_text(scene) {
     let BP = false
     let skip_text_cond = []
     let skip_text_amo = []
@@ -146,7 +146,7 @@ const Game_cond_satisfied = () => {
 let Gameloop = true
 async function gameprocess() {
     while (Gameloop === true) {
-        await out_scene_text()
+        await out_scene_text(GameControl.scene)
         while(!Game_cond_satisfied()){
             const content = await get_content()
             textprocess(content)
