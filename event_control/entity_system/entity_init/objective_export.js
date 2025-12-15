@@ -9,12 +9,11 @@ export let entity_data_base = null;
 async function loadJSONData() {
     try {
         // Use relative paths from the project root
-        const basePath = window.location.pathname.includes('Game_Visual') ? '../' : './';
         const [scenesRes, locationsRes, charactersRes, itemsRes] = await Promise.all([
-            fetch(`${basePath}event_control/entity_system/entities/scenes/scenes.json`),
-            fetch(`${basePath}event_control/entity_system/entities/locations/location.json`),
-            fetch(`${basePath}event_control/entity_system/entities/Characters/characters.json`),
-            fetch(`${basePath}event_control/entity_system/entities/items/items.json`)
+            fetch(`event_control/entity_system/entities/scenes/scenes.json`),
+            fetch(`event_control/entity_system/entities/locations/location.json`),
+            fetch(`event_control/entity_system/entities/Characters/characters.json`),
+            fetch(`event_control/entity_system/entities/items/items.json`)
         ]);
         
         SCENEdata = await scenesRes.json();
