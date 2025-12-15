@@ -1,15 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
     <title>My Text Adventure</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <script type="module">
+        import { initializeGame } from '../event_control/event_control.js';
+        
+        // Initialize game when page loads
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                await initializeGame();
+            } catch (error) {
+                console.error("Failed to initialize game:", error);
+            }
+        });
+    </script>
+    <script src="../script.js" type="module"></script>
 </head>
 
 <body>
-    <h1>My Text Adventure</h1>
-    <p>Open <code>Game_Visual/index.html</code> to play the game.</p>
-</body>
+    <div id='gridBox'>
 
+        <div id='output'></div>
+        <div id='cli' contenteditable="true" onkeyup="checkInput(event)"></div>
+    </div>
+
+</body>
 </html>
