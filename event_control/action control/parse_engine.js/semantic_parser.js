@@ -1,6 +1,6 @@
 import { levenshteinDistance } from './livenstein.js'
 import { tokenized } from './tokenizer.js'
-import { entity_data_base } from '../../entity system/entity_init/objective_export.js'
+import { entity_data_base } from '../../entity%20system/entity_init/objective_export.js'
 
 
 
