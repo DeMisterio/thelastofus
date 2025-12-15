@@ -1,13 +1,57 @@
-import fs from "fs";
+// JSON data will be loaded asynchronously
+export let SCENEdata = null;
+export let LOCATIONdata = null;
+export let CHARACTERdata = null;
+export let ITEMSdata = null;
+export let entity_data_base = null;
 
-export const SCENEdata = JSON.parse("event_control/entity system/entities/scenes/scenes.json", "utf-8")
-export const LOCATIONdata = JSON.parse("event_control/entity system/entities/locations/location.json", "utf-8")
-export const CHARACTERdata = JSON.parse("event_control/entity system/entities/Characters/characters.json", "utf-8")
-export const ITEMSdata = JSON.parse("event_control/entity system/entities/items/items.json", "utf-8")
-export const entity_data_base = typisation_init()
+// Load JSON files (for browser environment)
+async function loadJSONData() {
+    try {
+        // Use relative paths from the project root
+        const basePath = window.location.pathname.includes('Game_Visual') ? '../' : './';
+        const [scenesRes, locationsRes, charactersRes, itemsRes] = await Promise.all([
+            fetch(`${basePath}event_control/entity system/entities/scenes/scenes.json`),
+            fetch(`${basePath}event_control/entity system/entities/locations/location.json`),
+            fetch(`${basePath}event_control/entity system/entities/Characters/characters.json`),
+            fetch(`${basePath}event_control/entity system/entities/items/items.json`)
+        ]);
+        
+        SCENEdata = await scenesRes.json();
+        LOCATIONdata = await locationsRes.json();
+        CHARACTERdata = await charactersRes.json();
+        ITEMSdata = await itemsRes.json();
+        
+        entity_data_base = typisation_init();
+        
+        return true;
+    } catch (error) {
+        console.error("Error loading JSON data:", error);
+        // Fallback: try to load synchronously if fetch fails (for Node.js environment)
+        try {
+            const fs = await import("fs");
+            SCENEdata = JSON.parse(fs.readFileSync("event_control/entity system/entities/scenes/scenes.json", "utf-8"));
+            LOCATIONdata = JSON.parse(fs.readFileSync("event_control/entity system/entities/locations/location.json", "utf-8"));
+            CHARACTERdata = JSON.parse(fs.readFileSync("event_control/entity system/entities/Characters/characters.json", "utf-8"));
+            ITEMSdata = JSON.parse(fs.readFileSync("event_control/entity system/entities/items/items.json", "utf-8"));
+            entity_data_base = typisation_init();
+            return true;
+        } catch (nodeError) {
+            console.error("Error loading JSON data (Node.js fallback):", nodeError);
+            return false;
+        }
+    }
+}
+
+// Export loadJSONData so it can be called from event_control.js
+export { loadJSONData };
 
 export class scenes {
     constructor(scene_n, scene_id = null) {
+        if (!SCENEdata || !SCENEdata.scenes) {
+            throw new Error("SCENEdata not loaded yet. Call loadJSONData() first.");
+        }
+        
         let scene = null;
         if (scene_id !== null) {
             scene = SCENEdata.scenes.find(st => st.scene_id === scene_id);
@@ -25,47 +69,77 @@ export class scenes {
     }
 
     getNextScene() {
+        if (!SCENEdata || !SCENEdata.scenes) {
+            return null;
+        }
         const next = SCENEdata.scenes.find(st => st.scene_n === this.scene_n + 1);
         if (!next) return null;
         return new scenes(next.scene_n, next.scene_id);
     }
 }
-export function typisation_init(LOCATIONdata=LOCATIONdata, CHARACTERdata = CharacterData, ITEMSdata = ITEMSdata){
+export function typisation_init(locData = null, charData = null, itemData = null){
+    const locDataToUse = locData || LOCATIONdata;
+    const charDataToUse = charData || CHARACTERdata;
+    const itemDataToUse = itemData || ITEMSdata;
+    
+    if (!locDataToUse || !charDataToUse || !itemDataToUse) {
+        console.warn("Missing data for typisation_init");
+        return {};
+    }
+    
     let entity_db = {}
     let location_db = {}
-    for (let i = 0; i < LOCATIONdata.length; i++) {
-        let sub_loc_data = {}
-
-        for (let z = 0; z < LOCATIONdata[i].sub_locations.length; z++) {
-            const sub = LOCATIONdata[i].sub_locations[z]
-            sub_loc_data[sub.name] = sub.tokens
+    
+    // Process locations
+    if (locDataToUse.locations && Array.isArray(locDataToUse.locations)) {
+        for (let i = 0; i < locDataToUse.locations.length; i++) {
+            let sub_loc_data = {}
+            const loc = locDataToUse.locations[i];
+            
+            if (loc.sub_locations && Array.isArray(loc.sub_locations)) {
+                for (let z = 0; z < loc.sub_locations.length; z++) {
+                    const sub = loc.sub_locations[z]
+                    sub_loc_data[sub.name] = sub.tokens
+                }
+            }
+            
+            location_db[loc.id] = sub_loc_data
         }
-
-        location_db[LOCATIONdata[i].id] = sub_loc_data
     }
+    
+    // Process characters
     let characters_db = {}
-    for (let i = 0; i < CHARACTERdata.length; i++) {
-        characters_db[CHARACTERdata[i].name] = CHARACTERdata[i].tokens
+    if (charDataToUse.characters && Array.isArray(charDataToUse.characters)) {
+        for (let i = 0; i < charDataToUse.characters.length; i++) {
+            characters_db[charDataToUse.characters[i].character_n] = charDataToUse.characters[i].tokens
+        }
     }
+    
+    // Process items
     let items_db = {}
     let containers_obj = {}
-    for (let i = 0; i < ITEMSdata.containers.length; i++) {
-        const c = ITEMSdata.containers[i]
-        containers_obj[c.id] = c.tokens
+    
+    if (itemDataToUse.containers && Array.isArray(itemDataToUse.containers)) {
+        for (let i = 0; i < itemDataToUse.containers.length; i++) {
+            const c = itemDataToUse.containers[i]
+            containers_obj[c.id] = c.tokens
+        }
     }
+    
     let items_obj = {}
-    for (let i = 0; i < ITEMSdata.items.length; i++) {
-        const it = ITEMSdata.items[i]
-        items_obj[it.id] = it.tokens
+    if (itemDataToUse.items && Array.isArray(itemDataToUse.items)) {
+        for (let i = 0; i < itemDataToUse.items.length; i++) {
+            const it = itemDataToUse.items[i]
+            items_obj[it.id] = it.tokens
+        }
     }
+    
     items_db["containers"] = containers_obj
     items_db["items"] = items_obj
-    items_db["containers"] = contairer_list
-    item_db["items"] = items_list
     
     entity_db["locations"] = location_db
     entity_db["characters"] = characters_db
-    entity_db['items']= items_db
+    entity_db['items'] = items_db
     return entity_db
 }
 
@@ -78,6 +152,10 @@ export class character {
     #init_parameters;
 
     constructor(preseted = null, name = null, character_type = null, personality = null, init_parameters = null) {
+        if (!CHARACTERdata || !CHARACTERdata.characters) {
+            throw new Error("CHARACTERdata not loaded yet. Call loadJSONData() first.");
+        }
+        
         this.preseted = preseted;
 
         if (this.preseted !== null) {
@@ -95,11 +173,21 @@ export class character {
             this.#personality = personality;
             this.#init_parameters = init_parameters || [];
         }
-        this.health = this.#init_parameters[0]?.health ?? null;
-        this.action_speed = this.#init_parameters[1]?.action_speed ?? null;
-        this.endurance = this.#init_parameters[2]?.endurance ?? null;
-        this.strength = this.#init_parameters[3]?.strength ?? null;
-        this.init_items = this.#init_parameters[4]?.init_items ?? [];
+        
+        // Extract parameters from init_parameters array
+        if (this.#init_parameters && Array.isArray(this.#init_parameters)) {
+            this.health = this.#init_parameters[0]?.health ?? null;
+            this.action_speed = this.#init_parameters[1]?.action_speed ?? null;
+            this.endurance = this.#init_parameters[2]?.endurance ?? null;
+            this.strength = this.#init_parameters[3]?.strength ?? null;
+            this.init_items = this.#init_parameters[4]?.init_items ?? [];
+        } else {
+            this.health = null;
+            this.action_speed = null;
+            this.endurance = null;
+            this.strength = null;
+            this.init_items = [];
+        }
     }
     get name() {
         return this.#name;
@@ -119,15 +207,19 @@ export class character {
 
 export class location {
     constructor(location_id) {
-        const loc = LOCATIONdata.locations.find(l => l.location_id === location_id);
+        if (!LOCATIONdata || !LOCATIONdata.locations) {
+            throw new Error("LOCATIONdata not loaded yet. Call loadJSONData() first.");
+        }
+        
+        const loc = LOCATIONdata.locations.find(l => l.id === location_id);
         if (!loc) {
             throw new Error(`Location not found: ${location_id}`);
         }
         
-        this.location_id = loc.location_id;
-        this.location_n = loc.location_n;
-        this.sub_locations = loc.sub_locations;   
-        this.scene_id = loc.scene_id ?? null;
+        this.location_id = loc.id;
+        this.location_n = loc.name;
+        this.sub_locations = loc.sub_locations || [];   
+        this.scene_id = loc.scenes && loc.scenes.length > 0 ? loc.scenes[0] : null;
         this.characters = loc.characters || []
     }
 
@@ -135,11 +227,14 @@ export class location {
 
 export class item {
     constructor(item_id) {
+        if (!ITEMSdata || !ITEMSdata.items) {
+            throw new Error("ITEMSdata not loaded yet. Call loadJSONData() first.");
+        }
+        
         const data = ITEMSdata.items.find(it => it.id === item_id);
         if (!data) {
             throw new Error(`Item not found: ${item_id}`);
         }
-        this.ignitable = this.ignitable
         this.id = data.id;
         this.type = data.type;
         this.NV = data.NV ?? null;
@@ -148,6 +243,7 @@ export class item {
         this.functionality = data.functionality ?? null;
         this.HarmRate = data.HarmRate ?? null;
         this.movable = data.movable || { access: false, weight: 0 };
+        this.ignitable = data.ignitable ?? null;
     }
 }
 

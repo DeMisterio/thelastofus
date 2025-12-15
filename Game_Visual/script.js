@@ -8,9 +8,11 @@ export class window {
     }
 }
 
-function checkInput(e) {
+// Make checkInput globally accessible
+window.checkInput = function(e) {
     if (e.key == "Enter") {
-        content = cli.textContent; // use the typed command
+        const cli = document.getElementById('cli');
+        const content = cli.textContent; // use the typed command
         cli.innerHTML = ""
         e.preventDefault()
         Gwindow.text = content
@@ -36,16 +38,24 @@ function initGame() {
     rooms[4] = { name: "Garden", exits: "NE" }
     rooms[5] = { name: "Pond", exits: "W" }
     roomNum = 4
-    cli.focus()
+    const cli = document.getElementById('cli');
+    if (cli) {
+        cli.focus()
+    }
     showRoom()
 }
 
 export function outputText(txt) {
     // add txt to a new paragraph
+    const output = document.getElementById('output');
+    if (!output) {
+        console.error("Output element not found");
+        return;
+    }
     let newPara = document.createElement("p")
     newPara.innerHTML = txt
     output.appendChild(newPara)
     newPara.scrollIntoView()
 }
 
-export const Gwindow = new Window();
+export const Gwindow = new window();
