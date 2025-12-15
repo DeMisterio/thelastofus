@@ -56,7 +56,7 @@ this.item_location = resolve_location_from_set( this.item_set )
 
 INITIALISATION_ORDER = 
 
-Scene => location => character => items. This render helps to preserve hierarchy of loading
+Scene => character => location => items. This render helps to preserve hierarchy of loading
 
 The structure of the Data in project 
 

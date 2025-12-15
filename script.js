@@ -59,7 +59,13 @@ function initDOM() {
 
 
 function initGame() {
-
+    cli = document.getElementById("cli")
+    output = document.getElementById("output")
+    if (!cli || !output) {
+        console.error("Required DOM elements are missing")
+        return
+    }
+    rooms = []
 }
 
 export function outputText(txt = "") {
