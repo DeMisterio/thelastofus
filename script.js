@@ -6,6 +6,15 @@ let rooms = [];
 let roomNum = 0;
 const MAPWIDTH = 2;
 
+let inputResolve = null; // Переменная для хранения "разрешения" промиса
+
+// Новая функция ожидания ввода
+export function waitForInput() {
+    return new Promise((resolve) => {
+        inputResolve = resolve; // Сохраняем функцию resolve, чтобы вызвать её позже
+    });
+}
+
 
 
 export class GameWindow {
@@ -21,16 +30,17 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export function checkInput(e) {
-    if (!hasDOM) return;
-    if (e.key === "Enter") {
+function checkInput(e) {
+    if (e.key == "Enter") {
         e.preventDefault();
-        const content = (cli?.textContent ?? "").trim();
-        if (cli) {
-            cli.innerHTML = "";
+        let content = document.getElementById('cli').innerText; // Или textContent
+        document.getElementById('cli').innerHTML = "";
+        
+        // Если кто-то ждет ввода (наш gameprocess), отдаем ему текст
+        if (inputResolve) {
+            inputResolve(content);
+            inputResolve = null; // Сбрасываем
         }
-        Gwindow.text = content;
-        window.dispatchEvent(new CustomEvent("cli-input", { detail: content }));
     }
 }
 

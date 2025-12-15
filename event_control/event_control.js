@@ -1,7 +1,7 @@
 //event control controls the flow of scenes
 
 import { character, location, item, scenes, CHARACTERdata, GameControl, initData } from './entity system/entity_init/objective_export.js'
-import { send_text, get_text } from '../effect_control.js'
+import { get_user_input_async, send_text } from '../effect_control.js'
 import { textprocess, action_identifier } from './action control/action_engine.js'
 
 // The game initialisation flow: 
@@ -102,8 +102,11 @@ function waitForInput() {
 }
 
 async function get_content() {
-    let content = await waitForInput();
+  async function get_content() {
+    // ВАЖНО: await! Скрипт остановится здесь и будет ждать игрока
+    let content = await get_user_input_async();  
     let abuse_counter = 0;
+    }
     while (isWhitespaceString(content) || isGarbage(content)) {
         abuse_counter += 1
         if (abuse_counter > 5) {
@@ -124,7 +127,7 @@ async function get_content() {
                 player.health = Math.max(player.health - 10, 0);
             }
         }
-        content = await waitForInput();
+        content = await get_user_input_async();
     }
     return content
 
@@ -150,16 +153,13 @@ const Game_cond_satisfied = () => {
 let Gameloop = true
 async function gameprocess() {
     while (Gameloop === true) {
-        await out_scene_text(GameControl.scene)
+        await out_scene_text(GameControl.scene);
         while(!Game_cond_satisfied()){
-            const content = await get_content()
-            textprocess(content)
+            let input = await get_content();
+            textprocess(input)
             action_identifier()
         }
-        
-        
     }
-
 }
 
 async function  initialiseGame(){
