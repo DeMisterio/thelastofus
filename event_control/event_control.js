@@ -1,7 +1,7 @@
 //event control controls the flow of scenes
 
-import { character, location, item, scenes, loadJSONData } from 'event_control/entity system/entity_init/objective_export.js'
-import { send_text, get_text } from 'Game_Visual/CLI_effects/effect_control.js'
+import { character, location, item, scenes, loadJSONData } from './entity system/entity_init/objective_export.js'
+import { send_text, get_text } from '../effect_control.js'
 // The game initialisation flow: 
 
 // 0. Check the logs for savings if no - start location => scene[0]

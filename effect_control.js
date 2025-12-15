@@ -1,5 +1,5 @@
 // Game_Visual/CLI_effects/effect_control.js
-import { Gwindow, outputText, waitForInput } from '../script.js' // Проверь путь к script.js!
+import { Gwindow, outputText, waitForInput } from './script.js'
 
 // Старая синхронная функция (можно оставить для совместимости, но лучше не юзать)
 export function get_text(){

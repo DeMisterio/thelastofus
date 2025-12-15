@@ -11,7 +11,9 @@ export class window {
         this.text = text;
     }
 }
-export const Gwindow = new window(); // Gwindow с маленькой буквы класс, исправь если класс Window
+
+// Export Gwindow early so it's available throughout the module
+export const Gwindow = new window();
 
 // --- НОВАЯ ФУНКЦИЯ: Ожидание ввода ---
 export function waitForInput() {
@@ -21,12 +23,15 @@ export function waitForInput() {
 }
 
 // --- ОБНОВЛЕННАЯ ФУНКЦИЯ: checkInput ---
-window.checkInput = function(e) { // Делаем глобальной для HTML
+function checkInput(e) { // Делаем глобальной для HTML
     if (e.key == "Enter") {
         e.preventDefault();
         let cli = document.getElementById('cli');
-        let content = cli.innerText; // Или textContent
+        let content = cli.innerText || cli.textContent; // Или textContent
         cli.innerHTML = "";
+        
+        // Set Gwindow.text for synchronous access
+        Gwindow.text = content;
         
         // Если игра ждет ввода (inputResolve существует), отдаем текст и размораживаем её
         if (inputResolve) {
@@ -114,27 +119,17 @@ const INTRO_TEXT = [
     " "
 ];
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function HelloWorld() {
-    if (!hasDOM) return;
     for (const line of INTRO_TEXT) {
         outputText(line);
         await sleep(1676);
     }
 }
 
-export const Gwindow = new GameWindow();
-
+// Make functions globally accessible
 window.checkInput = checkInput;
 window.initGame = initGame;
-const boot = () => {
-    initDOM();
-    // HelloWorld();
-    initGame();
-    cli.focus();
-};
-
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", boot);
-} else {
-    boot();
-}
