@@ -11,10 +11,10 @@ async function loadJSONData() {
         // Use relative paths from the project root
         const basePath = window.location.pathname.includes('Game_Visual') ? '../' : './';
         const [scenesRes, locationsRes, charactersRes, itemsRes] = await Promise.all([
-            fetch(`${basePath}event_control/entity%20system/entities/scenes/scenes.json`),
-            fetch(`${basePath}event_control/entity%20system/entities/locations/location.json`),
-            fetch(`${basePath}event_control/entity%20system/entities/Characters/characters.json`),
-            fetch(`${basePath}event_control/entity%20system/entities/items/items.json`)
+            fetch(`${basePath}event_control/entity_system/entities/scenes/scenes.json`),
+            fetch(`${basePath}event_control/entity_system/entities/locations/location.json`),
+            fetch(`${basePath}event_control/entity_system/entities/Characters/characters.json`),
+            fetch(`${basePath}event_control/entity_system/entities/items/items.json`)
         ]);
         
         SCENEdata = await scenesRes.json();
@@ -30,10 +30,10 @@ async function loadJSONData() {
         // Fallback: try to load synchronously if fetch fails (for Node.js environment)
         try {
             const fs = await import("fs");
-            SCENEdata = JSON.parse(fs.readFileSync("event_control/entity system/entities/scenes/scenes.json", "utf-8"));
-            LOCATIONdata = JSON.parse(fs.readFileSync("event_control/entity system/entities/locations/location.json", "utf-8"));
-            CHARACTERdata = JSON.parse(fs.readFileSync("event_control/entity system/entities/Characters/characters.json", "utf-8"));
-            ITEMSdata = JSON.parse(fs.readFileSync("event_control/entity system/entities/items/items.json", "utf-8"));
+            SCENEdata = JSON.parse(fs.readFileSync("event_control/entity_system/entities/scenes/scenes.json", "utf-8"));
+            LOCATIONdata = JSON.parse(fs.readFileSync("event_control/entity_system/entities/locations/location.json", "utf-8"));
+            CHARACTERdata = JSON.parse(fs.readFileSync("event_control/entity_system/entities/Characters/characters.json", "utf-8"));
+            ITEMSdata = JSON.parse(fs.readFileSync("event_control/entity_system/entities/items/items.json", "utf-8"));
             entity_data_base = typisation_init();
             return true;
         } catch (nodeError) {
