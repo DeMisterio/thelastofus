@@ -91,7 +91,95 @@
         { "id": "fence_base", "verbs": ["under the"] },
         { "id": "trash_pile", "verbs": ["inside the"] }
       ]
+    },
+    {
+      "id": "fog_street_items",
+      "containers": [
+        { "id": "street_ground", "verbs": ["on the"] },
+        { "id": "abandoned_car", "verbs": ["inside the", "on the"] },
+        { "id": "broken_lamp_post", "verbs": ["on the"] }
+      ]
+    },
+    {
+      "id": "abandoned_house_items",
+      "containers": [
+        { "id": "collapsed_table", "verbs": ["on the"] },
+        { "id": "open_drawer", "verbs": ["inside the"] },
+        { "id": "fireplace", "verbs": ["inside the"] }
+      ]
+    },
+    {
+      "id": "shore_items",
+      "containers": [
+        { "id": "wet_sand", "verbs": ["on the"] },
+        { "id": "driftwood_pile", "verbs": ["on the"] },
+        { "id": "washed_crate", "verbs": ["inside the"] }
+      ]
+    },
+    {
+      "id": "wrecked_car_items",
+      "containers": [
+        { "id": "burnt_trunk", "verbs": ["inside the"] },
+        { "id": "front_seat_wreck", "verbs": ["on the"] }
+      ]
+    },
+    {
+      "id": "ship_deck_items",
+      "containers": [
+        { "id": "metal_crate", "verbs": ["inside the"] },
+        { "id": "deck_floor", "verbs": ["on the"] }
+      ]
+    },
+    {
+      "id": "pump_items",
+      "containers": [
+        { "id": "fuel_hose", "verbs": ["on the"] },
+        { "id": "oil_spill", "verbs": ["on the"] }
+      ]
+    },
+    {
+      "id": "busstop_items",
+      "containers": [
+        { "id": "bench", "verbs": ["on the", "under the"] },
+        { "id": "trash_can_street", "verbs": ["inside the"] }
+      ]
+    },
+    {
+      "id": "elder_living_items",
+      "containers": [
+        { "id": "antique_cabinet", "verbs": ["inside the"] },
+        { "id": "coffee_table", "verbs": ["on the"] }
+      ]
+    },
+    {
+      "id": "driver_items",
+      "containers": [
+        { "id": "steering_column", "verbs": ["under the"] },
+        { "id": "driver_door_pocket", "verbs": ["inside the"] }
+      ]
+    },
+    {
+      "id": "fire_items",
+      "containers": [
+        { "id": "fire_pit", "verbs": ["inside the"] }
+      ]
+    },
+    {
+      "id": "pump_items",
+      "containers": [
+        { "id": "fuel_pump", "verbs": ["on the"] },
+        { "id": "ground_oil_spill", "verbs": ["in the"] }
+      ]
+    },
+    {
+      "id": "beach_items",
+      "containers": [
+        { "id": "driftwood", "verbs": ["under the"] },
+        { "id": "sand_pile", "verbs": ["buried in"] }
+      ]
     }
+
+
   ],
 
     "containers": [
@@ -407,7 +495,115 @@
           { "id": "plastic_wrap" },
           { "id": "empty_can" }
         ]
-      }
+      },
+      {
+        "id": "street_ground",
+        "tokens": ["ground", "street"],
+        "items": [
+          { "id": "wet_newspaper" },
+          { "id": "empty_bottle" },
+          { "id": "plastic_wrap" }
+        ]
+      },
+      {
+        "id": "abandoned_car",
+        "tokens": ["abandoned", "car"],
+        "items": [
+          { "id": "rotted_blanket" },
+          { "id": "empty_can" }
+        ]
+      },
+      {
+        "id": "broken_lamp_post",
+        "tokens": ["lamp", "post"],
+        "items": [
+          { "id": "loose_wires" }
+        ]
+      },
+      {
+        "id": "collapsed_table",
+        "tokens": ["collapsed", "table"],
+        "items": [
+          { "id": "matchbox" },
+          { "id": "old_photo" }
+        ]
+      },
+      {
+        "id": "fireplace",
+        "tokens": ["fireplace"],
+        "items": [
+          { "id": "charcoal" }
+        ]
+      },
+      {
+        "id": "driftwood_pile",
+        "tokens": ["driftwood", "wood"],
+        "items": [
+          { "id": "dry_wood_piece" },
+          { "id": "fuel_rope" }
+        ]
+      },
+      {
+        "id": "burnt_trunk",
+        "tokens": ["burnt", "trunk"],
+        "items": [
+          { "id": "signal_flare" }
+        ]
+      },
+      {
+      "id": "metal_crate",
+      "tokens": ["metal", "crate"],
+      "items": [
+        { "id": "thermal_blanket" },
+        { "id": "water_ration" }
+      ]
+      },
+      {
+      "id": "deck_floor",
+      "tokens": ["deck", "floor"],
+      "items": [
+        { "id": "wet_rope" },
+        { "id": "rusty_hook" },
+        { "id": "oil_stain" }
+      ]
+      },
+      {
+      "id": "fuel_hose",
+      "tokens": ["fuel", "hose"],
+      "items": [
+        { "id": "petrol_residue" }
+      ]
+    },
+    {
+      "id": "bench",
+      "tokens": ["bench"],
+      "items": [{ "id": "newspaper" }, { "id": "discarded_ticket" }]
+    },
+    {
+      "id": "antique_cabinet",
+      "tokens": ["antique", "cabinet"],
+      "items": [{ "id": "silver_utensils" }, { "id": "old_photos" }]
+    },
+    {
+      "id": "driver_door_pocket",
+      "tokens": ["driver", "door", "pocket"],
+      "items": [{ "id": "flashlight" }, { "id": "rag" }]
+    },
+    {
+      "id": "fire_pit",
+      "tokens": ["fire", "pit"],
+      "items": [{ "id": "ash" }, { "id": "charcoal" }]
+    },
+    {
+      "id": "fuel_pump",
+      "tokens": ["fuel", "pump"],
+      "items": [{ "id": "fuel_nozzle" }]
+    },
+    {
+      "id": "driftwood",
+      "tokens": ["driftwood"],
+      "items": [{ "id": "seaweed" }, { "id": "crab_shell" }]
+    }
     ],
   
     "items": [
@@ -1041,11 +1237,11 @@
         "type": "container",
         "NV": null,
         "Eating_speed": null,
-        "ignitable":["true", 0.3],
+        "ignitable": [true, 0.3],
         "effect": null,
         "functionality": "store_items",
         "HarmRate": 0,
-        "capacity": 20,
+        "capacity": 20, 
         "movable": { "access": true, "weight": 3 }
       },
       {
@@ -1107,7 +1303,216 @@
         "functionality": null,
         "HarmRate": null,
         "movable": { "access": false, "weight": 55 }
+      },
+      {
+        "id": "rotted_blanket",
+        "tokens": ["rotted", "blanket"],
+        "type": "comfort",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": ["true", 0.8],
+        "effect": "unsanitary",
+        "functionality": "warm",
+        "HarmRate": 1,
+        "capacity": null,
+        "movable": { "access": true, "weight": 4 }
+      },
+      {
+        "id": "loose_wires",
+        "tokens": ["loose", "wires"],
+        "type": "junk",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": ["true", 0.6],
+        "effect": "spark",
+        "functionality": null,
+        "HarmRate": 2,
+        "capacity": null,
+        "movable": { "access": true, "weight": 2 }
+      },
+      {
+        "id": "dry_wood_piece",
+        "tokens": ["dry", "wood"],
+        "type": "junk",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": ["true", 0.9],
+        "effect": "fire_boost",
+        "functionality": "ignite",
+        "HarmRate": 0,
+        "capacity": null,
+        "movable": { "access": true, "weight": 2 }
+      },
+      {
+        "id": "fuel_rope",
+        "tokens": ["fuel", "rope"],
+        "type": "junk",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": ["true", 0.95],
+        "effect": "huge_fire",
+        "functionality": "ignite",
+        "HarmRate": 5,
+        "capacity": null,
+        "movable": { "access": true, "weight": 3 }
+      },
+      {
+        "id": "signal_flare",
+        "tokens": ["signal", "flare"],
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": ["true", 1.0],
+        "effect": "signal_boost",
+        "functionality": "signal",
+        "HarmRate": 10,
+        "capacity": null,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "wet_rope",
+        "tokens": ["wet", "rope"],
+        "type": "junk",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": ["true", 0.4],
+        "effect": "flammable",
+        "functionality": "tie",
+        "HarmRate": 0,
+        "capacity": null,
+        "movable": { "access": true, "weight": 3 }
+      },
+      {
+        "id": "thermal_blanket",
+        "tokens": ["thermal", "blanket"],
+        "type": "comfort",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": ["true", 0.4],
+        "effect": null,
+        "functionality": "warm",
+        "HarmRate": 0,
+        "capacity": null,
+        "movable": { "access": true, "weight": 2 }
+      },
+      {
+        "id": "water_ration",
+        "tokens": ["water", "ration"],
+        "type": "food",
+        "NV": 300,
+        "Eating_speed": 2,
+        "ignitable": ["false", 0],
+        "effect": null,
+        "functionality": "drink",
+        "HarmRate": 0,
+        "capacity": null,
+        "movable": { "access": true, "weight": 1 }
+      },
+      {
+        "id": "petrol_residue",
+        "tokens": ["petrol", "residue"],
+        "type": "junk",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": ["true", 0.9],
+        "effect": "flammable",
+        "functionality": null,
+        "HarmRate": 5,
+        "capacity": null,
+        "movable": { "access": false, "weight": 0 }
+      },
+      {
+        "id": "discarded_ticket",
+        "tokens": ["discarded", "ticket"],
+        "type": "junk",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": [true, 0.8],
+        "effect": null,
+        "functionality": "read",
+        "HarmRate": 0,
+        "capacity": null,
+        "movable": { "access": true, "weight": 0.1 }
+      },
+      {
+        "id": "silver_utensils",
+        "tokens": ["silver", "utensils"],
+        "type": "valuable",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": [false, 0],
+        "effect": null,
+        "functionality": "trade",
+        "HarmRate": 5,
+        "capacity": null,
+        "movable": { "access": true, "weight": 1.5 }
+      },
+      {
+        "id": "flashlight",
+        "tokens": ["flashlight"],
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": [false, 0],
+        "effect": "light_source",
+        "functionality": "illuminate",
+        "HarmRate": 10,
+        "capacity": null,
+        "movable": { "access": true, "weight": 0.5 }
+      },
+      {
+        "id": "rag",
+        "tokens": ["rag"],
+        "type": "tool",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": [true, 0.5],
+        "effect": "flammable",
+        "functionality": "clean",
+        "HarmRate": 0,
+        "capacity": null,
+        "movable": { "access": true, "weight": 0.2 }
+      },
+      {
+        "id": "fuel_nozzle",
+        "tokens": ["fuel", "nozzle"],
+        "type": "object",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": [false, 0],
+        "effect": null,
+        "functionality": "pump_gas",
+        "HarmRate": 15,
+        "capacity": null,
+        "movable": { "access": false, "weight": 5 }
+      },
+      {
+        "id": "ancient_map",
+        "tokens": ["ancient", "map"],
+        "type": "document",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": [true, 0.7],
+        "effect": "fragile",
+        "functionality": "navigate",
+        "HarmRate": 0,
+        "capacity": null,
+        "movable": { "access": true, "weight": 0.1 }
+      },
+      {
+        "id": "assault_rifle",
+        "tokens": ["assault", "rifle"],
+        "type": "weapon",
+        "NV": null,
+        "Eating_speed": null,
+        "ignitable": [false, 0],
+        "effect": "intimidation",
+        "functionality": "shoot",
+        "HarmRate": 100,
+        "capacity": null,
+        "movable": { "access": true, "weight": 4 }
       }
+
     ]
 }    
 

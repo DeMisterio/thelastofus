@@ -31,6 +31,7 @@ write // Record information (notebook, pen)
 wear // Equip clothing (gloves, mask, single_shoe)
 sit // Sit on an object (plastic_chair)
 clip // Attach with a clothespin
+give // give some item to another character
 
 ACTIONS WHERE THE ITEM OR STATE AFFECTS THE PLAYER (Item‑Affecting Verbs):
 cry // The item triggers an emotional response in the player

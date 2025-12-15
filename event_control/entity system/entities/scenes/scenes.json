@@ -6,9 +6,7 @@
         "locations": [{
             "location_id": "Init_house", "sub_locations_id": "kitchen"
         }],
-        "on_complete": {
-            "location": ["shop"]
-        },
+        "on_complete": null,
         "intro_text": [
             { "text": "The day was disrupted by the noise that rules the world.", "weight": 2 },
             { "text": "I was sitting with my friends, celebrating our university’s third anniversary. It was the happiest moment I can remember.", "weight": 2 },
@@ -280,9 +278,100 @@
             { "text": "And something DID go wrong.", "weight": 2 },
             { "text": "A black car rolled into the station. Five men stepped out.", "weight": 2 }
         ]
-        }   
-
-
-
+        },
+        {
+        "scene_n": 10,
+        "scene_id": 10,
+        "scene_title": "Wrong Road",
+        "locations": [{
+            "location_id": "Ghost_Town_Beach",
+            "sub_locations_id": "foggy_road"
+        }],
+        "on_complete": {
+            "location": ["beach_shore"]
+        },
+        "intro_text": [
+            { "text": "The fog thickened until the headlights barely pierced the darkness.", "weight": 2 },
+            { "text": "Suddenly, the road ended. We arrived in a ghost town near a desolate beach.", "weight": 2 },
+            { "text": "Said panic rose. 'This is the WRONG direction! We shouldn't be here!'", "weight": 1 },
+            { "text": "Dom remained composed. 'We don't know anything anymore. Let's look around.'", "weight": 1 },
+            { "text": "We realized we needed to signal someone, but we had no flare gun.", "weight": 2 }
+        ]
+        },
+        {
+        "scene_n": 11,
+        "scene_id": 11,
+        "scene_title": "The Signal",
+        "locations": [{
+            "location_id": "Ghost_Town_Beach",
+            "sub_locations_id": "beach_shore"
+        }],
+        "on_complete": {
+            "location": ["rescue_ship_deck"]
+        },
+        "intro_text": [
+            { "text": "The wind sliced through our jackets. We needed to make a signal.", "weight": 2 },
+            { "text": "We had to reach 100 Signal Points before the cold took us.", "weight": 1 },
+            { "text": "We could shout, burn the car, or shoot into the sky.", "weight": 1 },
+            { "text": "After a desperate struggle, a beam of light cut through the fog.", "weight": 2 },
+            { "text": "A massive ship emerged from the darkness.", "weight": 2 }
+        ]
+        },
+        {
+        "scene_n": 12,
+        "scene_id": 12,
+        "scene_title": "Shock",
+        "locations": [{
+            "location_id": "Ghost_Town_Beach",
+            "sub_locations_id": "water_edge"
+        }],
+        "on_complete": {
+            "branch": ["scene_13_swim", "scene_13_sacrifice"]
+        },
+        "intro_text": [
+            { "text": "The ship was close, but Derick whispered, 'I... can't swim.'", "weight": 2 },
+            { "text": "Dom pulled out his gun. 'Someone has to stay behind. We can't carry everyone.'", "weight": 2 },
+            { "text": "He pointed the gun at Said.", "weight": 1 },
+            { "text": "I had to choose: Sacrifice myself and swim, or let the group crumble.", "weight": 2 }
+        ]
+        },
+        {
+        "scene_n": 13,
+        "scene_id": "13A",
+        "scene_title": "The Traitor",
+        "locations": [{
+            "location_id": "Rescue_Ship",
+            "sub_locations_id": "deck"
+        }],
+        "on_complete": {
+            "end_game": true
+        },
+        "intro_text": [
+            { "text": "We were pulled aboard the rescue boat. Dom threw his gun into the sea.", "weight": 1 },
+            { "text": "Dom: 'I lost control... it was survival instinct.'", "weight": 1 },
+            { "text": "On the main deck, the crew found a gun in Said's backpack.", "weight": 2 },
+            { "text": "They threw Said overboard. Dom watched. Dead stare.", "weight": 2 },
+            { "text": "The game ended not with a win, but with moral devastation.", "weight": 2 }
+        ]
+        },
+        {
+        "scene_n": 13,
+        "scene_id": "13B",
+        "scene_title": "The Traitor",
+        "locations": [{
+            "location_id": "Rescue_Ship",
+            "sub_locations_id": "deck"
+        }],
+        "on_complete": {
+            "end_game": true
+        },
+        "intro_text": [
+            { "text": "We were pulled aboard the rescue boat. Dom threw his gun into the sea.", "weight": 1 },
+            { "text": "Dom: 'I lost control... it was survival instinct.'", "weight": 1 },
+            { "text": "On the main deck, the crew found a gun in Said's backpack.", "weight": 2 },
+            { "text": "They threw Said overboard. Dom watched. Dead stare.", "weight": 2 },
+            { "text": "The game ended not with a win, but with moral devastation.", "weight": 2 }
+        ]
+        }
 ]
 }
