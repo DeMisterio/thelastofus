@@ -1,42 +1,34 @@
-const hasDOM = typeof document !== "undefined";
-let cli = null;
-let outputPane = null;
+// Game_Visual/script.js
 
-let rooms = [];
-let roomNum = 0;
+let rooms = [], roomNum;
 const MAPWIDTH = 2;
 
-let inputResolve = null; // Переменная для хранения "разрешения" промиса
+// --- ДОБАВЛЕНО: Переменная для промиса ---
+let inputResolve = null; 
 
-// Новая функция ожидания ввода
+export class window {
+    constructor(text = null) {
+        this.text = text;
+    }
+}
+export const Gwindow = new window(); // Gwindow с маленькой буквы класс, исправь если класс Window
+
+// --- НОВАЯ ФУНКЦИЯ: Ожидание ввода ---
 export function waitForInput() {
     return new Promise((resolve) => {
-        inputResolve = resolve; // Сохраняем функцию resolve, чтобы вызвать её позже
+        inputResolve = resolve; // Сохраняем "ключ" к запуску кода в переменную
     });
 }
 
-
-
-export class GameWindow {
-    constructor(text = "") {
-        this.text = text;
-    }
-    get_text() {
-        return this.text;
-    }
-}
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function checkInput(e) {
+// --- ОБНОВЛЕННАЯ ФУНКЦИЯ: checkInput ---
+window.checkInput = function(e) { // Делаем глобальной для HTML
     if (e.key == "Enter") {
         e.preventDefault();
-        let content = document.getElementById('cli').innerText; // Или textContent
-        document.getElementById('cli').innerHTML = "";
+        let cli = document.getElementById('cli');
+        let content = cli.innerText; // Или textContent
+        cli.innerHTML = "";
         
-        // Если кто-то ждет ввода (наш gameprocess), отдаем ему текст
+        // Если игра ждет ввода (inputResolve существует), отдаем текст и размораживаем её
         if (inputResolve) {
             inputResolve(content);
             inputResolve = null; // Сбрасываем
@@ -78,13 +70,12 @@ function initGame() {
     rooms = []
 }
 
-export function outputText(txt = "") {
-    if (!hasDOM) return;
-    if (!outputPane) return;
-    const newPara = document.createElement("p");
-    newPara.textContent = txt;
-    outputPane.appendChild(newPara);
-    newPara.scrollIntoView({ behavior: "smooth", block: "end" });
+export function outputText(txt) {
+    let newPara = document.createElement("p");
+    newPara.innerHTML = txt;
+    let output = document.getElementById('output'); // Добавил получение элемента
+    output.appendChild(newPara);
+    newPara.scrollIntoView();
 }
 
 const INTRO_TEXT = [

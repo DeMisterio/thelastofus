@@ -1,6 +1,14 @@
-import { Gwindow, outputText, waitForInput } from './script.js'
+// Game_Visual/CLI_effects/effect_control.js
+import { Gwindow, outputText, waitForInput } from '../script.js' // Проверь путь к script.js!
+
+// Старая синхронная функция (можно оставить для совместимости, но лучше не юзать)
+export function get_text(){
+    return Gwindow.text
+}
+
+// --- НОВАЯ АСИНХРОННАЯ ФУНКЦИЯ ---
 export async function get_user_input_async(){
-    // Ждем, пока юзер нажмет Enter и Promise разрешится
+    // Эта строчка "заморозит" выполнение кода, пока в script.js не сработает inputResolve
     const text = await waitForInput(); 
     return text;
 }
