@@ -6,14 +6,15 @@ const MAPWIDTH = 2;
 // --- ДОБАВЛЕНО: Переменная для промиса ---
 let inputResolve = null; 
 
-export class window {
+export class GameWindow {
     constructor(text = null) {
         this.text = text;
     }
 }
 
-// Export Gwindow early so it's available throughout the module
-export const Gwindow = new window();
+window
+
+export const Gwindow = new GameWindow();
 
 // --- НОВАЯ ФУНКЦИЯ: Ожидание ввода ---
 export function waitForInput() {
@@ -131,8 +132,8 @@ async function HelloWorld() {
 }
 
 // Make functions globally accessible
-window.checkInput = checkInput;
-window.initGame = initGame;
+GameWindowwindow.checkInput = checkInput;
+GameWindowwindow.initGame = initGame;
 
 
 window.addEventListener("DOMContentLoaded", () => {
