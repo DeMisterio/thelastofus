@@ -206,7 +206,7 @@ export async function HelloWorld(sceneObj) {
     
     for (let textObj of sceneObj.scene_texts) {
         send_text(textObj.text);
-        await sleep(1000 * (textObj.weight || 1)); // Wait based on weight
+        await sleep(3000 * (textObj.weight || 1)); // Wait based on weight
     }
 }
 
