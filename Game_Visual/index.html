@@ -7,15 +7,23 @@
         import { initializeGame } from '../event_control/event_control.js';
         
         // Initialize game when page loads
-        window.addEventListener('DOMContentLoaded', async () => {
+        // Module scripts are deferred, so DOMContentLoaded may have already fired
+        const initGame = async () => {
             try {
                 await initializeGame();
             } catch (error) {
                 console.error("Failed to initialize game:", error);
             }
-        });
+        };
+        
+        // Check if DOM is already loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initGame);
+        } else {
+            // DOM is already loaded, run immediately
+            initGame();
+        }
     </script>
-    <script src="../script.js" type="module"></script>
 </head>
 
 <body>
