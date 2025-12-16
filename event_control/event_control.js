@@ -66,7 +66,7 @@ function sleep(ms) {
 }
 async function DisplayIntroText() {
     for (const line of INTRO_TEXT) {
-        outputText(line);
+        send_text(line);
         await sleep(1676);
     }
 }
