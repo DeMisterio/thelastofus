@@ -125,7 +125,8 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function HelloWorld() {
+// Export HelloWorld function to display intro text
+export async function HelloWorld() {
     for (const line of INTRO_TEXT) {
         outputText(line);
         await sleep(1676);

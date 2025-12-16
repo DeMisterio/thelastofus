@@ -2,6 +2,7 @@
 
 import { character, location, item, scenes, loadJSONData } from './entity_system/entity_init/objective_export.js'
 import { send_text, get_text } from '../effect_control.js'
+import { HelloWorld as DisplayIntroText } from '../script.js'
 // The game initialisation flow: 
 
 // 0. Check the logs for savings if no - start location => scene[0]
@@ -190,7 +191,10 @@ export async function initializeGame() {
         
         GameControl = new GameState(scene, loc);
         
-        // Output introtext via HelloWorld before first scene
+        // First display the intro text from script.js
+        await DisplayIntroText();
+        
+        // Then output scene introtext via HelloWorld before first scene
         await HelloWorld(scene);
         
         // Start the game loop
