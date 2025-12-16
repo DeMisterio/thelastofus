@@ -12,7 +12,6 @@ export class GameWindow {
     }
 }
 
-window
 
 export const Gwindow = new GameWindow();
 
@@ -132,8 +131,8 @@ async function HelloWorld() {
 }
 
 // Make functions globally accessible
-GameWindowwindow.checkInput = checkInput;
-GameWindowwindow.initGame = initGame;
+GameWindow.checkInput = checkInput;
+GameWindow.initGame = initGame;
 
 
 window.addEventListener("DOMContentLoaded", () => {
