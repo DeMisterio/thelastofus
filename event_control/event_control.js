@@ -109,9 +109,9 @@ const isWhitespaceString = str => !str.replace(/\s/g, '').length
 
 
 function get_content() {
-    content = get_text()
+    let content = get_text()
     let abuse_counter = 0;
-    while (isWhitespaceString(content) && isGarbage(content)) {
+    while (isWhitespaceString(content) || isGarbage(content)) {
         //Character has to say that 'i dont even know what to do'
         content = get_text()
         abuse_counter += 1
