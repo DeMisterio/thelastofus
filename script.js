@@ -133,3 +133,8 @@ async function HelloWorld() {
 // Make functions globally accessible
 window.checkInput = checkInput;
 window.initGame = initGame;
+
+
+window.addEventListener("DOMContentLoaded", () => {
+    HelloWorld();
+});
