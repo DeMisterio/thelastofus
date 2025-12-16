@@ -10,6 +10,7 @@ import { send_text, get_text } from '../effect_control.js'
 //2. Assign the location of characters upstairs as the locations[0][sub_location].id 
 //3. start the flow of scenario
 
+
 export class GameState {
 
     constructor(scene, current_location, hint_list = []) {
