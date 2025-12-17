@@ -159,7 +159,7 @@ async function out_scene_text() {
         }
     }
     
-    
+
     document.removeEventListener("keydown", spaceHandler);
     return;
 }
@@ -231,6 +231,7 @@ async function gameprocess() {
             continue;
         }
 
+        
         // C. Обработка NLP и Действий
         // 1. Получаем intent и entities
         const processedData = await textprocess(inputRaw);
