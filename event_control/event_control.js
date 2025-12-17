@@ -2,7 +2,7 @@
 
 import { character, location, item, scenes, loadJSONData } from './entity_system/entity_init/objective_export.js'
 import { send_text, get_text } from '../effect_control.js'
-
+import { action_identifier, textprocess } from './action_control/action_engine.js'
 // The game initialisation flow: 
 
 // 0. Check the logs for savings if no - start location => scene[0]
@@ -38,12 +38,6 @@ const INTRO_TEXT = [
     "There is no perfect way to play.",
     "You don’t need to guess the right command.",
     "Just say what feels natural.",
-    "For example: Go to the kitchen / Pick up the passport / Leave the house",
-    "You are not a hero here.",
-    "You are just a person in a bad situation.",
-    "Trying to make it through.",
-    "The world outside is unstable.",
-    "People are scared.",
     "Things happen fast.",
     "Some choices matter.",
     "Some mistakes are okay.",
@@ -61,7 +55,51 @@ const INTRO_TEXT = [
     "",
     " "
 ];
+const SceneLogic = {
+    // Логика для Сцены 2: "Preparation"
+    // Задача: Игрок должен собрать 5 предметов перед выходом на улицу
+    2: async function() {
+        const player = GameControl.player ?? GameControl.getChar("Me");
+        const currentScene = GameControl.scene;
+        
+        // Получаем условие завершения из JSON (ожидается { "location": ["street_bullet"] })
+        //
+        const finishCond = currentScene.scene_finish_condition; 
 
+        if (!finishCond || !finishCond.location) return false;
+
+        const targetLocID = finishCond.location[0]; // "street_bullet"
+        
+        // 1. Проверяем, находится ли игрок в целевой локации (сработал ли 'go to street')
+        if (GameControl.current_location.location_id === targetLocID) {
+            
+            // 2. Проверяем условия миссии (собрано ли 5 предметов)
+            const requiredItems = 5;
+            const currentItems = player.init_items.length;
+            
+            if (currentItems >= requiredItems) {
+                // УСПЕХ
+                const lootList = player.init_items.join(", ");
+                send_text(`I have packed my pockets with the most important for me things: ${lootList}, and left the room. Realising, it is the last time i will see it...`);
+                return true; 
+            } else {
+                // ПРОВАЛ (Недостаточно предметов)
+                // Возвращаем игрока обратно в дом (так как он не может уйти)
+                // Создаем заново объект локации "Init_house"
+                GameControl.current_location = new location("Init_house");
+                // Можно установить сублокацию выхода (например, hall)
+                GameControl.active_sub_location = "hall";
+
+                const remaining = requiredItems - currentItems;
+                send_text(`I really need more items with me to go. At least ${remaining} more!`);
+                
+                return false;
+            }
+        }
+        return false;
+    }
+    // Сюда можно добавлять функции для scene_3, scene_4 и т.д.
+};
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -73,61 +111,58 @@ async function DisplayIntroText() {
     }
 }
 
+    
 async function out_scene_text() {
-    if (!scene || !scene.scene_texts) {
+    // Используем GameControl.scene, так как scene обновляется глобально
+    const currentScene = GameControl.scene;
+    
+    if (!currentScene || !currentScene.scene_texts) {
         return;
     }
     
-    let BP = false
-    let skip_text_cond = []
-    let skip_text_amo = []
+    let BP = false;
+    let skip_text_cond = [];
+    let skip_text_amo = [];
     
     const spaceHandler = function (event) {
         if (event.code === "Space") {
-            console.log("Space key pressed!");
-            BP = true; // optional: stops page from scrolling
+            BP = true; 
         }
     };
     
     document.addEventListener("keydown", spaceHandler);
 
     textloop:
-    for (let text = 0; text < scene.scene_texts.length; text++) {
+    for (let text = 0; text < currentScene.scene_texts.length; text++) {
+        const txtLine = currentScene.scene_texts[text];
+        
         if (skip_text_amo.length > 0) {
-            for (let i = 0; i < skip_text_amo.length; i++) {
-                send_text(scene.scene_texts[text].text);
-                text++;
-                if (text >= scene.scene_texts.length) break textloop;
-                continue textloop;
-            }
-            send_text(scene.scene_texts[text].text);
-            if (BP === true) {
-                skip_text_cond.push("1");
-                if (skip_text_cond.length === 5) {
-                    for (let z = 0; z < 4; z++) {
-                        skip_text_cond.pop();
-                    }
-                    skip_text_amo.push(1, 1);
-                }
-            } else {
-                if (skip_text_cond.length < 1) {
-                    skip_text_amo.pop();
-                }
-                await sleep(1000);
-                BP = false;
-            }
+            // Режим быстрого пропуска
+             send_text(txtLine.text);
+             continue; // Пропускаем sleep
         } else {
-            send_text(scene.scene_texts[text].text);
-            await sleep(1000 * (scene.scene_texts[text].weight || 1));
-            BP = false;
+            // Обычный режим
+            send_text(txtLine.text);
+            
+            if (BP === true) {
+                // Логика активации пропуска (5 нажатий)
+                skip_text_cond.push("1");
+                if (skip_text_cond.length >= 5) {
+                    skip_text_amo.push(1); // Включаем пропуск
+                }
+                BP = false;
+            } else {
+                // Сброс счетчика, если не спамим пробел
+                if (skip_text_cond.length > 0) skip_text_cond.pop();
+                await sleep(1000 * (txtLine.weight || 1));
+            }
         }
     }
     
     document.removeEventListener("keydown", spaceHandler);
-    skip_text_amo = []
-    skip_text_cond = []
-    return
+    return;
 }
+
 function isGarbage(input) {
     if (!input) return true;
     const text = input.trim().toLowerCase();
@@ -182,14 +217,56 @@ function get_content() {
 }
 
 async function gameprocess() {
+    // 1. Выводим текст первой сцены при старте
+    await out_scene_text();
+
     while (Gameloop === true) {
-        await out_scene_text()
+        // A. Ожидание ввода игрока
+        const inputRaw = await get_user_input_async();
         
-        content = get_content()
+        // B. Обработка "Мусора"
+        if (isGarbage(inputRaw)) {
+            send_text("I don't understand that...");
+            continue;
+        }
+
+        // C. Обработка NLP и Действий
+        // 1. Получаем intent и entities
+        const processedData = await textprocess(inputRaw);
         
-        // Process the content here
-        // TODO: Add action processing logic
+        // 2. Выполняем действие
+        const actionResult = action_identifier(processedData.intent?.name, processedData.entities);
         
+        // 3. Выводим результат действия (Action Engine возвращает строку)
+        if (actionResult) {
+            send_text(actionResult);
+        } else {
+            send_text("I can't do that right now.");
+        }
+
+        // D. Проверка условий Сцены (Scene Logic)
+        const currentSceneNum = GameControl.scene.scene_n;
+        
+        if (SceneLogic[currentSceneNum]) {
+            // Запускаем проверку для текущей сцены
+            const sceneCompleted = await SceneLogic[currentSceneNum]();
+            
+            if (sceneCompleted) {
+                // ПЕРЕХОД НА СЛЕДУЮЩУЮ СЦЕНУ
+                const nextSceneObj = GameControl.scene.getNextScene();
+                
+                if (nextSceneObj) {
+                    GameControl.scene = nextSceneObj;
+                    send_text(`\n--- SCENE ${nextSceneObj.scene_n}: ${nextSceneObj.scene_title} ---\n`);
+                    
+                    // Выводим текст новой сцены
+                    await out_scene_text();
+                } else {
+                    send_text("THE END. (No more scenes defined)");
+                    Gameloop = false;
+                }
+            }
+        }
     }
 }
 
@@ -212,44 +289,63 @@ export async function HelloWorld(sceneObj) {
 }
 
 // Initialize game after data is loaded
+let Gameloop = false; 
+let scene = null;
+
 export async function initializeGame() {
     try {
-        // First ensure JSON data is loaded
         const dataLoaded = await loadJSONData();
-        if (!dataLoaded) {
-            throw new Error("Failed to load game data");
-        }
+        if (!dataLoaded) throw new Error("Failed to load game data");
         
-        scene = new scenes(1, 1);
-        
-        let loc = new location(
-            scene.scene_locations[0].location_id      // дом
-        );
-        
-        // Map character names to character objects
+        // 1. Инициализация Сцены 1
+        scene = new scenes(1); 
+
+        // 2. Инициализация Локации (Берем первую локацию из сцены 1)
+        // В scenes.json: Scene 1 -> "Init_house"
+        let startLocID = scene.scene_locations[0].location_id;
+        let loc = new location(startLocID);
+
+        // 3. Инициализация Персонажей
+        // Преобразуем массив имен ["Tom", "Me"...] в объекты character
         if (loc.characters && Array.isArray(loc.characters)) {
+            loc.characters = loc.characters.map(name => new character(null, name)); 
+            // Используем конструктор: new character(preseted=name) если name совпадает с базой
+            // В вашем классе character: constructor(preseted=null...)
+            // Поэтому передаем имя первым аргументом:
             loc.characters = loc.characters.map(name => new character(name));
         }
+
+        // 4. Создаем GameState
+        // Важно: Мы должны записать это в глобальный объект, доступный action_engine
+        // В текущей архитектуре action_engine импортирует GameControl из objective_export.
+        // Мы должны обновить ЕГО.
+        // Т.к. мы не можем переписать импорт, мы должны использовать метод set или мутировать объект.
         
-        console.log(loc.characters);
+        // ВРЕМЕННЫЙ ХАК: Присваиваем свойства глобальному GameControl, если он объект.
+        // Если в objective_export GameControl = null, то мы не можем его изменить через импорт.
+        // РЕШЕНИЕ: action_engine должен брать GameState из этого файла? 
+        // Или objective_export должен иметь функцию initGameControl.
         
-        GameControl = new GameState(scene, loc);
+        // Допустим, objective_export имеет объект-контейнер.
+        // Для работы кода, я присвою локальному GameControl и буду надеяться, 
+        // что в objective_export.js `GameControl` инициализирован как объект или класс.
         
-        // First display the intro text from script.js
+        // ПРАВИЛЬНЫЙ ПУТЬ: 
+        // Присваиваем свойства существующему GameControl (импортированному)
+        Object.assign(GameControl, new GameState(scene, loc));
+        // Устанавливаем ссылку на игрока
+        GameControl.player = GameControl.getChar("Me");
+
         await DisplayIntroText();
         
-        // Then output scene introtext via HelloWorld before first scene
-        await HelloWorld(scene);
-        
-        // Start the game loop
         Gameloop = true;
         gameprocess();
+        
     } catch (error) {
         console.error("Error initializing game:", error);
-        send_text("Error initializing game: " + error.message);
+        send_text("Error: " + error.message);
     }
 }
-
 
 
 
