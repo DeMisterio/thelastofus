@@ -159,6 +159,7 @@ async function out_scene_text() {
         }
     }
     
+    
     document.removeEventListener("keydown", spaceHandler);
     return;
 }
