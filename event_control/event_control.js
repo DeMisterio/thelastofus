@@ -289,8 +289,6 @@ export async function HelloWorld(sceneObj) {
 }
 
 // Initialize game after data is loaded
-let Gameloop = false; 
-let scene = null;
 
 export async function initializeGame() {
     try {
