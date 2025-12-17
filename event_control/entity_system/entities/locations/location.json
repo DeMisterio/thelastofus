@@ -9,7 +9,8 @@
         { "name": "living_room", "items_id": "living_room_set", "tokens": ["living", "room"] },
         { "name": "bathroom", "items_id": "bathroom_set", "tokens": ["bathroom"] },
         { "name": "hall", "items_id": "hall_set", "tokens": ["hall"] },
-        { "name": "balcony", "items_id": "balcony_set", "tokens": ["balcony"] }
+        { "name": "balcony", "items_id": "balcony_set", "tokens": ["balcony"] },
+        { "name": "exit", "items_id": null, "tokens": ["exit"] }
       ],
       "characters": ["Tom", "Derick", "Alex", "Dominic", "Me"],
       "scenes": []

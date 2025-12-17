@@ -152,7 +152,7 @@ export class character {
     #character_type;
     #personality;
     #init_parameters;
-
+    #verbal_reactions
     constructor(preseted = null, name = null, character_type = null, personality = null, init_parameters = null) {
         if (!CHARACTERdata || !CHARACTERdata.characters) {
             throw new Error("CHARACTERdata not loaded yet. Call loadJSONData() first.");
@@ -169,6 +169,7 @@ export class character {
             this.#character_type = presetData.character_type;
             this.#personality = presetData.personality;
             this.#init_parameters = presetData.init_parameters;
+
         } else {
             this.#name = name;
             this.#character_type = character_type;
@@ -205,6 +206,9 @@ export class character {
     get init_parameters() {
         return this.#init_parameters;
     }
+    get verbal_reactions() {
+        return this.#verbal_reactions;
+    }
 }
 
 export class location {
@@ -238,6 +242,7 @@ export class item {
             throw new Error(`Item not found: ${item_id}`);
         }
         this.id = data.id;
+        this.state = state
         this.type = data.type;
         this.NV = data.NV ?? null;
         this.Eating_speed = data.Eating_speed ?? null;

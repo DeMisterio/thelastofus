@@ -192,7 +192,8 @@
           { "name": "fork", "id": "fork" },
           { "name": "cup", "id": "cup" },
           { "name": "kettle", "id": "kettle" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "table",
@@ -203,7 +204,8 @@
           { "name": "phone", "id": "phone" },
           { "name": "rusty spoon", "id": "rusty_spoon" },
           { "name": "plate", "id": "plate" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "fridge",
@@ -213,7 +215,8 @@
           { "name": "eggs pack", "id": "eggs_pack" },
           { "name": "cold chicken", "id": "cold_chicken" },
           { "name": "yogurt", "id": "yogurt" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "drawer",
@@ -223,7 +226,8 @@
           { "name": "scissors", "id": "scissors" },
           { "name": "lighter", "id": "lighter" },
           { "name": "measuring tape", "id": "measuring_tape" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "sink",
@@ -231,7 +235,8 @@
         "items": [
           { "name": "dirty plate", "id": "dirty_plate" },
           { "name": "wet sponge", "id": "wet_sponge" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "cabinet",
@@ -241,7 +246,8 @@
           { "name": "salt shaker", "id": "salt_shaker" },
           { "name": "pepper shaker", "id": "pepper_shaker" },
           { "name": "olive oil bottle", "id": "olive_oil_bottle" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "trash_bin",
@@ -250,14 +256,16 @@
           { "name": "banana peel", "id": "banana_peel" },
           { "name": "empty can", "id": "empty_can" },
           { "name": "plastic wrap", "id": "plastic_wrap" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "microwave",
         "tokens": ["microwave"],
         "items": [
           { "name": "leftover pizza", "id": "leftover_pizza" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "oven",
@@ -265,7 +273,8 @@
         "items": [
           { "name": "baking tray", "id": "baking_tray" },
           { "name": "burnt toast", "id": "burnt_toast" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "sofa",
@@ -273,7 +282,8 @@
         "items": [
           { "name": "doritos_pack", "id": "doritos_pack" },
           { "name": "ac_remote", "id": "ac_remote" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "nightstand",
@@ -283,7 +293,8 @@
           { "name": "cash", "id": "cash" },
           { "name": "stale_bread", "id": "stale_bread" },
           { "name": "nolan_mother_photo", "id": "nolan_mother_photo" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "wardrobe",
@@ -292,28 +303,32 @@
           { "name": "hunting_knife", "id": "hunting_knife" },
           { "name": "fishing_rod", "id": "fishing_rod" },
           { "name": "pistol", "id": "pistol" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "living_room_table",
         "tokens": ["living", "room", "table"],
         "items": [
           { "name": "letter", "id": "letter" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "shower_cabin",
         "tokens": ["shower", "cabin"],
         "items": [
           { "name": "sponge", "id": "sponge" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "sink",
         "tokens": ["sink"],
         "items": [
           { "name": "toothbrush", "id": "toothbrush" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "bathroom_shelf",
@@ -321,7 +336,8 @@
         "items": [
           { "name": "razor_blades", "id": "razor_blades" },
           { "name": "toothpaste", "id": "toothpaste" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "toilet",
@@ -334,7 +350,8 @@
         "items": [
           { "id": "pillow" },
           { "id": "blanket" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "bedside_table",
@@ -343,7 +360,8 @@
           { "id": "book" },
           { "id": "notebook" },
           { "id": "pen" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "wardrobe_bedroom",
@@ -351,21 +369,24 @@
         "items": [
           { "id": "tshirt", "name": "t-shirt" },
           { "id": "hoodie", "name": "hoodie" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "desk",
         "tokens": ["desk"],
         "items": [
           { "id": "letter" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "shoe_rack",
         "tokens": ["shoe", "rack"],
         "items": [
           { "id": "single_shoe" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "coat_hanger",
@@ -373,21 +394,24 @@
         "items": [
           { "id": "gloves" },
           { "id": "mask" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "hall_drawer",
         "tokens": ["hall", "drawer"],
         "items": [
           { "id": "keys" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "floor_mat",
         "tokens": ["floor", "mat"],
         "items": [
           { "id": "newspaper" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "balcony_table",
@@ -395,21 +419,24 @@
         "items": [
           { "id": "empty_bottle" },
           { "id": "cigarette_butt" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "plant_shelf",
         "tokens": ["plant", "shelf"],
         "items": [
           { "id": "flower_pot" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "storage_box",
         "tokens": ["storage", "box"],
         "items": [
           { "id": "clothespin" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "armrest_compartment",
@@ -418,14 +445,16 @@
           { "id": "lighter" },
           { "id": "cigarette_pack" },
           { "id": "playing_cards" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "glovebox_taxi",
         "tokens": ["glovebox", "taxi"],
         "items": [
           { "id": "nolan_father_photo", "name": "photo of Nolan’s father" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "backseat_floor",
@@ -433,7 +462,8 @@
         "items": [
           { "id": "dead_dog", "name": "dead dog" },
           { "id": "dead_woman", "name": "dead woman" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "car_glovebox",
@@ -441,7 +471,8 @@
         "items": [
           { "id": "keys" },
           { "id": "notebook" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "car_seat",
@@ -449,14 +480,16 @@
         "items": [
           { "id": "plastic_wrap" },
           { "id": "empty_can" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "car_floor",
         "tokens": ["car", "floor"],
         "items": [
           { "id": "newspaper" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "trunk",
@@ -464,7 +497,8 @@
         "items": [
           { "id": "large_empty_courier_bag" },
           { "id": "clothespin" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "front_seat",
@@ -472,21 +506,24 @@
         "items": [
           { "id": "cigarette_pack" },
           { "id": "lighter" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "under_seat",
         "tokens": ["under", "seat"],
         "items": [
           { "id": "playing_cards" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "fence_base",
         "tokens": ["fence", "base"],
         "items": [
           { "id": "broken_chain_piece" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "trash_pile",
@@ -494,7 +531,8 @@
         "items": [
           { "id": "plastic_wrap" },
           { "id": "empty_can" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "street_ground",
@@ -503,7 +541,8 @@
           { "id": "wet_newspaper" },
           { "id": "empty_bottle" },
           { "id": "plastic_wrap" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "abandoned_car",
@@ -511,14 +550,16 @@
         "items": [
           { "id": "rotted_blanket" },
           { "id": "empty_can" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "broken_lamp_post",
         "tokens": ["lamp", "post"],
         "items": [
           { "id": "loose_wires" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "collapsed_table",
@@ -526,14 +567,16 @@
         "items": [
           { "id": "matchbox" },
           { "id": "old_photo" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "fireplace",
         "tokens": ["fireplace"],
         "items": [
           { "id": "charcoal" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "driftwood_pile",
@@ -541,14 +584,16 @@
         "items": [
           { "id": "dry_wood_piece" },
           { "id": "fuel_rope" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "burnt_trunk",
         "tokens": ["burnt", "trunk"],
         "items": [
           { "id": "signal_flare" }
-        ]
+        ],
+        "state": []
       },
       {
       "id": "metal_crate",
@@ -556,7 +601,8 @@
       "items": [
         { "id": "thermal_blanket" },
         { "id": "water_ration" }
-      ]
+      ],
+      "state": []
       },
       {
       "id": "deck_floor",
@@ -565,44 +611,52 @@
         { "id": "wet_rope" },
         { "id": "rusty_hook" },
         { "id": "oil_stain" }
-      ]
+      ],
+      "state": []
       },
       {
       "id": "fuel_hose",
       "tokens": ["fuel", "hose"],
       "items": [
         { "id": "petrol_residue" }
-      ]
+      ],
+      "state": []
     },
     {
       "id": "bench",
       "tokens": ["bench"],
-      "items": [{ "id": "newspaper" }, { "id": "discarded_ticket" }]
+      "items": [{ "id": "newspaper" }, { "id": "discarded_ticket" }],
+      "state": []
     },
     {
       "id": "antique_cabinet",
       "tokens": ["antique", "cabinet"],
-      "items": [{ "id": "silver_utensils" }, { "id": "old_photos" }]
+      "items": [{ "id": "silver_utensils" }, { "id": "old_photos" }],
+      "state": []
     },
     {
       "id": "driver_door_pocket",
       "tokens": ["driver", "door", "pocket"],
-      "items": [{ "id": "flashlight" }, { "id": "rag" }]
+      "items": [{ "id": "flashlight" }, { "id": "rag" }],
+      "state": []
     },
     {
       "id": "fire_pit",
       "tokens": ["fire", "pit"],
-      "items": [{ "id": "ash" }, { "id": "charcoal" }]
+      "items": [{ "id": "ash" }, { "id": "charcoal" }],
+      "state": []
     },
     {
       "id": "fuel_pump",
       "tokens": ["fuel", "pump"],
-      "items": [{ "id": "fuel_nozzle" }]
+      "items": [{ "id": "fuel_nozzle" }],
+      "state": []
     },
     {
       "id": "driftwood",
       "tokens": ["driftwood"],
-      "items": [{ "id": "seaweed" }, { "id": "crab_shell" }]
+      "items": [{ "id": "seaweed" }, { "id": "crab_shell" }],
+      "state": []
     }
     ],
   
@@ -617,6 +671,7 @@
         "effect": null,
         "functionality": null,
         "HarmRate": null,
+        "state":[],
         "movable": { "access": true, "weight": 2 }
       },
       {
@@ -687,7 +742,7 @@
         "Eating_speed": null,
         "ignitable":["false", 0],
         "effect": "fire_source",
-        "functionality": "ignite",
+        "functionality": null,
         "HarmRate": 3,
         "movable": { "access": true, "weight": 1 }
       },
@@ -699,7 +754,7 @@
         "Eating_speed": null,
         "ignitable":["true", 0.1],
         "effect": null,
-        "functionality": "measure",
+        "functionality": null,
         "HarmRate": null,
         "movable": { "access": true, "weight": 1 }
       },
@@ -722,8 +777,8 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable":["true", 0.2],
-        "effect": "cleaning_item",
-        "functionality": "clean",
+        "effect": null,
+        "functionality": null,
         "HarmRate": null,
         "movable": { "access": true, "weight": 1 }
       },
@@ -734,8 +789,8 @@
         "NV": 10,
         "Eating_speed": 1,
         "ignitable":["true", 0.3],
-        "effect": "calming",
-        "functionality": "brew",
+        "effect": null,
+        "functionality": null,
         "HarmRate": null,
         "movable": { "access": true, "weight": 1 }
       },
@@ -746,8 +801,8 @@
         "NV": 0,
         "Eating_speed": null,
         "ignitable":["false", 0],
-        "effect": "seasoning",
-        "functionality": "add_flavor",
+        "effect": null,
+        "functionality": null,
         "HarmRate": null,
         "movable": { "access": true, "weight": 1 }
       },
@@ -758,8 +813,8 @@
         "NV": 0,
         "Eating_speed": null,
         "ignitable":["false", 0],
-        "effect": "seasoning",
-        "functionality": "add_flavor",
+        "effect": null,
+        "functionality": null,
         "HarmRate": null,
         "movable": { "access": true, "weight": 1 }
       },
@@ -770,8 +825,8 @@
         "NV": 1200,
         "Eating_speed": null,
         "ignitable":["true", 0.1],
-        "effect": "flammable",
-        "functionality": "cook",
+        "effect": null,
+        "functionality": null,
         "HarmRate": 1,
         "movable": { "access": true, "weight": 3 }
       },
@@ -782,8 +837,8 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable":["false", 0],
-        "effect": "slippery",
-        "functionality": "trap",
+        "effect": null,
+        "functionality": null,
         "HarmRate": 1,
         "movable": { "access": true, "weight": 1 }
       },
@@ -806,7 +861,7 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable":["true", 0.2],
-        "effect": "flammable",
+        "effect": null,
         "functionality": null,
         "HarmRate": null,
         "movable": { "access": true, "weight": 1 }
@@ -831,7 +886,7 @@
         "Eating_speed": null,
         "ignitable":["false", 0],
         "effect": "hot_surface",
-        "functionality": "cook",
+        "functionality": null,
         "HarmRate": 4,
         "movable": { "access": true, "weight": 5 }
       },
@@ -891,7 +946,7 @@
         "Eating_speed": null,
         "ignitable":["true", 0.3],
         "effect": null,
-        "functionality": "trade",
+        "functionality": null,
         "HarmRate": null,
         "movable": { "access": true, "weight": 1 }
       },
@@ -914,8 +969,8 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable":["true", 0.6],
-        "effect": null,
-        "functionality": "cry",
+        "effect": "cry",
+        "functionality": null,
         "HarmRate": null,
         "movable": { "access": true, "weight": 1 }
       },
@@ -963,7 +1018,7 @@
         "Eating_speed": null,
         "ignitable":["true", 0.4],
         "effect": null,
-        "functionality": "read",
+        "functionality": null,
         "HarmRate": null,
         "movable": { "access": true, "weight": 1 }
       },
@@ -975,7 +1030,7 @@
         "Eating_speed": null,
         "ignitable":["true", 0.3],
         "effect": null,
-        "functionality": "clean",
+        "functionality": null,
         "HarmRate": 0,
         "movable": { "access": true, "weight": 1 }
       },
@@ -1047,7 +1102,7 @@
         "Eating_speed": null,
         "ignitable":["true", 0.7],
         "effect": null,
-        "functionality": "read",
+        "functionality": null,
         "HarmRate": 0,
         "movable": { "access": true, "weight": 1 }
       },
@@ -1059,7 +1114,7 @@
         "Eating_speed": null,
         "ignitable":["true", 0.5],
         "effect": null,
-        "functionality": "write",
+        "functionality": null,
         "HarmRate": 0,
         "movable": { "access": true, "weight": 1 }
       },
@@ -1071,7 +1126,7 @@
         "Eating_speed": null,
         "ignitable":["true", 0.1],
         "effect": null,
-        "functionality": "write",
+        "functionality": null,
         "HarmRate": 0,
         "movable": { "access": true, "weight": 1 }
       },
@@ -1094,7 +1149,7 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable":["true", 0.2],
-        "effect": null,
+        "effect": "warm",
         "functionality": "wear",
         "HarmRate": 0,
         "movable": { "access": true, "weight": 1 }
@@ -1119,7 +1174,7 @@
         "Eating_speed": null,
         "ignitable":["true", 0.5],
         "effect": null,
-        "functionality": "read",
+        "functionality": null,
         "HarmRate": 0,
         "movable": { "access": true, "weight": 1 }
       },
@@ -1167,7 +1222,7 @@
         "Eating_speed": null,
         "ignitable":["true", 0.4],
         "effect": null,
-        "functionality": "sit",
+        "functionality": null,
         "HarmRate": 0,
         "movable": { "access": false, "weight": 8 }
       },
@@ -1191,7 +1246,7 @@
         "Eating_speed": null,
         "ignitable":["true", 0.1],
         "effect": null,
-        "functionality": "clip",
+        "functionality": null,
         "HarmRate": 0,
         "movable": { "access": true, "weight": 1 }
       },
@@ -1276,7 +1331,7 @@
         "Eating_speed": null,
         "ignitable":["true", 0.2],
         "effect": null,
-        "functionality": "play",
+        "functionality": null,
         "HarmRate": 0,
         "movable": { "access": true, "weight": 1 }
       },
@@ -1299,7 +1354,7 @@
         "NV": 20,
         "Eating_speed": null,
         "ignitable":["true", 0.8],
-        "effect": "unsanitary",
+        "effect": "poisonous",
         "functionality": null,
         "HarmRate": null,
         "movable": { "access": false, "weight": 55 }
@@ -1311,7 +1366,7 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable": ["true", 0.8],
-        "effect": "unsanitary",
+        "effect": "poisonous",
         "functionality": "warm",
         "HarmRate": 1,
         "capacity": null,
@@ -1324,7 +1379,7 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable": ["true", 0.6],
-        "effect": "spark",
+        "effect": null,
         "functionality": null,
         "HarmRate": 2,
         "capacity": null,
@@ -1337,8 +1392,8 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable": ["true", 0.9],
-        "effect": "fire_boost",
-        "functionality": "ignite",
+        "effect": null,
+        "functionality": null,
         "HarmRate": 0,
         "capacity": null,
         "movable": { "access": true, "weight": 2 }
@@ -1350,8 +1405,8 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable": ["true", 0.95],
-        "effect": "huge_fire",
-        "functionality": "ignite",
+        "effect": null,
+        "functionality": null,
         "HarmRate": 5,
         "capacity": null,
         "movable": { "access": true, "weight": 3 }
@@ -1363,7 +1418,7 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable": ["true", 1.0],
-        "effect": "signal_boost",
+        "effect": null,
         "functionality": "signal",
         "HarmRate": 10,
         "capacity": null,
@@ -1376,8 +1431,8 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable": ["true", 0.4],
-        "effect": "flammable",
-        "functionality": "tie",
+        "effect": null,
+        "functionality": null,
         "HarmRate": 0,
         "capacity": null,
         "movable": { "access": true, "weight": 3 }
@@ -1389,8 +1444,8 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable": ["true", 0.4],
-        "effect": null,
-        "functionality": "warm",
+        "effect": "warm",
+        "functionality": "wear",
         "HarmRate": 0,
         "capacity": null,
         "movable": { "access": true, "weight": 2 }
@@ -1415,7 +1470,7 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable": ["true", 0.9],
-        "effect": "flammable",
+        "effect": null,
         "functionality": null,
         "HarmRate": 5,
         "capacity": null,
@@ -1429,7 +1484,7 @@
         "Eating_speed": null,
         "ignitable": [true, 0.8],
         "effect": null,
-        "functionality": "read",
+        "functionality": null,
         "HarmRate": 0,
         "capacity": null,
         "movable": { "access": true, "weight": 0.1 }
@@ -1442,7 +1497,7 @@
         "Eating_speed": null,
         "ignitable": [false, 0],
         "effect": null,
-        "functionality": "trade",
+        "functionality": null,
         "HarmRate": 5,
         "capacity": null,
         "movable": { "access": true, "weight": 1.5 }
@@ -1454,8 +1509,8 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable": [false, 0],
-        "effect": "light_source",
-        "functionality": "illuminate",
+        "effect": null,
+        "functionality": "signal",
         "HarmRate": 10,
         "capacity": null,
         "movable": { "access": true, "weight": 0.5 }
@@ -1467,8 +1522,8 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable": [true, 0.5],
-        "effect": "flammable",
-        "functionality": "clean",
+        "effect": null,
+        "functionality": null,
         "HarmRate": 0,
         "capacity": null,
         "movable": { "access": true, "weight": 0.2 }
@@ -1481,7 +1536,7 @@
         "Eating_speed": null,
         "ignitable": [false, 0],
         "effect": null,
-        "functionality": "pump_gas",
+        "functionality": null,
         "HarmRate": 15,
         "capacity": null,
         "movable": { "access": false, "weight": 5 }
@@ -1493,8 +1548,8 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable": [true, 0.7],
-        "effect": "fragile",
-        "functionality": "navigate",
+        "effect": null,
+        "functionality": null,
         "HarmRate": 0,
         "capacity": null,
         "movable": { "access": true, "weight": 0.1 }
@@ -1506,7 +1561,7 @@
         "NV": null,
         "Eating_speed": null,
         "ignitable": [false, 0],
-        "effect": "intimidation",
+        "effect": null,
         "functionality": "shoot",
         "HarmRate": 100,
         "capacity": null,
@@ -1514,6 +1569,5 @@
       }
 
     ]
-}    
-
+}
 
