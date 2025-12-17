@@ -192,7 +192,8 @@
           { "name": "fork", "id": "fork" },
           { "name": "cup", "id": "cup" },
           { "name": "kettle", "id": "kettle" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "table",
@@ -203,7 +204,8 @@
           { "name": "phone", "id": "phone" },
           { "name": "rusty spoon", "id": "rusty_spoon" },
           { "name": "plate", "id": "plate" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "fridge",
@@ -213,7 +215,8 @@
           { "name": "eggs pack", "id": "eggs_pack" },
           { "name": "cold chicken", "id": "cold_chicken" },
           { "name": "yogurt", "id": "yogurt" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "drawer",
@@ -223,7 +226,8 @@
           { "name": "scissors", "id": "scissors" },
           { "name": "lighter", "id": "lighter" },
           { "name": "measuring tape", "id": "measuring_tape" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "sink",
@@ -231,7 +235,8 @@
         "items": [
           { "name": "dirty plate", "id": "dirty_plate" },
           { "name": "wet sponge", "id": "wet_sponge" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "cabinet",
@@ -241,7 +246,8 @@
           { "name": "salt shaker", "id": "salt_shaker" },
           { "name": "pepper shaker", "id": "pepper_shaker" },
           { "name": "olive oil bottle", "id": "olive_oil_bottle" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "trash_bin",
@@ -250,14 +256,16 @@
           { "name": "banana peel", "id": "banana_peel" },
           { "name": "empty can", "id": "empty_can" },
           { "name": "plastic wrap", "id": "plastic_wrap" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "microwave",
         "tokens": ["microwave"],
         "items": [
           { "name": "leftover pizza", "id": "leftover_pizza" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "oven",
@@ -265,7 +273,8 @@
         "items": [
           { "name": "baking tray", "id": "baking_tray" },
           { "name": "burnt toast", "id": "burnt_toast" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "sofa",
@@ -273,7 +282,8 @@
         "items": [
           { "name": "doritos_pack", "id": "doritos_pack" },
           { "name": "ac_remote", "id": "ac_remote" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "nightstand",
@@ -283,7 +293,8 @@
           { "name": "cash", "id": "cash" },
           { "name": "stale_bread", "id": "stale_bread" },
           { "name": "nolan_mother_photo", "id": "nolan_mother_photo" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "wardrobe",
@@ -292,28 +303,32 @@
           { "name": "hunting_knife", "id": "hunting_knife" },
           { "name": "fishing_rod", "id": "fishing_rod" },
           { "name": "pistol", "id": "pistol" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "living_room_table",
         "tokens": ["living", "room", "table"],
         "items": [
           { "name": "letter", "id": "letter" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "shower_cabin",
         "tokens": ["shower", "cabin"],
         "items": [
           { "name": "sponge", "id": "sponge" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "sink",
         "tokens": ["sink"],
         "items": [
           { "name": "toothbrush", "id": "toothbrush" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "bathroom_shelf",
@@ -321,7 +336,8 @@
         "items": [
           { "name": "razor_blades", "id": "razor_blades" },
           { "name": "toothpaste", "id": "toothpaste" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "toilet",
@@ -334,7 +350,8 @@
         "items": [
           { "id": "pillow" },
           { "id": "blanket" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "bedside_table",
@@ -343,7 +360,8 @@
           { "id": "book" },
           { "id": "notebook" },
           { "id": "pen" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "wardrobe_bedroom",
@@ -351,21 +369,24 @@
         "items": [
           { "id": "tshirt", "name": "t-shirt" },
           { "id": "hoodie", "name": "hoodie" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "desk",
         "tokens": ["desk"],
         "items": [
           { "id": "letter" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "shoe_rack",
         "tokens": ["shoe", "rack"],
         "items": [
           { "id": "single_shoe" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "coat_hanger",
@@ -373,21 +394,24 @@
         "items": [
           { "id": "gloves" },
           { "id": "mask" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "hall_drawer",
         "tokens": ["hall", "drawer"],
         "items": [
           { "id": "keys" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "floor_mat",
         "tokens": ["floor", "mat"],
         "items": [
           { "id": "newspaper" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "balcony_table",
@@ -395,21 +419,24 @@
         "items": [
           { "id": "empty_bottle" },
           { "id": "cigarette_butt" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "plant_shelf",
         "tokens": ["plant", "shelf"],
         "items": [
           { "id": "flower_pot" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "storage_box",
         "tokens": ["storage", "box"],
         "items": [
           { "id": "clothespin" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "armrest_compartment",
@@ -418,14 +445,16 @@
           { "id": "lighter" },
           { "id": "cigarette_pack" },
           { "id": "playing_cards" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "glovebox_taxi",
         "tokens": ["glovebox", "taxi"],
         "items": [
           { "id": "nolan_father_photo", "name": "photo of Nolan’s father" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "backseat_floor",
@@ -433,7 +462,8 @@
         "items": [
           { "id": "dead_dog", "name": "dead dog" },
           { "id": "dead_woman", "name": "dead woman" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "car_glovebox",
@@ -441,7 +471,8 @@
         "items": [
           { "id": "keys" },
           { "id": "notebook" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "car_seat",
@@ -449,14 +480,16 @@
         "items": [
           { "id": "plastic_wrap" },
           { "id": "empty_can" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "car_floor",
         "tokens": ["car", "floor"],
         "items": [
           { "id": "newspaper" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "trunk",
@@ -464,7 +497,8 @@
         "items": [
           { "id": "large_empty_courier_bag" },
           { "id": "clothespin" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "front_seat",
@@ -472,21 +506,24 @@
         "items": [
           { "id": "cigarette_pack" },
           { "id": "lighter" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "under_seat",
         "tokens": ["under", "seat"],
         "items": [
           { "id": "playing_cards" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "fence_base",
         "tokens": ["fence", "base"],
         "items": [
           { "id": "broken_chain_piece" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "trash_pile",
@@ -494,7 +531,8 @@
         "items": [
           { "id": "plastic_wrap" },
           { "id": "empty_can" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "street_ground",
@@ -503,7 +541,8 @@
           { "id": "wet_newspaper" },
           { "id": "empty_bottle" },
           { "id": "plastic_wrap" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "abandoned_car",
@@ -511,14 +550,16 @@
         "items": [
           { "id": "rotted_blanket" },
           { "id": "empty_can" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "broken_lamp_post",
         "tokens": ["lamp", "post"],
         "items": [
           { "id": "loose_wires" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "collapsed_table",
@@ -526,14 +567,16 @@
         "items": [
           { "id": "matchbox" },
           { "id": "old_photo" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "fireplace",
         "tokens": ["fireplace"],
         "items": [
           { "id": "charcoal" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "driftwood_pile",
@@ -541,14 +584,16 @@
         "items": [
           { "id": "dry_wood_piece" },
           { "id": "fuel_rope" }
-        ]
+        ],
+        "state": []
       },
       {
         "id": "burnt_trunk",
         "tokens": ["burnt", "trunk"],
         "items": [
           { "id": "signal_flare" }
-        ]
+        ],
+        "state": []
       },
       {
       "id": "metal_crate",
@@ -556,7 +601,8 @@
       "items": [
         { "id": "thermal_blanket" },
         { "id": "water_ration" }
-      ]
+      ],
+      "state": []
       },
       {
       "id": "deck_floor",
@@ -565,44 +611,52 @@
         { "id": "wet_rope" },
         { "id": "rusty_hook" },
         { "id": "oil_stain" }
-      ]
+      ],
+      "state": []
       },
       {
       "id": "fuel_hose",
       "tokens": ["fuel", "hose"],
       "items": [
         { "id": "petrol_residue" }
-      ]
+      ],
+      "state": []
     },
     {
       "id": "bench",
       "tokens": ["bench"],
-      "items": [{ "id": "newspaper" }, { "id": "discarded_ticket" }]
+      "items": [{ "id": "newspaper" }, { "id": "discarded_ticket" }],
+      "state": []
     },
     {
       "id": "antique_cabinet",
       "tokens": ["antique", "cabinet"],
-      "items": [{ "id": "silver_utensils" }, { "id": "old_photos" }]
+      "items": [{ "id": "silver_utensils" }, { "id": "old_photos" }],
+      "state": []
     },
     {
       "id": "driver_door_pocket",
       "tokens": ["driver", "door", "pocket"],
-      "items": [{ "id": "flashlight" }, { "id": "rag" }]
+      "items": [{ "id": "flashlight" }, { "id": "rag" }],
+      "state": []
     },
     {
       "id": "fire_pit",
       "tokens": ["fire", "pit"],
-      "items": [{ "id": "ash" }, { "id": "charcoal" }]
+      "items": [{ "id": "ash" }, { "id": "charcoal" }],
+      "state": []
     },
     {
       "id": "fuel_pump",
       "tokens": ["fuel", "pump"],
-      "items": [{ "id": "fuel_nozzle" }]
+      "items": [{ "id": "fuel_nozzle" }],
+      "state": []
     },
     {
       "id": "driftwood",
       "tokens": ["driftwood"],
-      "items": [{ "id": "seaweed" }, { "id": "crab_shell" }]
+      "items": [{ "id": "seaweed" }, { "id": "crab_shell" }],
+      "state": []
     }
     ],
   
@@ -617,6 +671,7 @@
         "effect": null,
         "functionality": null,
         "HarmRate": null,
+        "state":[],
         "movable": { "access": true, "weight": 2 }
       },
       {
@@ -1514,6 +1569,6 @@
       }
 
     ]
-}    
+}
 
 

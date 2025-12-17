@@ -75,9 +75,10 @@
         "locations": [{
             "location_id": "Init_house",
             "sub_locations_id": "hall"
-        }],
+        },{"location": ["Bullets_street"], "sub_locations_id": null}
+            ],
         "on_complete": {
-            "location": ["street_bullet"]
+            "location": ["Bullets_street"]
         },
         "intro_text": [
             { "text": "The screams outside didn’t stop. They trembled in the walls like a living echo.", "weight": 2 },
@@ -97,8 +98,8 @@
         "scene_id": 3,
         "scene_title": "Bullet Street",
         "locations": [{
-            "location_id": "street_bullet",
-            "sub_locations_id": "crosswalk"
+            "location_id": "Bullets_street",
+            "sub_locations_id": "corner_shop_entrance"
         }],
         "on_complete": {
             "location": ["parking_zone"]

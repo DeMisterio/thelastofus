@@ -20,7 +20,9 @@ give // give some item to another character
 go // enter some location / sub_location
 pickup // take any onject from the container
 punch // punch the object / character
-signal 
+signal // signal
+put. // place the item somewhere
+eat // eat eatable item 
 
 EFFECTS (from items.json)
 

@@ -9,7 +9,8 @@
         "attack":["AAYY! WHAT ARE U DOING!","SOMEONE HELP ME!", "MY GOD!"],
         "shoot":["Nooo... why... i thought you are f... 'Falls on the groud motionless'"],
         "warm": ["Thank you"],
-        "throw":["Ohh sshit! What the hell is wrong with you?"]
+        "throw":["Ohh sshit! What the hell is wrong with you?"],
+        "ignite":["AAAYY! I'M BURNING! SOMEONE HELP ME!"]
         },
         "init_parameters": [
           {"health": 70},
@@ -28,7 +29,8 @@
           "attack": ["HAHA! YOU THINK THAT HURTS?", "COME ON, HIT ME AGAIN!"],
           "shoot": ["NO WAY... THIS IS HOW IT ENDS...?"],
           "warm": ["Heh, didn’t expect that."],
-          "throw": ["WHAT THE HELL WAS THAT FOR?!"]
+          "throw": ["WHAT THE HELL WAS THAT FOR?!"],
+          "ignite": ["YOU'RE CRAZY! I'M BURNING!"]
         },
         "init_parameters": [
           {"health": 75},
@@ -47,7 +49,8 @@
           "attack": ["HEY! WATCH IT!", "YO! THAT WAS UNCALLED FOR!"],
           "shoot": ["I’m hit! I’m hit!"],
           "warm": ["Nice! Thanks!"],
-          "throw": ["BRO, CHILL!"]
+          "throw": ["BRO, CHILL!"],
+          "ignite": ["I'M ON FIRE! HELP!"]
         },
         "init_parameters": [
           {"health": 80},
@@ -66,7 +69,8 @@
           "attack": ["Why would you do that?", "That was unnecessary."],
           "shoot": ["So this is it..."],
           "warm": ["I appreciate that."],
-          "throw": ["Please, stop."]
+          "throw": ["Please, stop."],
+          "ignite": ["This pain... is unbearable."]
         },
         "init_parameters": [
           {"health": 70},
@@ -85,7 +89,8 @@
           "attack": ["Bad move.", "You really want trouble?"],
           "shoot": ["I should’ve seen this coming."],
           "warm": ["Thanks. Means something."],
-          "throw": ["Careful. Next time won’t end well."]
+          "throw": ["Careful. Next time won’t end well."],
+          "ignite": ["This is... the end..."]
         },
         "init_parameters": [
           {"health": 75},
@@ -104,7 +109,8 @@
           "attack": ["Hey! What are you doing?!"],
           "shoot": ["I’m down..."],
           "warm": ["Thanks."],
-          "throw": ["What the hell?"]
+          "throw": ["What the hell?"],
+          "ignite": ["I’m burning! Help!"]
         },
         "init_parameters": [
           {"health": 80},
@@ -123,7 +129,8 @@
           "attack": ["Please... stop...", "I can’t take this..."],
           "shoot": ["No... please..."],
           "warm": ["Thank you... really..."],
-          "throw": ["Ah! That hurts!"]
+          "throw": ["Ah! That hurts!"],
+          "ignite": ["I'm burning... help me..."]
         },
         "init_parameters": [
           {"health": 40},
@@ -142,7 +149,8 @@
           "attack": ["You won’t break me.", "Is that all?"],
           "shoot": ["Not... yet..."],
           "warm": ["I won’t forget this."],
-          "throw": ["Focus. Stay focused."]
+          "throw": ["Focus. Stay focused."],
+          "ignite": ["I... will survive... all for my Sara..."]
         },
         "init_parameters": [
           {"health": 65},
@@ -161,7 +169,8 @@
           "attack": ["YOU’RE DEAD!", "BIG MISTAKE!"],
           "shoot": ["NO— THIS ISN’T OVER!"],
           "warm": ["Hmph, are you serious?"],
-          "throw": ["YOU WANNA DIE?!"]
+          "throw": ["YOU WANNA DIE?!"],
+          "ignite": ["I’M BURNING! CURSE YOU!"]
         },
         "init_parameters": [
           {"health": 90},
@@ -172,23 +181,17 @@
         ]
       },
       {
-        "character_n": "Zack",
-        "tokens": ["zack"],
-        "character_type": "NPC",
-        "personality": "nervous",
-        "init_parameters": [
-          {"health": 60},
-          {"action_speed": 6},
-          {"endurance": 45},
-          {"strength": 50},
-          {"init_items": ["ancient_map", "lighter", "backpack"]}
-        ]
-      },
-      {
         "character_n": "Old_Man",
         "tokens": ["old", "man"],
         "character_type": "NPC",
         "personality": "helpless",
+        "verbal_reactions": {
+          "attack": ["Please... stop...", "I can’t take this..."],
+          "shoot": ["No... please..."],
+          "warm": ["Thank you... really..."],
+          "throw": ["Ah! That hurts!"],
+          "ignite": ["I'm burning... help me... oh my..."]
+        },
         "init_parameters": [
           {"health": 30},
           {"action_speed": 3},
@@ -202,6 +205,13 @@
         "tokens": ["old", "woman"],
         "character_type": "NPC",
         "personality": "scared",
+        "verbal_reactions": {
+          "attack": ["Please... stop...", "I can’t take this..."],
+          "shoot": ["No... please..."],
+          "warm": ["Thank you... really..."],
+          "throw": ["Ah! That hurts!"],
+          "ignite": ["I'm burning... help me... oh dear... oh sky..."]
+        },
         "init_parameters": [
           {"health": 30},
           {"action_speed": 3},
@@ -215,6 +225,13 @@
         "tokens": ["father"],
         "character_type": "NPC",
         "personality": "protective",
+        "verbal_reactions": {
+          "attack": ["Hey! Watch it!", "You’ll regret that!"],
+          "shoot": ["I’m hit! But I won’t back down! Son, run..."],
+          "warm": ["Thanks, I needed that."],
+          "throw": ["What the hell is wrong with you?!"],
+          "ignite": ["I'M ON FIRE! BUT I WON'T LET YOU WIN! DONT TOUCH MY CHILD!"]
+        },
         "init_parameters": [
           {"health": 80},
           {"action_speed": 8},
@@ -228,6 +245,13 @@
         "tokens": ["child"],
         "character_type": "NPC",
         "personality": "innocent",
+        "verbal_reactions": {
+          "attack": ["Ouch! That hurts!", "Why are you being mean?"],
+          "shoot": ["I'm scared..."],
+          "warm": ["Yay! Thank you!"],
+          "throw": ["Hey! That's not nice!"],
+          "ignite": ["It hurts! Please stop! Daddy!"]
+        },
         "init_parameters": [
           {"health": 20},
           {"action_speed": 5},
@@ -241,6 +265,13 @@
         "tokens": ["ship", "crew"],
         "character_type": "NPC",
         "personality": "authoritative",
+        "verbal_reactions": {
+          "attack": ["You dare attack the crew!", "This will not be tolerated!"],
+          "shoot": ["We're under fire! Return fire!"],
+          "warm": ["Appreciate the gesture."],
+          "throw": ["Cease this madness!"],
+          "ignite": ["We're burning! Abandon ship!"]
+        },
         "init_parameters": [
           {"health": 100},
           {"action_speed": 9},

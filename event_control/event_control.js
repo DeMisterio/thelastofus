@@ -17,6 +17,7 @@ export class GameState {
         this.scene = scene
         this.current_location = current_location
         this.hint_list = hint_list
+        this.burning_objects = []
     }
 
 }
