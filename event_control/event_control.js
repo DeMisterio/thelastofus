@@ -80,8 +80,8 @@ async function out_scene_text() {
     }
     
     document.removeEventListener("keydown", spaceHandler);
-    skip_text_amo = []
-    skip_text_cond = []
+        skip_text_amo = []
+        skip_text_cond = []
     return
 }
 function isGarbage(input) {
@@ -170,6 +170,23 @@ export async function HelloWorld(sceneObj) {
 // Initialize game after data is loaded
 export async function initializeGame() {
     try {
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            await new Promise(resolve => {
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', resolve);
+                } else {
+                    resolve();
+                }
+            });
+        }
+        
+        // Verify output element exists
+        const outputElement = document.getElementById('output');
+        if (!outputElement) {
+            throw new Error("Output element not found in DOM");
+        }
+        
         // First ensure JSON data is loaded
         const dataLoaded = await loadJSONData();
         if (!dataLoaded) {
@@ -177,25 +194,39 @@ export async function initializeGame() {
         }
         
         scene = new scenes(1, 1);
-        
+
         let loc = new location(
             scene.scene_locations[0].location_id      // дом
         );
-        
+
         // Map character names to character objects
         if (loc.characters && Array.isArray(loc.characters)) {
             loc.characters = loc.characters.map(name => new character(name));
         }
-        
-        console.log(loc.characters);
-        
+
+console.log(loc.characters);
+
         GameControl = new GameState(scene, loc);
         
         // First display the intro text from script.js
-        await DisplayIntroText();
+        try {
+            console.log("Displaying intro text...");
+            await DisplayIntroText();
+            console.log("Intro text displayed successfully");
+        } catch (introError) {
+            console.error("Error displaying intro text:", introError);
+            send_text("Error displaying intro text: " + introError.message);
+        }
         
         // Then output scene introtext via HelloWorld before first scene
-        await HelloWorld(scene);
+        try {
+            console.log("Displaying scene intro text...");
+            await HelloWorld(scene);
+            console.log("Scene intro text displayed successfully");
+        } catch (sceneError) {
+            console.error("Error displaying scene intro text:", sceneError);
+            send_text("Error displaying scene intro text: " + sceneError.message);
+        }
         
         // Start the game loop
         Gameloop = true;

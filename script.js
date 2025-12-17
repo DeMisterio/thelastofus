@@ -78,9 +78,16 @@ function initGame() {
 }
 
 export function outputText(txt) {
+    if (!txt) return; // Skip empty text
+    
+    let output = document.getElementById('output');
+    if (!output) {
+        console.error("Output element not found!");
+        return;
+    }
+    
     let newPara = document.createElement("p");
     newPara.innerHTML = txt;
-    let output = document.getElementById('output'); // Добавил получение элемента
     output.appendChild(newPara);
     newPara.scrollIntoView();
 }
@@ -127,10 +134,14 @@ function sleep(ms) {
 
 // Export HelloWorld function to display intro text
 export async function HelloWorld() {
+    console.log("HelloWorld function called, INTRO_TEXT length:", INTRO_TEXT.length);
     for (const line of INTRO_TEXT) {
-        outputText(line);
-        await sleep(1676);
+        if (line && line.trim() !== "") { // Skip empty lines
+            outputText(line);
+            await sleep(1676);
+        }
     }
+    console.log("HelloWorld function completed");
 }
 
 // Make functions globally accessible
