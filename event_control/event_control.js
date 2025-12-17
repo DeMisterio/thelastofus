@@ -123,15 +123,25 @@ function isGarbage(input) {
 }
 
 
-const isWhitespaceString = str => !str.replace(/\s/g, '').length
+const isWhitespaceString = str => {
+    if (!str || typeof str !== 'string') return true;
+    return !str.replace(/\s/g, '').length;
+}
 
 
 function get_content() {
-    let content = get_text()
+    let content = get_text();
+    // Handle null/undefined from get_text()
+    if (!content) {
+        content = '';
+    }
     let abuse_counter = 0;
     while (isWhitespaceString(content) || isGarbage(content)) {
         //Character has to say that 'i dont even know what to do'
-        content = get_text()
+        content = get_text();
+        if (!content) {
+            content = '';
+        }
         abuse_counter += 1
         if (abuse_counter > 5) {
             if (GameControl && GameControl.hint_list && GameControl.hint_list.includes('abuse_hint')) {
@@ -294,15 +304,8 @@ console.log(loc.characters);
             send_text("Error displaying intro text: " + introError.message);
         }
         
-        // Then output scene introtext via HelloWorld before first scene
-        try {
-            console.log("Displaying scene intro text...");
-            await HelloWorld(scene);
-            console.log("Scene intro text displayed successfully");
-        } catch (sceneError) {
-            console.error("Error displaying scene intro text:", sceneError);
-            send_text("Error displaying scene intro text: " + sceneError.message);
-        }
+        // Scene intro text will be displayed by out_scene_text() in gameprocess()
+        // No need to call HelloWorld(scene) here as it duplicates the output
         
         // Start the game loop
         Gameloop = true;
