@@ -68,6 +68,7 @@ export class scenes {
         this.scene_title = scene.scene_title;
         this.scene_locations = scene.locations;
         this.scene_texts = scene.intro_text;
+        this.on_complete = scene.on_complete || null;
     }
 
     getNextScene() {

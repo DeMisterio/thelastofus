@@ -23,7 +23,18 @@ export class GameState {
 
 // Преобразуем список имён в список персонажей
 
-
+const SceneLogic = {
+    // Scene 1 finish condition is satisfied initially (auto-advance)
+    1: function() {
+        return true;
+    }
+    // Add more scene completion logic here as needed
+    // Example:
+    // 2: async function() {
+    //     // Check conditions for scene 2
+    //     return someCondition;
+    // }
+};
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -32,6 +43,12 @@ function sleep(ms) {
 async function out_scene_text() {
     if (!scene || !scene.scene_texts) {
         return;
+    }
+    
+    // Display scene title before scene text
+    if (scene.scene_title) {
+        send_text(`\n=== ${scene.scene_title} ===\n`);
+        await sleep(1000); // Brief pause after title
     }
     
     let BP = false
@@ -137,11 +154,66 @@ function get_content() {
 
 }
 
+
+// Advance to next scene
+async function advanceToNextScene() {
+    const nextScene = scene.getNextScene();
+    if (!nextScene) {
+        send_text("End of game reached.");
+        Gameloop = false;
+        return false;
+    }
+    
+    scene = nextScene;
+    sceneTextDisplayed = false;
+    
+    // Update location for new scene
+    if (scene.scene_locations && scene.scene_locations.length > 0) {
+        let loc = new location(scene.scene_locations[0].location_id);
+        
+        // Map character names to character objects
+        if (loc.characters && Array.isArray(loc.characters)) {
+            loc.characters = loc.characters.map(name => new character(name));
+        }
+        
+        GameControl.current_location = loc;
+    }
+    
+    return true;
+}
+
 async function gameprocess() {
     while (Gameloop === true) {
-        await out_scene_text()
+        // Display scene text only once per scene
+        if (!sceneTextDisplayed) {
+            await out_scene_text();
+            sceneTextDisplayed = true;
+        }
         
-        content = get_content()
+        // Check scene completion using SceneLogic
+        const sceneNum = scene.scene_n;
+        let sceneComplete = false;
+        
+        // Check if there's specific logic for this scene
+        if (SceneLogic[sceneNum]) {
+            const logicResult = SceneLogic[sceneNum]();
+            sceneComplete = logicResult instanceof Promise ? await logicResult : logicResult;
+        } else if (scene.on_complete === null) {
+            // If on_complete is null and no specific logic, auto-advance
+            sceneComplete = true;
+        }
+        
+        if (sceneComplete) {
+            // Scene is complete, advance to next scene
+            const advanced = await advanceToNextScene();
+            if (!advanced) {
+                break; // Game ended
+            }
+            continue; // Start next scene
+        }
+        
+        // Scene not complete yet, get user input and process actions
+        let content = get_content();
         
         // Process the content here
         // TODO: Add action processing logic
@@ -154,6 +226,7 @@ async function gameprocess() {
 let scene = null;
 let GameControl = null;
 let Gameloop = false; // Define Gameloop variable
+let sceneTextDisplayed = false; // Track if current scene text has been displayed
 
 // HelloWorld function to output introtext before first scene
 export async function HelloWorld(sceneObj) {
@@ -207,6 +280,9 @@ export async function initializeGame() {
 console.log(loc.characters);
 
         GameControl = new GameState(scene, loc);
+        
+        // Reset scene text display flag
+        sceneTextDisplayed = false;
         
         // First display the intro text from script.js
         try {
