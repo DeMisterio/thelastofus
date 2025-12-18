@@ -1,7 +1,7 @@
 //event control controls the flow of scenes
 
-import { character, location, item, scenes, loadJSONData } from './entity_system/entity_init/objective_export.js'
-import { send_text, get_text } from '../effect_control.js'
+import { character, location, item, scenes, loadJSONData, ITEMSdata } from './entity_system/entity_init/objective_export.js'
+import { send_text, get_user_input_async } from '../effect_control.js'
 import { HelloWorld as DisplayIntroText } from '../script.js'
 // The game initialisation flow: 
 
@@ -129,16 +129,15 @@ const isWhitespaceString = str => {
 }
 
 
-function get_content() {
-    let content = get_text();
-    // Handle null/undefined from get_text()
+async function get_content() {
+    let content = await get_user_input_async();
     if (!content) {
         content = '';
     }
+
     let abuse_counter = 0;
     while (isWhitespaceString(content) || isGarbage(content)) {
-        //Character has to say that 'i dont even know what to do'
-        content = get_text();
+        content = await get_user_input_async();
         if (!content) {
             content = '';
         }
@@ -162,6 +161,59 @@ function get_content() {
     abuse_counter = 0
     return content
 
+}
+
+function prettifyName(raw) {
+    if (!raw) return '';
+    return raw.toString().replace(/_/g, ' ');
+}
+
+// Build a human-friendly location description that includes containers, items, and visible characters
+export function location_descr_generator(subLocationInput, locationObj = GameControl?.current_location) {
+    const activeLocation = locationObj || GameControl?.current_location;
+    const subLocation = typeof subLocationInput === 'string'
+        ? activeLocation?.sub_locations?.find(sl => sl.name === subLocationInput)
+        : subLocationInput;
+
+    if (!subLocation) {
+        return '';
+    }
+
+    const initDescription = subLocation.init_description || `I am now in ${prettifyName(subLocation.name)}`;
+    const itemsSet = ITEMSdata?.sets?.find(set => set.id === subLocation.items_id);
+    const containers = itemsSet?.containers || [];
+
+    const containerNames = containers.map(cont => prettifyName(cont.id)).filter(Boolean);
+    const containerListText = containerNames.length ? containerNames.join(', ') : 'nothing notable';
+
+    const surfaceContainers = containers.filter(cont => cont.verbs?.some(v => v === 'on the' || v === 'under the')).slice(0, 2);
+    const itemPhrases = [];
+
+    for (const cont of surfaceContainers) {
+        const verb = cont.verbs.find(v => v === 'on the' || v === 'under the') || cont.verbs?.[0] || '';
+        const baseContainer = ITEMSdata?.containers?.find(c => c.id === cont.id);
+        const items = baseContainer?.items || [];
+        if (!items.length) continue;
+
+        const itemNames = items.map(it => prettifyName(it.name || it.id)).filter(Boolean);
+        if (!itemNames.length) continue;
+
+        itemPhrases.push(`the ${itemNames.join(', ')} ${verb} ${prettifyName(cont.id)}`);
+    }
+
+    const itemText = itemPhrases.length ? itemPhrases.join('; ') : 'nothing else of note';
+
+    const characters = (activeLocation?.characters || []).filter(ch => {
+        if (!ch) return false;
+        if (typeof ch === 'string') return true;
+        if (typeof ch.health === 'number') return ch.health > 0;
+        return true;
+    }).map(ch => typeof ch === 'string' ? prettifyName(ch) : prettifyName(ch.name));
+
+    const charVerb = characters.length === 1 ? 'is' : 'are';
+    const characterText = characters.length ? characters.join(', ') : 'no one else';
+
+    return `${initDescription}. Here, I see ${containerListText}. I also see ${itemText}. There ${charVerb} ${characterText}.`;
 }
 
 
@@ -223,7 +275,7 @@ async function gameprocess() {
         }
         
         // Scene not complete yet, get user input and process actions
-        let content = get_content();
+        let content = await get_content();
         
         // Process the content here
         // TODO: Add action processing logic
@@ -278,9 +330,9 @@ export async function initializeGame() {
         
         scene = new scenes(1, 1);
 
-        let loc = new location(
+let loc = new location(
             scene.scene_locations[0].location_id      // дом
-        );
+);
 
         // Map character names to character objects
         if (loc.characters && Array.isArray(loc.characters)) {

@@ -137,10 +137,10 @@ export async function HelloWorld() {
     console.log("HelloWorld function called, INTRO_TEXT length:", INTRO_TEXT.length);
     for (const line of INTRO_TEXT) {
         if (line && line.trim() !== "") { // Skip empty lines
-            outputText(line);
-            await sleep(1676);
-        }
+        outputText(line);
+        await sleep(1676);
     }
+}
     console.log("HelloWorld function completed");
 }
 
