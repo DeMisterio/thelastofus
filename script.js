@@ -1,9 +1,6 @@
-// Game_Visual/script.js
-
 let rooms = [], roomNum;
 const MAPWIDTH = 2;
 
-// --- ДОБАВЛЕНО: Переменная для промиса ---
 let inputResolve = null; 
 
 class GameWindow {
@@ -13,32 +10,26 @@ class GameWindow {
 }
 
 const globalObj = typeof window !== "undefined" ? window : globalThis;
-
-// Export Gwindow early so it's available throughout the module
 export const Gwindow = globalObj.Gwindow || (globalObj.Gwindow = new GameWindow());
 
-// --- НОВАЯ ФУНКЦИЯ: Ожидание ввода ---
 export function waitForInput() {
     return new Promise((resolve) => {
-        inputResolve = resolve; // Сохраняем "ключ" к запуску кода в переменную
+        inputResolve = resolve;
     });
 }
 
-// --- ОБНОВЛЕННАЯ ФУНКЦИЯ: checkInput ---
-function checkInput(e) { // Делаем глобальной для HTML
+function checkInput(e) {
     if (e.key == "Enter") {
         e.preventDefault();
         let cli = document.getElementById('cli');
-        let content = cli.innerText || cli.textContent; // Или textContent
+        let content = cli.innerText || cli.textContent;
         cli.innerHTML = "";
         
-        // Set Gwindow.text for synchronous access
         Gwindow.text = content;
         
-        // Если игра ждет ввода (inputResolve существует), отдаем текст и размораживаем её
         if (inputResolve) {
             inputResolve(content);
-            inputResolve = null; // Сбрасываем
+            inputResolve = null;
         }
     }
 }
@@ -78,7 +69,7 @@ function initGame() {
 }
 
 export function outputText(txt) {
-    if (!txt) return; // Skip empty text
+    if (!txt) return;
     
     let output = document.getElementById('output');
     if (!output) {
@@ -132,18 +123,16 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// Export HelloWorld function to display intro text
 export async function HelloWorld() {
     console.log("HelloWorld function called, INTRO_TEXT length:", INTRO_TEXT.length);
     for (const line of INTRO_TEXT) {
-        if (line && line.trim() !== "") { // Skip empty lines
-        outputText(line);
-        await sleep(1676);
+        if (line && line.trim() !== "") {
+            outputText(line);
+            await sleep(1676);
+        }
     }
-}
     console.log("HelloWorld function completed");
 }
 
-// Make functions globally accessible
 globalObj.checkInput = checkInput;
 globalObj.initGame = initGame;

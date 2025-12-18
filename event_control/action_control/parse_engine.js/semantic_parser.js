@@ -133,7 +133,7 @@ export function match_items(sentence_obj, entity_db = entity_data_base) {
                 final_winner = best_overall;
             }
         } else {
-            final_winner = top_candidates[0] || null; // Handle empty case
+            final_winner = top_candidates[0] || null;
         }
 
         if (!final_winner) return [];
@@ -178,7 +178,6 @@ export function match_items(sentence_obj, entity_db = entity_data_base) {
        
     return response;
 }
-
 
 
 
